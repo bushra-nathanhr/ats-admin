@@ -148,30 +148,29 @@
           </v-card-title>
           <v-card-text id="card-text">
             <div class="top_green_cards flex_row justify-space-around">
-              <div class="success lighten-5 rounded pa-3 flex_row justify-space-around">
-                <span class="text-text">Dept. Placements</span>
+              <div class="rounded pa-3 flex_row justify-space-around" style="background: #C9FFF1;">
+                <span class="text-text mr-9">Dept. Placements</span>
                 <span class="success--text ml-9">15</span>
               </div>
-              <div class="success lighten-5 rounded pa-3 flex_row justify-space-around">
-                <span class="text-text">Dept. Value</span>
-                <span class="success--text ml-9">AED 150,650</span>
+              <div class="rounded pa-3 flex_row justify-space-around" style="background: #C9FFF1;">
+                <span class="green-text mr-9">Dept. Value</span>
+                <span class="green--text ml-9">AED 150,650</span>
               </div>
             </div>
-            
-            <v-simple-table class="customersByOverDueAmount__table table_bg">
+            <v-simple-table class="customersByOverDueAmount__table table_bg mt-5">
               <template v-slot:default>
                 <thead class="customersByOverDueAmount__thead">
                   <tr class="customersByOverDueAmount__tr">
-                    <th class="customersByOverDueAmount__th text-left text--text h6 pr_5">
+                    <th class="customersByOverDueAmount__th text-left subtext--text h6 pr_5">
                       Recruiter<br/>Name
                     </th>
-                    <th class="customersByOverDueAmount__th text-left text--text h6 pr_5">
+                    <th class="customersByOverDueAmount__th text-left subtext--text h6 pr_5">
                       Total<br/>Placements
                     </th>
-                    <th class="customersByOverDueAmount__th text-left text--text h6 pr_5">
+                    <th class="customersByOverDueAmount__th text-left subtext--text h6 pr_5">
                       Billing VS<br/>Targets
                     </th>
-                    <th class="customersByOverDueAmount__th text-left text--text h6 pr_5">
+                    <th class="customersByOverDueAmount__th text-right subtext--text h6 pr_5">
                       Average<br/>Billing
                     </th>
                   </tr>
@@ -179,539 +178,154 @@
                 </thead>
                 <tbody>
                   <tr v-for="(item, index) in customers_by_overdue" :key="index" class="ma-0 pa-0">
-                    <td class="customersByOverDueAmount__td text-left text--text h6">{{ item.c_name }}</td>
+                    <td class="customersByOverDueAmount__td text-left text--text h6">{{ item.name }}</td>
+                    <td class="customersByOverDueAmount__td text-left text--text pr_5">{{ item.total_placements }}</td>
                     <td class="customersByOverDueAmount__td text-left text--text pr_5 balance_due__td">
-                      <div class="progress_bar__con">
-                        <div class="progress_bar__line">
-                          <span class="text--text txt_inside_pbl">AED{{ item.balance_due }}</span>
-                        </div>
+                      <div class="rounded flex_row justify-center" style="background: #1AD598;min-width: 90%;max-width: 90%;min-height: 55%;max-height: 55%;overflow: hidden;">
+                          <span class="caption white--text">AED{{ item.total_billing }}</span>
                       </div>
                     </td>
-                    <td class="customersByOverDueAmount__td text-left text--text pr_5">{{ item.within_due }}</td>
-                    <td class="customersByOverDueAmount__td text-left text--text pr_5">{{ item.over_due }}</td>
-                    <td class="customersByOverDueAmount__td text-left text--text ">{{ item.due_invoice }}</td>
-                    <td class="customersByOverDueAmount__td text-right text--text">{{ item.above_credit_limit }}</td>
+                    <td class="customersByOverDueAmount__td text-right text--text pr_5">{{ item.average_billing }}</td>
                   </tr>
                 </tbody>
               </template>
             </v-simple-table>
-
-
           </v-card-text>
         </v-card>
       </v-col>
-
-
-
-      <v-col sm="12" md="8" lg="8">
+      <!-- Pipeline Overview -->
+      <v-col sm="12" md="6" lg="6">
         <v-card color="card_bg" id="card">
           <v-card-title id="card-title">
-            <h4>Recruiting Funnel</h4>
+            <h4>Pipeline Overview</h4>
           </v-card-title>
           <v-card-text id="card-text">
-            <div class="sales_goal__con flex_row justify-space-between pb-5">
-
-              <div class="sales_gen__con flex_column">
-                <span class="subtext--text">Sales generated this month</span>
-                <h5 class="text--text mt-3">AED {{ sales_goals.generated }}</h5>
-                <h4 class="text--text mt-2">{{ sales_goals.generated_per }}%</h4>
-                <span class="success--text mt-2">of Sales Target achieved</span>
+            <div class="top_green_cards flex_row justify-space-around">
+              <div class="rounded pa-3 flex_row justify-space-around" style="background: #E6F4FF;">
+                <span class="blue-text mr-9">Dept. Placements</span>
+                <span class="blue--text ml-9">15</span>
               </div>
-
-              <v-divider id="divider" class="mx-5" vertical></v-divider>
-              
-              <div class="sales_gen__con flex_column">
-                <span class="subtext--text">Sales generated this month</span>
-                <h5 class="text--text mt-3">{{ sales_goals.salesman }}</h5>
-                <h4 class="text--text mt-2">{{ sales_goals.performing }}%</h4>
-                <span class="success--text mt-2">of Sales Target achieved</span>
-              </div>
-
-              <SalesGoalIcon class="" />
-
-            </div>
-
-            <div class="sales_goal_footer__con flex_row justify-space-between mt-9">
-              <div class="flex_column">
-                <span class="primary--text">Target</span>
-                <h5 class="text--text mt-3">AED {{ sales_goals.target }}</h5>
-                <span class="subtext--text">32 Products Sold</span>
-              </div>
-              <v-divider id="divider" class="mx-5" vertical></v-divider>
-              <div class="flex_column">
-                <span class="accent3--text">Achieved</span>
-                <h5 class="text--text mt-3">AED {{ sales_goals.achieved }}</h5>
-                <span class="subtext--text">32 Products Sold</span>
-              </div>
-              <v-divider id="divider" class="mx-5" vertical></v-divider>
-              <div class="flex_column">
-                <span class="accent2--text">Difference</span>
-                <h5 class="text--text mt-3">AED {{ sales_goals.difference }}</h5>
-                <span class="subtext--text">32 Products Sold</span>
+              <div class="rounded pa-3 flex_row justify-space-around" style="background: #E6F4FF;">
+                <span class="blue-text mr-9">Dept. Value</span>
+                <span class="blue--text ml-9">AED 150,650</span>
               </div>
             </div>
+            <v-simple-table class="customersByOverDueAmount__table table_bg mt-5">
+              <template v-slot:default>
+                <thead class="customersByOverDueAmount__thead">
+                  <tr class="customersByOverDueAmount__tr">
+                    <th class="customersByOverDueAmount__th text-left subtext--text h6 pr_5">
+                      Recruiter<br/>Name
+                    </th>
+                    <th class="customersByOverDueAmount__th text-left subtext--text h6 ">
+                      Total<br/>Placements
+                    </th>
+                    <th class="customersByOverDueAmount__th text-center subtext--text h6 ">
+                      Billing VS<br/>Targets
+                    </th>
+                  </tr>
+                  <div class="my-4"></div>
+                </thead>
+                <tbody>
+                  <tr v-for="(item, index) in customers_by_overdue" :key="index" class="ma-0 pa-0">
+                    <td class="customersByOverDueAmount__td text-left text--text h6">{{ item.name }}</td>
+                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_placements }}</td>
+                    <td class="customersByOverDueAmount__td text-left text--text  balance_due__td">
+                      <div class="rounded flex_row justify-center" style="background: #E6F4FF;min-width: 90%;max-width: 90%;min-height: 55%;max-height: 55%;overflow: hidden;">
+                          <span class="caption blue--text">AED{{ item.total_billing }}</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
           </v-card-text>
         </v-card>
       </v-col>
-
-
-      <!-- AVERAGE SALES CALYCLE LENGTH => sales_average -->
-      <v-col sm="12" md="4" lg="4">
-        <v-card color="card_bg"  id="card">
-          <v-card-title id="card-title">
-            <h4>Average Sales Cycle Length</h4>
-          </v-card-title>
-          <v-card-text id="card-text">
-            <div class="sales_average__con" >
-              <v-row>
-                <v-spacer></v-spacer>
-                <v-col cols="auto">
-                  <div class="flex_row align-center pa-2">
-                    <div class="success dote mr-2" style="min-width: 15px;min-height: 6px;border-radius: 3px;"></div>
-                    <span class="subtext--text">Benchmark is 102 days</span>
-                  </div>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-col cols="12">
-                  <div class="text-left">
-                    <h4>{{ sales_average.days }} Days</h4>
-                    <span class="mt-3 primary--text">Avg. New Lead to Closure Length</span>
-                  </div>
-                  <div class="sales_average_chart__con mt-5">
-                    <div class="bg" style="">
-                       <div class="cur" style="" />
-                       <div class="line" style="" />
-                    </div>
-                  </div>
-                  <br />
-                  <div class="flex_row justify-space-between mt-9 mb-0">
-                    <span class="primary--text">New Lead</span>
-                    <span class="text--text">Closure</span>
-                  </div>
-                </v-col>
-              </v-row>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-      <!-- / AVERAGE SALES CALYCLE LENGTH => sales_average -->
-    </v-row>
-    <v-row class="row2">
-      <!-- TODAYS TASKS -->
-      <v-col cols="12">
+      <!-- Placement Report -->
+      <v-col sm="12" md="12" lg="12">
         <v-card id="card">
           <v-card-title id="card-title">
-            <h4>Today's Tasks</h4>
-            <div class="flex_row justify-space-between">
-              <div class="view flex_row">
-                <h6 class="text--text mr-3">View:</h6>
-                <v-switch
-                v-model="today_tasks_only"
-                class="mt-0"
-                inset
-                color="primary"
-                hide-details
-                ></v-switch>
-                <span class="subtext--text">Completed</span>
-              </div>
-              <div class="flex_row ml-5">
-                <v-btn class="tall__btn" color="subtext" outlined>
-                  <v-icon small color="subtext" class="mr-2">fa-plus</v-icon>
-                  Mark as completed
-                </v-btn>
-              </div>
-            </div>
+            <h4>Placement Report</h4>
+            <span>Currency: 0 AED</span>
           </v-card-title>
           <v-card-text id="card-text">
-            <v-data-table :headers="todays_headers" :items="todays_tasks" show-select sort-by="created_on" class="elevation-0" hide-default-footer>
-              <template v-slot:item.actions="{ item }">
-                <v-icon small class="mr-2" @click="editItem(item)">fa-pencil</v-icon>
-                <v-icon small @click="deleteItem(item)">fa-delete</v-icon>
+            <v-simple-table class="customersByOverDueAmount__table table_bg mt-5">
+              <template v-slot:default>
+                <thead class="customersByOverDueAmount__thead">
+                  <tr class="customersByOverDueAmount__tr">
+                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Name</th>
+                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Recruitment</th>
+                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Contract </th>
+                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Temp</th>
+                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Freelancer</th>
+                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Due Date</th>
+                    <th class="customersByOverDueAmount__th text-right subtext--text h6">Total</th>
+                  </tr>
+                  <div class="my-4"></div>
+                </thead>
+                <tbody>
+                  <tr v-for="(item, index) in customers_by_overdue" :key="index" class="ma-0 pa-0">
+                    <td class="customersByOverDueAmount__td text-left text--text h6">{{ item.name }}</td>
+                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_placements }}</td>
+                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.average_billing }}</td>
+                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.average_billing }}</td>
+                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.average_billing }}</td>
+                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.average_billing }}</td>
+                    <td class="customersByOverDueAmount__td text-right text--text">{{ item.average_billing }}</td>
+                  </tr>
+                </tbody>
               </template>
-              <template v-slot:no-data>
-                <v-btn color="primary" @click="initialize">Reset</v-btn>
-              </template>
-            </v-data-table>
+            </v-simple-table>
           </v-card-text>
         </v-card>
       </v-col>
-      <!-- / TODAYS TASKS -->
-    </v-row>
-    <v-row class="row3">
-      <!-- PIPELINE VALUE -->
+      <!-- Categories of Roles -->
+      <v-col sm="12" md="6" lg="6">
+        <v-card color="card_bg" id="card">
+          <v-card-title id="card-title">
+            <h4>Categories of Roles</h4>
+            <div class="flex_row">
+              <v-icon color="#004880" x-small>fa-circle</v-icon>
+              <span class="pl-2">Closed</span>
+            </div>
+          </v-card-title>
+          <v-card-text id="card-text">
+            <!-- <v-row class="ma-0 pa-0 mb-3" justify="center" v-for="item in request_breakdown" :key="item">
+              <v-col cols="8" class="ma-0 pa-0" align-self="center"> -->
+                <div class="flex_row">
+                <div class="flex_column align-center mx-auto" v-for="item in categories_roles" :key="item">
+                  <div class="flex_column justify-end " style="background: #E3E4E6;width: 30px;height: 200px;border-radius: 6px;">
+                    <div :style="{ height: item.per }" style="background: #004880;width: 30px;border-radius: 6px;"></div>
+                  </div>
+                  <span class="subtext--text caption d-inline pt-2 text-center">{{ item.title }}<br/>& Admin</span>
+                </div>
+              </div>
+              <!-- </v-col>
+            </v-row> -->
+          </v-card-text>
+        </v-card>
+      </v-col>
+      <!-- Candidate Source -->
       <v-col sm="12" md="6" lg="6">
         <v-card color="card_bg"  id="card">
           <v-card-title id="card-title">
-            <h4 class="text--text">Pipeline Value</h4>
-            <div class="flex_row justify-space-between">
-              <v-btn class="short__btn mr-2" outlined>Year</v-btn>
-            </div>
+            <h4 class="text--text">Candidate Source</h4>
           </v-card-title>
           <v-card-text id="card-text">
             <div class="ex_br__con flex_row align-center justify-space-between">
-              <div class="flex_column" style="min-width: 50%; min-height: 100px;">
-                  <div class="flex_row justify-space-between py-4" v-for="item in pipeline_data" :key="item.id" style="border-bottom: 0.5px solid #ddd">
-                    <div class="flex_row">
-                      <div :class="item.color" class="dote mr-2" style="min-width: 15px;min-height: 6px;border-radius: 3px;"></div>
-                      <span class="text--text">{{ item.name }}</span>
-                    </div>
-                    <h6 class="ml-9 text--text">AED{{ item.amount }}</h6>
-                  </div>
-              </div>
-              <div style="min-width: 50%; min-height: 100px;"></div>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-      <!-- / PIPELINE VALUE -->
-    </v-row>
-
-
-
-
-    <!-- ROW-2 -->
-    <v-row class="row2" >
-
-      <!-- Unpaid Invoice -->
-      <!-- obj: unpaid_invoice_data  -->
-      <v-col sm="12" md="4" lg="4">
-        <v-card color="card_bg"  id="card">
-          <v-card-title id="card-title">
-            <h4>Unpaid Invoice</h4>
-            <div class="flex_row justify-space-between">
-              <v-btn class="short__btn mr-2" outlined>Month</v-btn>
-              <v-btn class="short__btn" color="primary">Year</v-btn>
-            </div>
-          </v-card-title>
-          <v-card-text id="card-text">
-            <div class="unpaid_invoice__con flex_column">
-              <div class="flex_row justify-space-between">
-                <h5 class="text--text">Last 365days</h5>
-                <h4 class="text--text">AED {{ unpaid_invoice_data.last365Days }}</h4>
-              </div>
-              <div class="mt-5 flex_row justify-space-between">
-                <div class="flex_column justify-start">
-                  <span class="caption subtext--text">Overdue</span>
-                  <h5 class="text--text">AED {{ unpaid_invoice_data.overDue }}</h5>
-                </div>
-                <div class="flex_column justify-start">
-                  <span class="caption subtext--text">Not due yet</span>
-                  <h5 class="text--text">AED {{ unpaid_invoice_data.notDueYet }}</h5>
-                </div>
-              </div>
-              <div class="graph__con mt-9">
-                <div style="background: #E2E7F1; min-width: 85%; min-height: 50px;border-radius: 10px;">
-                  <div style="background: #F3654A; max-width: 80%; min-height: 50px;border-radius: 10px;"/>
-                </div>
-              </div>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-
-      <!-- Paid Invoice -->
-      <!-- obj: paid_invoice_data  -->
-      <v-col sm="12" md="4" lg="4">
-        <v-card color="card_bg"  id="card">
-          <v-card-title id="card-title">
-            <h4>Paid Invoice</h4>
-            <div class="flex_row justify-space-between">
-              <v-btn class="short__btn mr-2" outlined>Month</v-btn>
-              <v-btn class="short__btn" color="primary">Year</v-btn>
-            </div>
-          </v-card-title>
-          <v-card-text id="card-text">
-            <div class="unpaid_invoice__con flex_column">
-              <div class="flex_row justify-space-between">
-                <h5 class="text--text">Last 30days</h5>
-                <h4 class="text--text">AED {{ paid_invoice_data.last30Days }}</h4>
-              </div>
-              <div class="mt-5 flex_row justify-space-between">
-                <div class="flex_column justify-start">
-                  <span class="caption subtext--text">Not Deposited</span>
-                  <h5 class="text--text">AED {{ paid_invoice_data.notDeposited }}</h5>
-                </div>
-                <div class="flex_column justify-start">
-                  <span class="caption subtext--text">Deposited</span>
-                  <h5 class="text--text">AED {{ paid_invoice_data.deposited }}</h5>
-                </div>
-              </div>
-              <div class="graph__con mt-9">
-                <div style="background: #E2E7F1; min-width: 85%; min-height: 50px;border-radius: 10px;">
-                  <div style="background: #1AD598; max-width: 40%; min-height: 50px;border-radius: 10px;"/>
-                </div>
-              </div>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-
-      <!-- Total Revenue by Product -->
-      <!-- obj: revenue_data  -->
-      <v-col sm="12" md="4" lg="4">
-        <v-card color="card_bg"  id="card">
-          <v-card-title id="card-title">
-            <h4 class="text--text">Total Revenue by Product</h4>
-            <div class="flex_row justify-space-between">
-              <v-btn class="short__btn mr-2" outlined>Year</v-btn>
-            </div>
-          </v-card-title>
-          <v-card-text id="card-text">
-            <div class="ex_br__con flex_row align-center justify-space-around">
-              <div style="min-width: 100px; min-height: 100px;"></div>
-              <div class="flex_column">
-                <div class="flex_row align-center pa-2" v-for="item in revenue_data" :key="item.id">
+              <div class="flex_column justify-space-between">
+                <div class="flex_row align-center pa-2 mt-2" v-for="item in candidate_source" :key="item.id">
                   <div :class="item.color" class="dote mr-2" style="min-width: 15px;min-height: 6px;border-radius: 3px;"></div>
                   <span class="subtext--text">{{ item.name }} - {{ item.percentage }}% </span>
                 </div>
+                <div style="min-width: 100px; "></div>
             </div>
             </div>
           </v-card-text>
         </v-card>
       </v-col>
-
     </v-row>
-
-    <!-- ROW-3 -->
-    <v-row class="row3" >
-
-      <!-- Top 5 Customers by over due amount -->
-      <!-- obj: customers_by_overdue -->
-      <v-col sm="12" md="8" lg="8">
-        <v-card color="card_bg"  id="card">
-          <v-card-title id="card-title">
-            <h4>Top 5 Customers by over due amount</h4>
-          </v-card-title>
-          <v-card-text id="card-text">
-            <div>
-              <v-simple-table class="customersByOverDueAmount__table table_bg">
-                <template v-slot:default>
-                  <thead class="customersByOverDueAmount__thead">
-                    <tr class="customersByOverDueAmount__tr">
-                      <th class="customersByOverDueAmount__th text-left text--text h6 pr_5">
-                        Customer<br/>Name
-                      </th>
-                      <th class="customersByOverDueAmount__th text-left text--text h6 pr_5">
-                        Balance<br/>Due
-                      </th>
-                      <th class="customersByOverDueAmount__th text-left text--text h6 pr_5">
-                        Within<br/>Due
-                      </th>
-                      <th class="customersByOverDueAmount__th text-left text--text h6 pr_5">
-                        Over<br/>Due
-                      </th>
-                      <th class="customersByOverDueAmount__th text-left text--text h6">
-                        Due<br/>Invoices
-                      </th>
-                      <th class="customersByOverDueAmount__th text-right text--text h6 credit_limit__con">
-                        Above Credit<br/>Limit
-                      </th>
-                    </tr>
-                    <div class="my-4"></div>
-                  </thead>
-                  <tbody>
-                    <tr v-for="(item, index) in customers_by_overdue" :key="index" class="ma-0 pa-0">
-                      <td class="customersByOverDueAmount__td text-left text--text h6">{{ item.c_name }}</td>
-                      <td class="customersByOverDueAmount__td text-left text--text pr_5 balance_due__td">
-                        <div class="progress_bar__con">
-                          <div class="progress_bar__line">
-                            <span class="text--text txt_inside_pbl">AED{{ item.balance_due }}</span>
-                          </div>
-                        </div>
-                      </td>
-                      <td class="customersByOverDueAmount__td text-left text--text pr_5">{{ item.within_due }}</td>
-                      <td class="customersByOverDueAmount__td text-left text--text pr_5">{{ item.over_due }}</td>
-                      <td class="customersByOverDueAmount__td text-left text--text ">{{ item.due_invoice }}</td>
-                      <td class="customersByOverDueAmount__td text-right text--text">{{ item.above_credit_limit }}</td>
-                    </tr>
-                  </tbody>
-                </template>
-              </v-simple-table> 
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-      
-      <!-- Age analysis of due balance -->
-      <!-- obj:  -->
-      <v-col sm="12" md="4" lg="4">
-        <v-card color="card_bg"  id="card">
-          <v-card-title id="card-title">
-            <h4>Age analysis of due balance</h4>
-          </v-card-title>
-          <v-card-text id="card-text">
-            <div class="age_graph__con mt-5">
-              <LineGraph />
-              <v-divider id="divider" class="divider_border"></v-divider>
-              <div class="age_graph__titles flex_row justify-space-around mt-2">
-                <span class="caption">Title</span>
-                <span class="caption">Title</span>
-                <span class="caption">Title</span>
-                <span class="caption">Title</span>
-                <span class="caption">Title</span>
-              </div>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-
-    </v-row>
-
-    <!-- ROW-4 -->
-    <v-row class="row4" >
-    
-    <!-- Recent Bank Transactions -->
-    <!-- obj: bank_tran_data -->
-    <v-col sm="12" md="4" lg="4">
-      <v-card color="card_bg"  id="card">
-        <v-card-title id="card-title">
-          <h4>Recent Bank Transactions</h4>
-          <!-- <div class="flex_row">
-            <h5 class="text-text ma-0 pa-0 mr-3 pb-4">Notify Me</h5>
-            <v-switch
-            class="ma-0 pa-0"
-            inset
-            color="primary"
-            ></v-switch>
-          </div> -->
-          <ReloadIcon />
-        </v-card-title>
-        <v-card-text id="card-text">
-          <div class="bank_tran__con">
-            <div class="bt__con" v-for="item in bank_tran_data" :key="item.id">
-              <div class="bt__data flex_row my-3 py-3">
-                <h4 v-if="item.amount >= 1000" class="green--text">+{{ item.amount }}aed</h4>
-                <h4 v-if="item.amount < 1000" class="red--text">-{{ item.amount }}aed</h4>
-                <span class="pl-3 text--subtitle">{{ item.name }}</span>
-                <v-spacer></v-spacer>
-                <h6 class="text--text">{{ item.date }}</h6>
-              </div>
-              <v-divider id="divider" class="divider_border ml-9"></v-divider>
-          </div>
-          </div>
-        </v-card-text>
-      </v-card>
-    </v-col>
-
-    <!-- Sales vs Expense -->
-    <!-- obj:  -->
-    <v-col sm="12" md="8" lg="8">
-      <v-card color="card_bg"  id="card">
-        <v-card-title id="card-title">
-          <h4 class="text--text">Sales vs Expense</h4>
-          <div class="flex_row justify-space-between">
-            <v-btn class="short__btn mr-2" outlined>Week</v-btn>
-            <v-btn class="short__btn mr-2" outlined>Month</v-btn>
-            <v-btn class="short__btn" color="primary">Year</v-btn>
-          </div>
-        </v-card-title>
-        <v-card-text id="card-text">
-          <!-- chart.js -->
-        </v-card-text>
-      </v-card>
-    </v-col>
-
-    </v-row>
-
-    <!-- ROW-5 -->
-    <v-row class="row5" >
-
-    <!-- Sales Revenue by customer -->
-    <!-- obj:  -->
-    <v-col sm="12" md="6" lg="6">
-      <v-card color="card_bg"  id="card">
-        <v-card-title id="card-title">
-          <h4 class="text--text">Sales Revenue by customer</h4>
-          <div class="flex_row justify-space-between">
-            <v-btn class="short__btn mr-2" outlined>Week</v-btn>
-            <v-btn class="short__btn mr-2" outlined>Month</v-btn>
-            <v-btn class="short__btn" color="primary">Year</v-btn>
-          </div>
-        </v-card-title>
-        <v-card-text id="card-text">
-          <!-- chart.js -->
-        </v-card-text>
-      </v-card>
-    </v-col>
-
-    <!-- Income Statement -->
-    <!-- obj:  -->
-    <v-col sm="12" md="6" lg="6">
-      <v-card color="card_bg"  id="card">
-        <v-card-title id="card-title">
-          <h4 class="text--text">Income Statement (in millions aed)</h4>
-          <div class="flex_row justify-space-between">
-            <v-btn class="short__btn mr-2" outlined>Week</v-btn>
-            <v-btn class="short__btn mr-2" outlined>Month</v-btn>
-            <v-btn class="short__btn" color="primary">Year</v-btn>
-          </div>
-        </v-card-title>
-        <v-card-text id="card-text">
-          <!-- chart.js -->
-        </v-card-text>
-      </v-card>
-    </v-col>
-
-    </v-row>
-
-    <!-- ROW-5 -->
-    <v-row class="row5" >
-
-      <!-- Recent Expense -->
-      <!-- obj: recent_expense_data -->
-      <v-col sm="12" md="6" lg="6">
-        <v-card color="card_bg"  id="card">
-          <v-card-title id="card-title">
-            <h4 class="text--text">Recent Expense</h4>
-          </v-card-title>
-          <v-card-text id="card-text">
-            <div class="recent_ext__con">
-              <div class="re__header flex_row justify-space-between">
-                <span class="subtext--text">Name</span>
-                <span class="subtext--text">Amount</span>
-              </div>
-              <div class="re__table_data" v-for="(item, index) in recent_expense_data" :key="index">
-                <h6 class="text--text">{{ item.name }}</h6>
-                <h6 class="text--text">{{ item.amount }}</h6>
-              </div>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-
-      <!-- Recent Sale -->
-      <!-- obj: recent_sale_data -->
-      <v-col sm="12" md="6" lg="6">
-        <v-card color="card_bg"  id="card">
-          <v-card-title id="card-title">
-            <h4 class="text--text">Recent Sale</h4>
-          </v-card-title>
-          <v-card-text id="card-text">
-            <div class="recent_sale__con">
-              <table class="recent_sale__table">
-                <thead class="recent_sale__thead">
-                  <tr class="rs_th_tr">
-                    <th class="subtext--text text-left">Name</th>
-                    <th class="subtext--text text-left">Sales Rep</th>
-                    <th class="subtext--text text-right">Amount</th>
-                  </tr>
-                </thead>
-                <tbody class="recent_sale__tbody">
-                  <tr class="rs_tbody_tr" style="" v-for="(item, index) in recent_sale_data" :key="index">
-                    <td class="text--text text-left">{{ item.name }}</td>
-                    <td class="text--text text-center pl-3" style="max-width: 50px"><v-img :src="item.img" width="30" height="30" /></td>
-                    <td class="text--text text-right">{{ item.amount }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </v-card-text>
-        </v-card>
-      </v-col>
-
-    </v-row>
-
     <!-- FOOTER-->
     <Footer  />
 
@@ -752,6 +366,27 @@ export default {
    },
   data() {
     return {
+      // Candidate Source
+      candidate_source: [
+        { name: 'Bayt',  color: 'accent2'},
+        { name: 'LinkedIn',  color: 'primary'},
+        { name: 'Indeed',  color: 'accent1'},
+        { name: 'Naukrigulf',  color: 'accent4'},
+        { name: 'Internal Database', color: 'accent3'},
+      ],
+
+      // Categories of Roles
+      categories_roles: [
+        { title: 'Office Supp.', per: '60%' },
+        { title: 'BFSI.', per: '90%' },
+        { title: 'Office Supp.', per: '70%' },
+        { title: 'BFSI.', per: '40%' },
+        { title: 'Office Supp.', per: '10%' },
+        { title: 'Office Supp.', per: '90%' },
+        { title: 'Office Supp.', per: '30%' },
+        { title: 'Office Supp.', per: '50%' },
+      ],
+
       // Placements Overview Summary
       placements_overview_summary: [
         { c_name:'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
@@ -888,11 +523,11 @@ export default {
         { amount: '1000', name: 'EmiratesNBD', date: '2 July 2022' },
       ],
       customers_by_overdue: [
-        { c_name:'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
-        { c_name:'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
-        { c_name:'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
-        { c_name:'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
-        { c_name:'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
+        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
+        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
+        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
+        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
+        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
       ],
       revenue_data: [
         { name: 'ERP', percentage: '50', color: 'accent2'},

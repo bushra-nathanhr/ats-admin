@@ -10,7 +10,8 @@
                     <div class="flex_row align-center justify-center text-center" @click.stop="drawer2 = !drawer2" style="background: #e2e7f175 !important;min-width: 50px !important;min-height: 50px !important;max-width: 50px !important;max-height: 50px !important;">
                         <DotedMenu class="text-center ma-0 pa-0 mr-1" style=""/>
                     </div>
-                    <v-img src="/crm-text.png" class="mt-4 ml-4" max-width="50" max-height="50" style=""></v-img>
+                    <h1 class="ml-4 primary--text mt-2 font-weight-black">A . T . S <span class=" subtext--text caption">system</span></h1>
+                    <!-- <v-img src="/crm-text.png" class="mt-4 ml-4" max-width="50" max-height="50" style=""></v-img> -->
                 </div>    
                 
                 <!-- NATHAN DIGITAL SOFTWARE SUET MENU BODY -->
@@ -80,7 +81,7 @@
                                     <DB_SideNavMasker v-show="SideNavMaskerValue == 'Dashboard'" class="side_nav__masker" />
                                     <DashboardIcon  class="side_nav_icons" />
                                 </div>
-                                <div v-if="link.text == 'Pipeline'" :class="SideNavMaskerValue == 'Sales'?'sales':''">
+                                <div v-if="link.text == 'Requisitions'" :class="SideNavMaskerValue == 'Sales'?'sales':''">
                                     <SAL_SideNavMasker v-show="SideNavMaskerValue == 'Pipeline'"   class="side_nav__masker" />
                                     <PipelineIcon class="side_nav_icons"/>
                                 </div>
@@ -88,7 +89,7 @@
                                     <EXP_SideNavMasker v-show="SideNavMaskerValue == 'Activities'" class="side_nav__masker" />
                                     <ActivitiesIcon class="side_nav_icons"/>
                                 </div>
-                                <div v-if="link.text == 'Emails'" :class="SideNavMaskerValue == 'Chart of Accounts'?'ChartofAccounts':''">
+                                <div v-if="link.text == 'Clients'" :class="SideNavMaskerValue == 'Chart of Accounts'?'ChartofAccounts':''">
                                     <COA_SideNavMasker v-show="SideNavMaskerValue == 'Email'" class="side_nav__masker" />
                                     <EmailsIcon class="side_nav_icons"/>
                                 </div>
@@ -330,65 +331,25 @@ export default {
                     route: '/dashboard'
                     },
                     {
-                    text: 'Pipeline',
+                    text: 'Requisitions',
                     icon: 'PipelineIcon',
                     iconsrc: '@/assets/images/DashboardLayout/Dashboard-icon.svg', 
                     marker: 'SAL_SideNavMasker',
-                    route: '/pipeline'
+                    route: '/requisitions'
                     },
                     {
-                    text: 'Activities',
+                    text: 'Clients',
                     icon: 'ActivitiesIcon',
                     iconsrc: '@/assets/images/DashboardLayout/Dashboard-icon.svg',
                     marker: 'EXP_SideNavMasker',
-                    route: '/activities'
-                    },
-                    {
-                    text: 'Emails',
-                    icon: 'EmailsIcon',
-                    iconsrc: '@/assets/images/DashboardLayout/Dashboard-icon.svg',
-                    marker: 'COA_SideNavMasker',
-                    route: '/emails'
-                    },
-                    {
-                    text: 'Orders',
-                    icon: 'OrdersIcon',
-                    iconsrc: '@/assets/images/DashboardLayout/Dashboard-icon.svg',
-                    marker: 'DB_SideNavMasker',
-                    route: '/orders'
-                    },
-                    {
-                    text: 'Customers',
-                    icon: 'CustomersIcon',
-                    iconsrc: '@/assets/images/DashboardLayout/Dashboard-icon.svg',
-                    marker: 'SAL_SideNavMasker',
-                    route: '/customers'
+                    route: '/clients'
                     },
                     {
                     text: 'Reports',
-                    icon: 'ReportsIcon',
+                    icon: 'EmailsIcon',
                     iconsrc: '@/assets/images/DashboardLayout/Dashboard-icon.svg',
-                    marker: 'EXP_SideNavMasker',
+                    marker: 'COA_SideNavMasker',
                     route: '/reports'
-                    },
-                ]
-                },
-                {
-                group: 'ADD ONS',
-                links: [
-                    {
-                    text: 'Marketing',
-                    icon: 'MarketingIcon',
-                    iconsrc: '@/assets/images/DashboardLayout/Marketing-icon.svg',
-                    marker: 'DB_SideNavMasker',
-                    route: '/marketing'
-                    },
-                    {
-                    text: 'Calendar',
-                    icon: 'CalendarIcon',
-                    iconsrc: '@/assets/images/DashboardLayout/Calendar-icon.svg', 
-                    marker: 'SAL_SideNavMasker',
-                    route: '/calendar'
                     },
                 ]
                 },
