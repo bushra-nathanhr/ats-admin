@@ -1,0 +1,23 @@
+[
+  {
+    "name": "alerts",
+    "path": "/alerts",
+    "component": "C:\\\\GitLab\\\\ats-admin\\\\pages\\\\alerts.vue",
+    "chunkName": "pages/alerts",
+    "_name": "_71930999"
+  },
+  {
+    "name": "dashboard",
+    "path": "/dashboard",
+    "component": "C:\\\\GitLab\\\\ats-admin\\\\pages\\\\dashboard.vue",
+    "chunkName": "pages/dashboard",
+    "_name": "_4c235b02"
+  },
+  {
+    "name": "reports",
+    "path": "/reports",
+    "component": "C:\\\\GitLab\\\\ats-admin\\\\pages\\\\reports.vue",
+    "chunkName": "pages/reports",
+    "_name": "_8e459ba6"
+  }
+]

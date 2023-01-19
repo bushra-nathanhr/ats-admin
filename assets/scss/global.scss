@@ -1,0 +1,275 @@
+// GLOBAL CSS STYLESHEET
+
+//  *** REST ALL ELEMENTS *** 
+*,*::before,*::after {
+    box-sizing: border-box ;
+    padding: 0 ;
+    margin: 0 ;
+}
+a {
+    text-decoration: none;
+}
+*, h1, h2, h3, h4, h5, h6, span, a {
+    font-size: 14px;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+}
+  
+
+// *** SCROLLBAR ***
+body::-webkit-scrollbar {
+    width: 0px;
+    background-color: #ECF4F8;
+  }
+  body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+    background-color: #ECF4F8;
+    border-radius: 10px;
+  }
+  body::-webkit-scrollbar-thumb {
+    background-image: 
+      -webkit-gradient(linear, left bottom, top,
+      color-stop(0.44, #0A94FF),
+      color-stop(0.72, #0A94FF),
+      color-stop(0.86, #0A94FF)
+    );
+}
+  
+  
+
+
+//  *** MY CUSTOM IDs & CLASSES *** 
+.flex_row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.flex_column {
+    display: flex;
+    flex-direction: column;
+}
+hr#divider {}
+
+
+
+// *** CUSTOM ELEMENT ***
+// elements
+h1 {
+    font-size: $h1-size;
+    font-weight: $h1-weight;
+}
+h2 {
+    font-size: $h2-size;
+    font-weight: $h2-weight;
+}
+h3 {
+    font-size: 22px;
+    font-weight: 600;
+}
+h4 {
+    font-size: $h4-size;
+    font-weight: $h4-weight;
+}
+h5 {
+    font-size: $h5-size;
+    font-weight: $h5-weight;
+}
+h6 {
+    font-size: $h6-size;
+    font-weight: $h6-weight;
+}
+p, span, .n_text {
+    font-size: $text-size;
+    font-weight: $text-weight;
+}
+// classes
+.h1 {
+    font-size: $h1-size;
+    font-weight: $h1-weight;
+}
+.h2 {
+    font-size: $h2-size;
+    font-weight: $h2-weight;
+}
+.h3 {
+    font-size: 22px;
+    font-weight: 600;
+}
+.h4 {
+    font-size: $h4-size;
+    font-weight: $h4-weight;
+}
+.h5 {
+    font-size: $h5-size;
+    font-weight: $h5-weight;
+}
+.h6 {
+    font-size: $h6-size;
+    font-weight: $h6-weight;
+}
+.subtext {
+    font-size: $subtext-size;
+    font-weight: $subtext-weight;
+}
+.sidenav_text {
+    font-size: $sidenav-size;
+    font-weight: $sidenav-weight;
+}
+
+
+
+// *** CUSTOM VUETIFY ELEMENTS *** 
+// v-menu
+.v-menu__content.theme--light.rounded-lg.menuable__content__active {
+    box-shadow: 3px 3px 3px 1px rgb(0 0 0 / 0%) !important;
+    border-radius: 20px !important;
+    border: 1px solid #E2E7F1 !important;
+}
+
+
+// *** BUTTONS ***
+.tall__btn {
+    font-size: $btn-tall-font-size;
+    font-weight: $btn-tall-font-weight;
+    height: $btn-tall-height;
+    border: $btn-border;
+    border-radius: $btn-border-radius;
+    box-shadow: none !important;
+    letter-spacing: 0 !important;
+    text-transform: capitalize !important;
+}
+.short__btn {
+    font-size: $btn-short-font-size;
+    font-weight: $btn-short-font-weight;
+    height: $btn-short-height;
+    border: $btn-border;
+    border-radius: $btn-border-radius;
+    box-shadow: none !important;
+    letter-spacing: 0 !important;
+    text-transform: capitalize !important;
+}
+
+
+
+// *** CARDS ***
+#card {
+    padding: $card-padding;
+    margin: 0 !important; /* $card-margin 'rm for grid gaps porous' */
+    // border: $card-border; // should be disabled in dark mood
+    border-radius: $card-border-radius;
+    box-shadow: $card-shadow;
+    overflow: hidden;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+#card-title {
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+#card-text {
+    margin-top: 40px !important;
+    padding: 0px;
+    margin: 0px;
+}
+#card-actions {
+    padding: 0px;
+    margin: 0px;
+}
+.small_card {
+    padding: $card-padding;
+    margin: $card-margin;
+    border: $card-border;
+    border-radius: $card-border-radius;
+    min-width: $small-card-min-weight;
+    max-width: fit-content !important;
+    min-height: $small-card-min-height;
+    box-shadow: none !important;
+}
+
+
+// *** ICONS ***
+.icon__container {
+    border-radius: 50%;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    max-width: 50px;
+    max-height: 50px;
+    padding: 12px;
+}
+
+
+// *** COL & ROW ***
+// remove vuetify default v-row margin and padding 
+.row {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-width: 100% !important;
+    min-height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+
+
+
+// *** SNACKBAR ***
+.snackbar {
+    width: 100%;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    text-align: center !important;
+    div {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+}
+
+
+
+// *** DIALOG ***
+.v-dialog.v-dialog--active.v-dialog--persistent {
+    max-height: fit-content !important;
+} 
+#tall_dialog {
+    padding: 20px 30px !important;
+    margin: 0 !important; /* $card-margin 'rm for grid gaps porous' */
+    // border: $card-border;
+    border-radius: $card-border-radius;
+    box-shadow: $card-shadow;
+    overflow: hidden;
+    border-radius: 0px 0px 16px 16px !important;
+}
+.my_dialog {
+    position: absolute !important;
+    top: -5px !important;
+    max-width: 70% !important;
+}
+@media screen and (min-width: 1537px) {
+    .my_dialog {
+        left: 328px !important;
+    }    
+}
+@media screen and (max-width: 1536px) {
+    .my_dialog {
+        left: 262px !important;
+    }    
+}
+
+
+
+
+
+// *** DARK MOOD ***
+.v-card .v-sheet .theme--dark .card_bg {
+    border: none !important;
+}

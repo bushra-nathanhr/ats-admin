@@ -1,0 +1,10 @@
+<svg id="bag-tick" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+  <g id="Group_678" data-name="Group 678" transform="translate(4.757 1.833)" opacity="0.4">
+    <path id="Vector" d="M0,1.375,1.375,2.75,4.354,0" transform="translate(4.061 11.458)" fill="none" stroke="#1baed1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Vector-2" data-name="Vector" d="M3.318,0,0,3.328" fill="none" stroke="#1baed1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Vector-3" data-name="Vector" d="M0,0,3.318,3.328" transform="translate(9.167)" fill="none" stroke="#1baed1" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+  <path id="Vector-4" data-name="Vector" d="M0,1.833C0,.138.908,0,2.035,0H16.3c1.128,0,2.035.138,2.035,1.833,0,1.971-.907,1.833-2.035,1.833H2.035C.908,3.667,0,3.8,0,1.833Z" transform="translate(1.833 5.362)" fill="none" stroke="#1baed1" stroke-width="1.5"/>
+  <path id="Vector-5" data-name="Vector" d="M0,0,1.293,7.92C1.586,9.7,2.292,11,4.913,11h5.528c2.851,0,3.273-1.247,3.6-2.97L15.583,0" transform="translate(3.208 9.167)" fill="none" stroke="#1baed1" stroke-linecap="round" stroke-width="1.5"/>
+  <path id="Vector-6" data-name="Vector" d="M0,0H22V22H0Z" fill="none" opacity="0"/>
+</svg>
