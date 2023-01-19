@@ -180,8 +180,8 @@
                             <div class="dl__header_actions flex_row">
                                 <v-btn icon color="outline"><ReloadIcon class="them_icon" @click.stop="refresh" /></v-btn>
                                 <v-btn icon color="outline" @click.stop="toggleTheme"><ThemeIcon class="them_icon" /></v-btn>
-                                <v-btn icon color="outline"><CalendarIconGrey class="them_icon" /></v-btn>
-                                <v-btn icon color="outline"><NotificationIcon class="them_icon" /></v-btn>
+                                <v-btn icon color="outline" to="/alerts"><CalendarIconGrey class="them_icon" /></v-btn>
+                                <v-btn icon color="outline" to="/alerts"><NotificationIcon class="them_icon" /></v-btn>
                                 <div class="flex_row mr-7" @click.stop="settingMenu=true">
                                     <v-avatar size="35" color="#EDEEF2">
                                         <v-icon color="subtext" x-small>fa-user</v-icon>
