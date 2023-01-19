@@ -5,7 +5,7 @@
             <!-- *** SIDE NAVIGATION BAR *** -->
             <v-navigation-drawer class="dl__drawer" color="navbar_bg" v-model="drawer" :mini-variant.sync="mini" permanent v-if="drawer==true">
                 
-                                <!-- NATHAN DIGITAL SOFTWARE SUET MENU -->
+                <!-- NATHAN DIGITAL SOFTWARE SUET MENU -->
                 <div class="pa-0 ma-0 flex_row align-start">
                     <div class="flex_row align-center justify-center text-center" @click.stop="drawer2 = !drawer2" style="background: #e2e7f175 !important;min-width: 50px !important;min-height: 50px !important;max-width: 50px !important;max-height: 50px !important;">
                         <DotedMenu class="text-center ma-0 pa-0 mr-1" style=""/>
@@ -316,7 +316,7 @@ export default {
             ],
             SideNavMaskerValue: 'Dashboard',
             drawer: true,
-            drawer2: true,
+            drawer2: false,
             mini: false,
             items: [
                 {

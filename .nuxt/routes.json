@@ -19,5 +19,12 @@
     "component": "C:\\\\GitLab\\\\ats-admin\\\\pages\\\\reports.vue",
     "chunkName": "pages/reports",
     "_name": "_8e459ba6"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\GitLab\\\\ats-admin\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_9210b580"
   }
 ]
