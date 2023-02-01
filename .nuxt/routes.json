@@ -2,29 +2,29 @@
   {
     "name": "alerts",
     "path": "/alerts",
-    "component": "C:\\\\GitLab\\\\ats-admin\\\\pages\\\\alerts.vue",
+    "component": "C:\\\\GitHub\\\\ats-admin\\\\pages\\\\alerts.vue",
     "chunkName": "pages/alerts",
-    "_name": "_71930999"
+    "_name": "_1df91701"
   },
   {
     "name": "dashboard",
     "path": "/dashboard",
-    "component": "C:\\\\GitLab\\\\ats-admin\\\\pages\\\\dashboard.vue",
+    "component": "C:\\\\GitHub\\\\ats-admin\\\\pages\\\\dashboard.vue",
     "chunkName": "pages/dashboard",
-    "_name": "_4c235b02"
+    "_name": "_f7d516cc"
   },
   {
     "name": "reports",
     "path": "/reports",
-    "component": "C:\\\\GitLab\\\\ats-admin\\\\pages\\\\reports.vue",
+    "component": "C:\\\\GitHub\\\\ats-admin\\\\pages\\\\reports.vue",
     "chunkName": "pages/reports",
-    "_name": "_8e459ba6"
+    "_name": "_cd8e5c76"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "C:\\\\GitLab\\\\ats-admin\\\\pages\\\\index.vue",
+    "component": "C:\\\\GitHub\\\\ats-admin\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
-    "_name": "_9210b580"
+    "_name": "_38664ad8"
   }
 ]

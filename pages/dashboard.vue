@@ -250,7 +250,63 @@
             <span>Currency: 0 AED</span>
           </v-card-title>
           <v-card-text id="card-text">
-            <v-simple-table class="customersByOverDueAmount__table table_bg mt-5">
+
+            <table class="dashboard_table" style="width:100%">
+              <tr class="customersByOverDueAmount__tr">
+                    <th class="customersByOverDueAmount__th text--text h6 " rowspan="2">Name</th>
+                    <th class="customersByOverDueAmount__th text-left text--text h6" colspan="2">Recruitment</th>
+                    <th class="customersByOverDueAmount__th text-left text--text h6" colspan="2">Contract </th>
+                    <th class="customersByOverDueAmount__th text-left text--text h6" colspan="2">Temp</th>
+                    <th class="customersByOverDueAmount__th text-left text--text h6" colspan="2">Freelancer</th>
+                    <th class="customersByOverDueAmount__th  text--text h6" colspan="2">Total</th>
+                  </tr>
+              <tr>
+                <td class="customersByOverDueAmount__td  text-left subtext--text h6" >Number</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h6" > Amount</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h6" >Number</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h6" > Amount</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h6" >Number</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h6" > Amount</td>
+                <td class="customersByOverDueAmount__td text-left subtext--text h6" >Number</td>
+                <td class="customersByOverDueAmount__td text-left subtext--text h6" > Amount</td>
+                <td class="customersByOverDueAmount__td text-left subtext--text h6" >HC</td>
+                <td class="customersByOverDueAmount__td text-left subtext--text h6" > Billing</td>
+                
+              </tr>
+              <tr  v-for="(item, index) in customers_by_overdue" :key="index">
+                <td class="customersByOverDueAmount__td name__dropdown text-left text--text">
+                  <v-list>
+                    <v-list-group v-for="item in items" :key="item.title" v-model="item.active" :prepend-icon="item.action" no-action>
+                      <template v-slot:activator>
+                        <v-list-item-content>
+                          <v-list-item-title v-text="item.title"></v-list-item-title>
+                        </v-list-item-content>
+                      </template>
+                  
+                      <v-list-item v-for="child in item.items" :key="child.title">
+                        <v-list-item-content>
+                          <v-list-item-title v-text="child.title"></v-list-item-title>
+                        </v-list-item-content>
+                      </v-list-item>
+                    </v-list-group>
+                  </v-list>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text"> {{ item.total_placements }}</td>
+                <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_billing }}</td>
+                <td class="customersByOverDueAmount__td text-left text--text"> {{ item.total_placements }}</td>
+                <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_billing }}</td>
+                <td class="customersByOverDueAmount__td text-left text--text"> {{ item.total_placements }}</td>
+                <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_billing }}</td>
+                <td class="customersByOverDueAmount__td text-left text--text"> {{ item.total_placements }}</td>
+                <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_billing }}</td>
+                <td class="customersByOverDueAmount__td text-left text--text"> {{ item.total_placements }}</td>
+                <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_billing }}</td>
+
+              </tr>
+              
+            </table> 
+            
+            <!-- <v-simple-table class="customersByOverDueAmount__table table_bg mt-5">
               <template v-slot:default>
                 <thead class="customersByOverDueAmount__thead">
                   <tr class="customersByOverDueAmount__tr">
@@ -276,7 +332,8 @@
                   </tr>
                 </tbody>
               </template>
-            </v-simple-table>
+            </v-simple-table> -->
+
           </v-card-text>
         </v-card>
       </v-col>
@@ -321,6 +378,7 @@
                 </div>
                 <div style="min-width: 100px; "></div>
             </div>
+            <div class="flex_column justify-space-between">chat divdsdsddsdssdds</div>
             </div>
           </v-card-text>
         </v-card>
@@ -523,11 +581,31 @@ export default {
         { amount: '1000', name: 'EmiratesNBD', date: '2 July 2022' },
       ],
       customers_by_overdue: [
-        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
-        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
-        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
-        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
-        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
+        { name:'Sanjeed', total_placements: '4',  total_billing: '170,550', average_billing: '65,000' },
+        { name:'Dineen', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
+        { name:'MJ', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
+        { name:'Maria', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
+        { name:'Nikita', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
+      ],
+      //customer by replacement table
+      
+      //subchild dropdown for table plament report
+      items: [
+        {
+          action: 'mdi-silverware-fork-knife',
+          active: true,
+          items: [
+            { title: 'Breakfast & brunch' },
+            { title: 'New American' },
+            { title: 'Sushi' },
+          ],
+          title: 'Dining',
+        },
+      
+      
+       
+        
+      
       ],
       revenue_data: [
         { name: 'ERP', percentage: '50', color: 'accent2'},

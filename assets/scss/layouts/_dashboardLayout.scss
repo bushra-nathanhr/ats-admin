@@ -30,6 +30,35 @@
     .v-navigation-drawer__border {
         border: 0.1px solid #fff !important;
     }
+    //*** LOGO DASHBOARD ***
+    .login__logo_main_wrap{
+        width: 100%;
+        max-width: 60%;
+        min-height: 35%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .login__logo_wrap{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        .login__logo_wrap::before{
+            position: absolute;
+            content: '';
+            height: 90%;
+            width: 1%;
+            background: #7692AA;
+            border: 50%;
+            border-radius: 50%;
+            
+        }
+    }
+    
 }
 
 
