@@ -26,14 +26,14 @@
   "WIPTheme": {
     "description": "Auto imported from components/WIP/theme.vue"
   },
-  "DashboardOverviewTotalsViewer": {
-    "description": "Auto imported from components/Dashboard/OverviewTotalsViewer/index.vue"
-  },
   "CardsCardWithIcon": {
     "description": "Auto imported from components/Cards/CardWithIcon/index.vue"
   },
   "CardsTotalsCard": {
     "description": "Auto imported from components/Cards/TotalsCard/index.vue"
+  },
+  "DashboardOverviewTotalsViewer": {
+    "description": "Auto imported from components/Dashboard/OverviewTotalsViewer/index.vue"
   },
   "GraphsLineGraph": {
     "description": "Auto imported from components/Graphs/LineGraph/index.vue"

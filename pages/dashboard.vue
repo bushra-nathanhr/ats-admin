@@ -56,7 +56,20 @@
       </v-card>
     </v-dialog>
     <!-- TOP FILTER CARDS -->
-    <Filters :data="filters" />
+    <div class="topSmallCards flex_row justify-space-between">
+      <Filters :data="filters" />
+      <v-card  color="card_bg" class="flat ma-0 pa-0 mx-2 px-3 py-2" elevation="0" style="max-width: 200px !important; height: 77px !important; max-height: 100% !important; border-radius: 10px !important; border: 0px solid #fff!important;" :style=" darkMood == true ? '' : 'border: 0.5px solid #E2E7F1 !important;'">
+        <div class="" style="max-width: 200px !important; ">
+          <label class="pl-2">Month & Year</label>
+          <v-menu v-model="month_year_menu" :close-on-content-click="false" transition="scale-transition" offset-y min-width="auto">
+            <template v-slot:activator="{ on, attrs }">
+            <v-text-field v-model="month_year_date" placeholder="All" solo flat hide-details dense v-bind="attrs" v-on="on" :rules="main_rule" />
+            </template>
+            <v-date-picker v-model="month_year_date" @input="month_year_menu = false" />
+        </v-menu>
+        </div>
+      </v-card>
+    </div>
     <v-row class="row1" >
       <!-- RECUTTING FUNNEL -->
       <v-col sm="12" md="6" lg="6">
@@ -250,7 +263,6 @@
             <span>Currency: 0 AED</span>
           </v-card-title>
           <v-card-text id="card-text">
-
             <table class="dashboard_table" style="width:100%">
               <tr class="customersByOverDueAmount__tr">
                     <th class="customersByOverDueAmount__th text--text h6 " rowspan="2">Name</th>
@@ -271,7 +283,6 @@
                 <td class="customersByOverDueAmount__td text-left subtext--text h6" > Amount</td>
                 <td class="customersByOverDueAmount__td text-left subtext--text h6" >HC</td>
                 <td class="customersByOverDueAmount__td text-left subtext--text h6" > Billing</td>
-                
               </tr>
               <tr  v-for="(item, index) in placement_report" :key="index" @click="togglerHandle">
                 <td class="customersByOverDueAmount__td name__dropdown text-left text--text">
@@ -431,35 +442,6 @@
                 </td>
               </tr>
             </table> 
-            
-            <!-- <v-simple-table class="customersByOverDueAmount__table table_bg mt-5">
-              <template v-slot:default>
-                <thead class="customersByOverDueAmount__thead">
-                  <tr class="customersByOverDueAmount__tr">
-                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Name</th>
-                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Recruitment</th>
-                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Contract </th>
-                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Temp</th>
-                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Freelancer</th>
-                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Due Date</th>
-                    <th class="customersByOverDueAmount__th text-right subtext--text h6">Total</th>
-                  </tr>
-                  <div class="my-4"></div>
-                </thead>
-                <tbody>
-                  <tr v-for="(item, index) in customers_by_overdue" :key="index" class="ma-0 pa-0">
-                    <td class="customersByOverDueAmount__td text-left text--text h6">{{ item.name }}</td>
-                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_placements }}</td>
-                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.average_billing }}</td>
-                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.average_billing }}</td>
-                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.average_billing }}</td>
-                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.average_billing }}</td>
-                    <td class="customersByOverDueAmount__td text-right text--text">{{ item.average_billing }}</td>
-                  </tr>
-                </tbody>
-              </template>
-            </v-simple-table> -->
-
           </v-card-text>
         </v-card>
       </v-col>
@@ -504,14 +486,12 @@
                 </div>
                 <div style="min-width: 100px; "></div>
             </div>
-            <div class="flex_column justify-space-between">chat divdsdsddsdssdds</div>
+            <div class="flex_column justify-space-between"></div>
             </div>
           </v-card-text>
         </v-card>
       </v-col>
     </v-row>
-    <!-- FOOTER-->
-    <!-- <Footer  /> -->
     <v-row><v-spacer class="my-9 py-9"></v-spacer></v-row>
   </v-row>
 </template>
@@ -519,12 +499,10 @@
 <script>
 import '@/assets/scss/_dashboard.scss'
 import '@/assets/scss/utils/Tables/_customersByOverDueAmount.scss'
-
 import RedBellIcon from '@/assets/images/Alerts/red-bell-icon.svg'
 import YellowBellIcon from '@/assets/images/Alerts/yellow-bell-icon.svg'
 import ReloadIcon from '@/assets/images/DashboardLayout/Reload-icon.svg'
 import SalesGoalIcon from '@/assets/images/Dashboard/SalesGoal.svg'
-
 import OverviewTotalsViewer from '@/components/Dashboard/OverviewTotalsViewer/index.vue'
 import LineGraph from '@/components/Graphs/LineGraph/index.vue'
 import Footer from '@/components/Footer/index.vue'
@@ -550,8 +528,8 @@ export default {
    },
   data() {
     return {
-      // placement report table
-      // placement_report_tr_toggler: true,
+      month_year_menu: false,
+      month_year_date: null,
       placement_report: [
         { 
           toggler: false,
@@ -775,8 +753,7 @@ export default {
           { label: 'Status', placeholder: 'All', items: 'All' },
           { label: 'Service Type', placeholder: 'All', items: 'All' },
           { label: 'Location', placeholder: 'All', items: 'All' },
-          { label: 'Date Type', placeholder: 'All', items: 'All' },
-          { label: 'Month & Year', placeholder: 'All', items: 'All' },
+          { label: 'Date Type', placeholder: 'Active Month', items: 'Active Month' },
       ],
 
       // TODAYS TASKS
@@ -828,7 +805,6 @@ export default {
       init_company: { name: '', reg_no: '', field: '', email: '', phone: '', website: '', location: '', street: '', office_no: '' },
       init_customer: { name: '', reg_no: '', field: '', email: '', phone: '', website: '', location: '', street: '', office_no: '', ac_no: '', lcc: '', ac_type: '' },
       firstVisit: true,
-      
 
       // welcome 
       welcomeDialog: true,
