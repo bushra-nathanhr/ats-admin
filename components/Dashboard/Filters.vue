@@ -4,7 +4,9 @@
     max-height: 100% !important; border-radius: 10px !important; border: 0px solid #fff!important;" :style=" darkMood == true ? '' : 'border: 0.5px solid #E2E7F1 !important;'">
         <div class="" style="max-width: 200px !important; ">
           <label class="pl-2">{{ item.label }}</label>
-          <v-select :items="item.items" :placeholder="item.placeholder" solo flat hide-details dense></v-select>
+          <v-select :items="item.items" :placeholder="item.placeholder" solo flat hide-details dense v-model="date">
+
+          </v-select>
         </div>
       </v-card>
     </div>
@@ -18,7 +20,8 @@ export default {
     components: { CustomInputContainer, },
     props: { data: Array },
     data() {
-        return {}
+        return {
+        }
     }
 
 }

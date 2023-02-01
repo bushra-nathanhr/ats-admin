@@ -273,9 +273,9 @@
                 <td class="customersByOverDueAmount__td text-left subtext--text h6" > Billing</td>
                 
               </tr>
-              <tr  v-for="(item, index) in placement_report" :key="index">
+              <tr  v-for="(item, index) in placement_report" :key="index" @click="togglerHandle">
                 <td class="customersByOverDueAmount__td name__dropdown text-left text--text">
-                  <v-list-group :v-model="placement_report.toggler">
+                  <v-list-group v-model="item.toggler">
                     <!-- <template v-slot:appendIcon><v-icon color="primary" small>fa-plus</v-icon></template> -->
                     <template v-slot:activator>
                       <v-list-item-content>
@@ -290,7 +290,7 @@
                   </v-list-group>
                 </td>
                 <td class="customersByOverDueAmount__td text-left text--text">
-                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                  <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
                         <v-list-item-title>{{ item.recruitment_no }}</v-list-item-title>
@@ -304,7 +304,7 @@
                   </v-list-group>
                 </td>
                 <td class="customersByOverDueAmount__td text-left text--text">
-                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                  <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
                         <v-list-item-title>{{ item.recruitment_amount }}</v-list-item-title>
@@ -318,7 +318,7 @@
                   </v-list-group>
                 </td>
                 <td class="customersByOverDueAmount__td text-left text--text">
-                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                  <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
                         <v-list-item-title>{{ item.contract_no }}</v-list-item-title>
@@ -332,7 +332,7 @@
                   </v-list-group>
                 </td>
                 <td class="customersByOverDueAmount__td text-left text--text">
-                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                  <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
                         <v-list-item-title>{{ item.contract_amount }}</v-list-item-title>
@@ -346,7 +346,7 @@
                   </v-list-group>
                 </td>
                 <td class="customersByOverDueAmount__td text-left text--text">
-                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                  <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
                         <v-list-item-title>{{ item.temp_no }}</v-list-item-title>
@@ -360,7 +360,7 @@
                   </v-list-group>
                 </td>
                 <td class="customersByOverDueAmount__td text-left text--text">
-                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                  <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
                         <v-list-item-title>{{ item.temp_amount }}</v-list-item-title>
@@ -374,7 +374,7 @@
                   </v-list-group>
                 </td>
                 <td class="customersByOverDueAmount__td text-left text--text">
-                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                  <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
                         <v-list-item-title>{{ item.freelancer_no }}</v-list-item-title>
@@ -388,7 +388,7 @@
                   </v-list-group>
                 </td>
                 <td class="customersByOverDueAmount__td text-left text--text">
-                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                  <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
                         <v-list-item-title>{{ item.freelancer_amount }}</v-list-item-title>
@@ -402,7 +402,7 @@
                   </v-list-group>
                 </td>
                 <td class="customersByOverDueAmount__td text-left text--text">
-                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                  <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
                         <v-list-item-title>{{ item.total_hc }}</v-list-item-title>
@@ -416,7 +416,7 @@
                   </v-list-group>
                 </td>
                 <td class="customersByOverDueAmount__td text-left text--text">
-                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                  <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
                         <v-list-item-title>{{ item.total_billing }}</v-list-item-title>
@@ -551,10 +551,10 @@ export default {
   data() {
     return {
       // placement report table
-      // placement_report_tr_toggler: false,
+      // placement_report_tr_toggler: true,
       placement_report: [
         { 
-          toggler: true,
+          toggler: false,
           name:'Sanjeed', 
           country: ['UAE', 'EGY', 'SD'],
 
@@ -585,21 +585,21 @@ export default {
         },
         { 
           toggler: false,
-          name:'Tahir', 
+          name:'Dineen', 
           country: ['UAE', 'EGY', 'SD'],
 
           recruitment_no: 6,
-          recruitment_amount: '100.000',
+          recruitment_amount: '78.000',
           all_recruitment_no: [4, 2, 0],
           all_recruitment_amount: ['60.000', '40.000', '20.000'],
           
-          contract_no: 4,
-          contract_amount: '50.000',
+          contract_no: 3,
+          contract_amount: '40.000',
           all_contract_no: [2, 1,0],
           all_contract_amount: ['30.000', '20.000', '20.000'],
 
-          temp_no: 6,
-          temp_amount: '85.000',
+          temp_no: 5,
+          temp_amount: '87.000',
           all_temp_no: [4, 2, 0],
           all_temp_amount: ['35.000', '50.000', '10.000'],
 
@@ -608,8 +608,98 @@ export default {
           all_freelancer_no: [0, 0, 0],
           all_freelancer_amount: ['0.00', '0.00', '0.00'],
 
-          total_hc: 16,
-          total_billing: '235.000',
+          total_hc: 14,
+          total_billing: '205.000',
+          all_total_hc: [' ', ' ', ' '],
+          all_total_billing: [' ', ' ', ' '],
+        },
+        { 
+          toggler: false,
+          name:'MJ', 
+          country: ['UAE', 'EGY', 'SD'],
+
+          recruitment_no: 4,
+          recruitment_amount: '72.000',
+          all_recruitment_no: [4, 2, 0],
+          all_recruitment_amount: ['60.000', '40.000', '20.000'],
+          
+          contract_no: 2,
+          contract_amount: '30.000',
+          all_contract_no: [2, 1,0],
+          all_contract_amount: ['30.000', '20.000', '20.000'],
+
+          temp_no: 3,
+          temp_amount: '55.000',
+          all_temp_no: [4, 2, 0],
+          all_temp_amount: ['35.000', '50.000', '10.000'],
+
+          freelancer_no: 0,
+          freelancer_amount: '0.00',
+          all_freelancer_no: [0, 0, 0],
+          all_freelancer_amount: ['0.00', '0.00', '0.00'],
+
+          total_hc: 9,
+          total_billing: '157.000',
+          all_total_hc: [' ', ' ', ' '],
+          all_total_billing: [' ', ' ', ' '],
+        },
+        { 
+          toggler: false,
+          name:'Maria', 
+          country: ['UAE', 'EGY', 'SD'],
+
+          recruitment_no: 8,
+          recruitment_amount: '65.000',
+          all_recruitment_no: [4, 2, 0],
+          all_recruitment_amount: ['60.000', '40.000', '20.000'],
+          
+          contract_no: 1,
+          contract_amount: '20.000',
+          all_contract_no: [2, 1,0],
+          all_contract_amount: ['30.000', '20.000', '20.000'],
+
+          temp_no: 4,
+          temp_amount: '60.000',
+          all_temp_no: [4, 2, 0],
+          all_temp_amount: ['35.000', '50.000', '10.000'],
+
+          freelancer_no: 0,
+          freelancer_amount: '0.00',
+          all_freelancer_no: [0, 0, 0],
+          all_freelancer_amount: ['0.00', '0.00', '0.00'],
+
+          total_hc: 13,
+          total_billing: '145.000',
+          all_total_hc: [' ', ' ', ' '],
+          all_total_billing: [' ', ' ', ' '],
+        },
+        { 
+          toggler: false,
+          name:'Nikita', 
+          country: ['UAE', 'EGY', 'SD'],
+
+          recruitment_no: 11,
+          recruitment_amount: '87.000',
+          all_recruitment_no: [4, 2, 0],
+          all_recruitment_amount: ['60.000', '40.000', '20.000'],
+          
+          contract_no: 1,
+          contract_amount: '10.000',
+          all_contract_no: [2, 1,0],
+          all_contract_amount: ['30.000', '20.000', '20.000'],
+
+          temp_no: 2,
+          temp_amount: '35.000',
+          all_temp_no: [4, 2, 0],
+          all_temp_amount: ['35.000', '50.000', '10.000'],
+
+          freelancer_no: 0,
+          freelancer_amount: '0.00',
+          all_freelancer_no: [0, 0, 0],
+          all_freelancer_amount: ['0.00', '0.00', '0.00'],
+
+          total_hc: 14,
+          total_billing: '132.000',
           all_total_hc: [' ', ' ', ' '],
           all_total_billing: [' ', ' ', ' '],
         },
@@ -777,26 +867,6 @@ export default {
         { name:'Maria', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
         { name:'Nikita', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
       ],
-      //customer by replacement table
-      
-      //subchild dropdown for table plament report
-      items: [
-        {
-          action: 'mdi-silverware-fork-knife',
-          active: true,
-          items: [
-            { title: 'Breakfast & brunch' },
-            { title: 'New American' },
-            { title: 'Sushi' },
-          ],
-          title: 'Dining',
-        },
-      
-      
-       
-        
-      
-      ],
       revenue_data: [
         { name: 'ERP', percentage: '50', color: 'accent2'},
         { name: 'ATS', percentage: '23', color: 'primary'},
@@ -831,6 +901,9 @@ export default {
   methods: {
     mapGlobalStateToLocal() {
       this.firstVisit = this.getValues.firstVisit
+    },
+    togglerHandle (){
+      this.toggler = !this.toggler
     },
     handleAddNewCustomer() {
       this.customerAddSuccessfully = true

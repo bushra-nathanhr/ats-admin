@@ -7,12 +7,12 @@ export { default as UtilsInput } from '../..\\components\\utils\\Input.vue'
 export { default as UtilsMainTable } from '../..\\components\\utils\\MainTable.vue'
 export { default as UtilsSnackBar } from '../..\\components\\utils\\SnackBar.vue'
 export { default as WIPTheme } from '../..\\components\\WIP\\theme.vue'
+export { default as DashboardOverviewTotalsViewer } from '../..\\components\\Dashboard\\OverviewTotalsViewer\\index.vue'
 export { default as CardsCardWithIcon } from '../..\\components\\Cards\\CardWithIcon\\index.vue'
 export { default as CardsTotalsCard } from '../..\\components\\Cards\\TotalsCard\\index.vue'
-export { default as DashboardOverviewTotalsViewer } from '../..\\components\\Dashboard\\OverviewTotalsViewer\\index.vue'
+export { default as GraphsLineGraph } from '../..\\components\\Graphs\\LineGraph\\index.vue'
 export { default as LayoutAccountsDropDownMenu } from '../..\\components\\Layout\\AccountsDropDownMenu\\index.vue'
 export { default as LayoutHeaderTabs } from '../..\\components\\Layout\\HeaderTabs\\index.vue'
-export { default as GraphsLineGraph } from '../..\\components\\Graphs\\LineGraph\\index.vue'
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {
