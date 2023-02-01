@@ -1,5 +1,5 @@
 <template>
-  <v-row class="dashboard_wrapper">
+  <v-row class="dashboard_wrapper mb-9">
     <!-- WELCOME DIALOG -->
     <v-dialog v-model="welcomeDialog" persistent max-width="70vw">
       <v-card id="card">
@@ -273,37 +273,163 @@
                 <td class="customersByOverDueAmount__td text-left subtext--text h6" > Billing</td>
                 
               </tr>
-              <tr  v-for="(item, index) in customers_by_overdue" :key="index">
+              <tr  v-for="(item, index) in placement_report" :key="index">
                 <td class="customersByOverDueAmount__td name__dropdown text-left text--text">
-                  <v-list>
-                    <v-list-group v-for="item in items" :key="item.title" v-model="item.active" :prepend-icon="item.action" no-action>
-                      <template v-slot:activator>
-                        <v-list-item-content>
-                          <v-list-item-title v-text="item.title"></v-list-item-title>
-                        </v-list-item-content>
-                      </template>
-                  
-                      <v-list-item v-for="child in item.items" :key="child.title">
-                        <v-list-item-content>
-                          <v-list-item-title v-text="child.title"></v-list-item-title>
-                        </v-list-item-content>
-                      </v-list-item>
-                    </v-list-group>
-                  </v-list>
+                  <v-list-group :v-model="placement_report.toggler">
+                    <!-- <template v-slot:appendIcon><v-icon color="primary" small>fa-plus</v-icon></template> -->
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.name }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.country" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item }}</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
                 </td>
-                <td class="customersByOverDueAmount__td text-left text--text"> {{ item.total_placements }}</td>
-                <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_billing }}</td>
-                <td class="customersByOverDueAmount__td text-left text--text"> {{ item.total_placements }}</td>
-                <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_billing }}</td>
-                <td class="customersByOverDueAmount__td text-left text--text"> {{ item.total_placements }}</td>
-                <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_billing }}</td>
-                <td class="customersByOverDueAmount__td text-left text--text"> {{ item.total_placements }}</td>
-                <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_billing }}</td>
-                <td class="customersByOverDueAmount__td text-left text--text"> {{ item.total_placements }}</td>
-                <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_billing }}</td>
-
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.recruitment_no }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_recruitment_no" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.recruitment_amount }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_recruitment_amount" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.contract_no }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_contract_no" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.contract_amount }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_contract_amount" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.temp_no }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_temp_no" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.temp_amount }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_temp_amount" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.freelancer_no }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_freelancer_no" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.freelancer_amount }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_freelancer_amount" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.total_hc }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_total_hc" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group :v-model="placement_report.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.total_billing }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_total_billing" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
               </tr>
-              
             </table> 
             
             <!-- <v-simple-table class="customersByOverDueAmount__table table_bg mt-5">
@@ -385,8 +511,8 @@
       </v-col>
     </v-row>
     <!-- FOOTER-->
-    <Footer  />
-
+    <!-- <Footer  /> -->
+    <v-row><v-spacer class="my-9 py-9"></v-spacer></v-row>
   </v-row>
 </template>
 
@@ -424,6 +550,70 @@ export default {
    },
   data() {
     return {
+      // placement report table
+      // placement_report_tr_toggler: false,
+      placement_report: [
+        { 
+          toggler: true,
+          name:'Sanjeed', 
+          country: ['UAE', 'EGY', 'SD'],
+
+          recruitment_no: 6,
+          recruitment_amount: '100.000',
+          all_recruitment_no: [4, 2, 0],
+          all_recruitment_amount: ['60.000', '40.000', '20.000'],
+          
+          contract_no: 4,
+          contract_amount: '50.000',
+          all_contract_no: [2, 1,0],
+          all_contract_amount: ['30.000', '20.000', '20.000'],
+
+          temp_no: 6,
+          temp_amount: '85.000',
+          all_temp_no: [4, 2, 0],
+          all_temp_amount: ['35.000', '50.000', '10.000'],
+
+          freelancer_no: 0,
+          freelancer_amount: '0.00',
+          all_freelancer_no: [0, 0, 0],
+          all_freelancer_amount: ['0.00', '0.00', '0.00'],
+
+          total_hc: 16,
+          total_billing: '235.000',
+          all_total_hc: [' ', ' ', ' '],
+          all_total_billing: [' ', ' ', ' '],
+        },
+        { 
+          toggler: false,
+          name:'Tahir', 
+          country: ['UAE', 'EGY', 'SD'],
+
+          recruitment_no: 6,
+          recruitment_amount: '100.000',
+          all_recruitment_no: [4, 2, 0],
+          all_recruitment_amount: ['60.000', '40.000', '20.000'],
+          
+          contract_no: 4,
+          contract_amount: '50.000',
+          all_contract_no: [2, 1,0],
+          all_contract_amount: ['30.000', '20.000', '20.000'],
+
+          temp_no: 6,
+          temp_amount: '85.000',
+          all_temp_no: [4, 2, 0],
+          all_temp_amount: ['35.000', '50.000', '10.000'],
+
+          freelancer_no: 0,
+          freelancer_amount: '0.00',
+          all_freelancer_no: [0, 0, 0],
+          all_freelancer_amount: ['0.00', '0.00', '0.00'],
+
+          total_hc: 16,
+          total_billing: '235.000',
+          all_total_hc: [' ', ' ', ' '],
+          all_total_billing: [' ', ' ', ' '],
+        },
+      ],
       // Candidate Source
       candidate_source: [
         { name: 'Bayt',  color: 'accent2'},
@@ -551,7 +741,7 @@ export default {
       
 
       // welcome 
-      welcomeDialog: false,
+      welcomeDialog: true,
       hi: true,
       addCompany: false,
       companyAddSuccessfully: false,

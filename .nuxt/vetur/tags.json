@@ -1,9 +1,9 @@
 {
-  "Footer": {
-    "description": "Auto imported from components/Footer/index.vue"
-  },
   "DashboardFilters": {
     "description": "Auto imported from components/Dashboard/Filters.vue"
+  },
+  "Footer": {
+    "description": "Auto imported from components/Footer/index.vue"
   },
   "ReportsReportViewListCard": {
     "description": "Auto imported from components/Reports/ReportViewListCard.vue"
@@ -26,14 +26,14 @@
   "WIPTheme": {
     "description": "Auto imported from components/WIP/theme.vue"
   },
-  "DashboardOverviewTotalsViewer": {
-    "description": "Auto imported from components/Dashboard/OverviewTotalsViewer/index.vue"
-  },
-  "GraphsLineGraph": {
-    "description": "Auto imported from components/Graphs/LineGraph/index.vue"
-  },
   "CardsCardWithIcon": {
     "description": "Auto imported from components/Cards/CardWithIcon/index.vue"
+  },
+  "CardsTotalsCard": {
+    "description": "Auto imported from components/Cards/TotalsCard/index.vue"
+  },
+  "DashboardOverviewTotalsViewer": {
+    "description": "Auto imported from components/Dashboard/OverviewTotalsViewer/index.vue"
   },
   "LayoutAccountsDropDownMenu": {
     "description": "Auto imported from components/Layout/AccountsDropDownMenu/index.vue"
@@ -41,7 +41,7 @@
   "LayoutHeaderTabs": {
     "description": "Auto imported from components/Layout/HeaderTabs/index.vue"
   },
-  "CardsTotalsCard": {
-    "description": "Auto imported from components/Cards/TotalsCard/index.vue"
+  "GraphsLineGraph": {
+    "description": "Auto imported from components/Graphs/LineGraph/index.vue"
   }
 }
