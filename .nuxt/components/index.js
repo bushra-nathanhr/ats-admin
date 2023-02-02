@@ -1,5 +1,5 @@
-export { default as Footer } from '../..\\components\\Footer\\index.vue'
 export { default as DashboardFilters } from '../..\\components\\Dashboard\\Filters.vue'
+export { default as Footer } from '../..\\components\\Footer\\index.vue'
 export { default as ReportsReportViewListCard } from '../..\\components\\Reports\\ReportViewListCard.vue'
 export { default as UtilsCustomInputContainer } from '../..\\components\\utils\\CustomInputContainer.vue'
 export { default as UtilsFileDropzone } from '../..\\components\\utils\\FileDropzone.vue'

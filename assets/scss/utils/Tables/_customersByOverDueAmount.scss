@@ -1,4 +1,6 @@
+
 // customersByOverDueAmount.scss
+
 .customersByOverDueAmount__table {
     padding: 0 !important;
     margin: 0 !important;
@@ -67,4 +69,31 @@
             }
         }
     }
+}
+
+//***PLAAACEMEN-REPORT-TABLE
+
+.dashboard_table{
+    border-radius: 8px;
+        border: 1px solid #E3E4E6;
+        border-collapse: collapse;
+    
+        th,
+        td {
+            border: 1px solid #E3E4E6;
+            border-collapse: collapse;
+        }
+    
+        th,
+        td,
+        tr {
+            padding: 10px;
+        }
+    
+        th {
+            color: #2A2A2A;
+        }
+        tr:hover{
+            background-color: #E3E4E6;
+        }
 }

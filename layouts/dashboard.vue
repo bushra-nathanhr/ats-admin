@@ -10,7 +10,15 @@
                     <div class="flex_row align-center justify-center text-center" @click.stop="drawer2 = !drawer2" style="background: #e2e7f175 !important;min-width: 50px !important;min-height: 50px !important;max-width: 50px !important;max-height: 50px !important;">
                         <DotedMenu class="text-center ma-0 pa-0 mr-1" style=""/>
                     </div>
-                    <h1 class="ml-4 primary--text mt-2 font-weight-black">A . T . S <span class=" subtext--text caption">system</span></h1>
+
+                    <!-- LOGO -->
+                    <div class="login__logo_main_wrap">
+                        <div class="login__logo_wrap">
+                        <NDlogo/>
+                        <ATSlogo/>
+                        <!-- <h1 class="ml-4 primary--text mt-2 font-weight-black">A . T . S <span class=" subtext--text caption">system</span></h1> -->
+                    </div>
+                    </div>
                     <!-- <v-img src="/crm-text.png" class="mt-4 ml-4" max-width="50" max-height="50" style=""></v-img> -->
                 </div>    
                 
@@ -230,6 +238,7 @@ import NotificationIcon from '@/assets/images/DashboardLayout/Notification-icon.
 import MarketingIcon from '@/assets/images/DashboardLayout/Marketing-icon.svg'
 import DotedMenu from '@/assets/images/DashboardLayout/DotsMenu.svg'
 import NDlogo from '@/assets/images/DashboardLayout/Accounting-logo copy.svg'
+import ATSlogo from '@/assets/images/DashboardLayout/SideNavMasker/ATS-logo.svg'
 
 import CRMLogo from '@/assets/images/DashboardLayout/crm-logo.svg'
 import NathanDigitalSmallLogo from '@/assets/images/DashboardLayout/nd-logo.svg'
@@ -251,6 +260,7 @@ export default {
     components: {
         DotedMenu,
         NDlogo,
+        ATSlogo,
         LightArrow,
         NotificationIcon,
         CalendarIconGrey,

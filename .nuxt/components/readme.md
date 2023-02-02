@@ -6,8 +6,8 @@ You can directly use them in pages and other components without the need to impo
 
 **Tip:** If a component is conditionally rendered with `v-if` and is big, it is better to use `Lazy` or `lazy-` prefix to lazy load.
 
-- `<Footer>` | `<footer>` (components/Footer/index.vue)
 - `<DashboardFilters>` | `<dashboard-filters>` (components/Dashboard/Filters.vue)
+- `<Footer>` | `<footer>` (components/Footer/index.vue)
 - `<ReportsReportViewListCard>` | `<reports-report-view-list-card>` (components/Reports/ReportViewListCard.vue)
 - `<UtilsCustomInputContainer>` | `<utils-custom-input-container>` (components/utils/CustomInputContainer.vue)
 - `<UtilsFileDropzone>` | `<utils-file-dropzone>` (components/utils/FileDropzone.vue)

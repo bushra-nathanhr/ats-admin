@@ -1,9 +1,9 @@
 {
-  "Footer": {
-    "description": "Auto imported from components/Footer/index.vue"
-  },
   "DashboardFilters": {
     "description": "Auto imported from components/Dashboard/Filters.vue"
+  },
+  "Footer": {
+    "description": "Auto imported from components/Footer/index.vue"
   },
   "ReportsReportViewListCard": {
     "description": "Auto imported from components/Reports/ReportViewListCard.vue"

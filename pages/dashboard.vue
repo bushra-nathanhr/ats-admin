@@ -1,5 +1,5 @@
 <template>
-  <v-row class="dashboard_wrapper">
+  <v-row class="dashboard_wrapper mb-9">
     <!-- WELCOME DIALOG -->
     <v-dialog v-model="welcomeDialog" persistent max-width="70vw">
       <v-card id="card">
@@ -56,7 +56,20 @@
       </v-card>
     </v-dialog>
     <!-- TOP FILTER CARDS -->
-    <Filters :data="filters" />
+    <div class="topSmallCards flex_row justify-space-between">
+      <Filters :data="filters" />
+      <v-card  color="card_bg" class="flat ma-0 pa-0 mx-2 px-3 py-2" elevation="0" style="max-width: 200px !important; height: 77px !important; max-height: 100% !important; border-radius: 10px !important; border: 0px solid #fff!important;" :style=" darkMood == true ? '' : 'border: 0.5px solid #E2E7F1 !important;'">
+        <div class="" style="max-width: 200px !important; ">
+          <label class="pl-2">Month & Year</label>
+          <v-menu v-model="month_year_menu" :close-on-content-click="false" transition="scale-transition" offset-y min-width="auto">
+            <template v-slot:activator="{ on, attrs }">
+            <v-text-field v-model="month_year_date" placeholder="All" solo flat hide-details dense v-bind="attrs" v-on="on" />
+            </template>
+            <v-date-picker v-model="month_year_date" @input="month_year_menu = false" />
+        </v-menu>
+        </div>
+      </v-card>
+    </div>
     <v-row class="row1" >
       <!-- RECUTTING FUNNEL -->
       <v-col sm="12" md="6" lg="6">
@@ -67,7 +80,33 @@
           <v-card-text id="card-text" :class="privacyMood ? 'privacyMood' : ''">
             <v-row class="ex_br__con flex_row align-center justify-space-around">
               <v-col cols="7">
-                <div class="recruiting_funnel_chart" style="min-width: 100px; min-height: 100px"></div>
+                <!-- <div class="recruiting_funnel_chart" style="min-width: 100px; min-height: 100px"></div> -->
+                <!-- <v-row>
+                <line-chart
+                class="text--text"
+                ref="lineChart"
+                :chart-data="lineChartData"
+                :colors="lineChartColors"
+                :chart-options="lineChartOptions"
+                :height="420"
+                />
+              </v-row> -->
+              <!-- <v-row> -->
+                <doughnut-chart
+                  :chart-data="doughnutChartData"
+                  :chart-options="doughnutChartOptions"
+                  :colors="doughnutColors"
+                  label="hide"
+                />
+              <!-- </v-row>
+                <v-row>
+                <pie-chart 
+                :chart-data="pieChartData" 
+                :chart-options="pieChartOptions" 
+                :colors="pieColors"
+                height="420"
+                />
+              </v-row> -->
               </v-col>
               <v-col cols="5">
                 <div class="flex_row align-start justify-space-between">
@@ -250,33 +289,185 @@
             <span>Currency: 0 AED</span>
           </v-card-title>
           <v-card-text id="card-text">
-            <v-simple-table class="customersByOverDueAmount__table table_bg mt-5">
-              <template v-slot:default>
-                <thead class="customersByOverDueAmount__thead">
-                  <tr class="customersByOverDueAmount__tr">
-                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Name</th>
-                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Recruitment</th>
-                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Contract </th>
-                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Temp</th>
-                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Freelancer</th>
-                    <th class="customersByOverDueAmount__th text-left subtext--text h6">Due Date</th>
-                    <th class="customersByOverDueAmount__th text-right subtext--text h6">Total</th>
+            <table class="dashboard_table" style="width:100%">
+              <tr class="customersByOverDueAmount__tr">
+                    <th class="customersByOverDueAmount__th text--text h6 " rowspan="2">Name</th>
+                    <th class="customersByOverDueAmount__th text-left text--text h6" colspan="2">Recruitment</th>
+                    <th class="customersByOverDueAmount__th text-left text--text h6" colspan="2">Contract </th>
+                    <th class="customersByOverDueAmount__th text-left text--text h6" colspan="2">Temp</th>
+                    <th class="customersByOverDueAmount__th text-left text--text h6" colspan="2">Freelancer</th>
+                    <th class="customersByOverDueAmount__th  text--text h6" colspan="2">Total</th>
                   </tr>
-                  <div class="my-4"></div>
-                </thead>
-                <tbody>
-                  <tr v-for="(item, index) in customers_by_overdue" :key="index" class="ma-0 pa-0">
-                    <td class="customersByOverDueAmount__td text-left text--text h6">{{ item.name }}</td>
-                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_placements }}</td>
-                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.average_billing }}</td>
-                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.average_billing }}</td>
-                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.average_billing }}</td>
-                    <td class="customersByOverDueAmount__td text-left text--text">{{ item.average_billing }}</td>
-                    <td class="customersByOverDueAmount__td text-right text--text">{{ item.average_billing }}</td>
-                  </tr>
-                </tbody>
-              </template>
-            </v-simple-table>
+              <tr>
+                <td class="customersByOverDueAmount__td  text-left subtext--text h6" >Number</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h6" > Amount</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h6" >Number</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h6" > Amount</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h6" >Number</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h6" > Amount</td>
+                <td class="customersByOverDueAmount__td text-left subtext--text h6" >Number</td>
+                <td class="customersByOverDueAmount__td text-left subtext--text h6" > Amount</td>
+                <td class="customersByOverDueAmount__td text-left subtext--text h6" >HC</td>
+                <td class="customersByOverDueAmount__td text-left subtext--text h6" > Billing</td>
+              </tr>
+              <tr  v-for="(item, index) in placement_report" :key="index" @click="togglerHandle">
+                <td class="customersByOverDueAmount__td name__dropdown text-left text--text">
+                  <v-list-group v-model="item.toggler">
+                    <!-- <template v-slot:appendIcon><v-icon color="primary" small>fa-plus</v-icon></template> -->
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.name }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.country" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item }}</v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group v-model="item.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.recruitment_no }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_recruitment_no" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group v-model="item.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.recruitment_amount }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_recruitment_amount" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group v-model="item.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.contract_no }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_contract_no" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group v-model="item.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.contract_amount }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_contract_amount" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group v-model="item.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.temp_no }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_temp_no" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group v-model="item.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.temp_amount }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_temp_amount" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group v-model="item.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.freelancer_no }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_freelancer_no" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group v-model="item.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.freelancer_amount }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_freelancer_amount" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group v-model="item.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.total_hc }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_total_hc" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+                <td class="customersByOverDueAmount__td text-left text--text">
+                  <v-list-group v-model="item.toggler" append-icon="">
+                    <template v-slot:activator>
+                      <v-list-item-content>
+                        <v-list-item-title>{{ item.total_billing }}</v-list-item-title>
+                      </v-list-item-content>
+                    </template>
+                    <v-list-item v-for="item in item.all_total_billing" :key="item">
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-group>
+                </td>
+              </tr>
+            </table> 
           </v-card-text>
         </v-card>
       </v-col>
@@ -319,28 +510,39 @@
                   <div :class="item.color" class="dote mr-2" style="min-width: 15px;min-height: 6px;border-radius: 3px;"></div>
                   <span class="subtext--text">{{ item.name }} - {{ item.percentage }}% </span>
                 </div>
-                <div style="min-width: 100px; "></div>
-            </div>
+                <!-- <div style="min-width: 100px; "></div> -->
+              </div>
+              <!-- <line-chart
+              class="text--text"
+              ref="lineChart"
+              :chart-data="lineChartData"
+              :colors="lineChartColors"
+              :chart-options="lineChartOptions"
+              :height="420"
+              /> -->
+              <doughnut-chart
+                  :chart-data="doughnutChartData"
+                  :chart-options="doughnutChartOptions"
+                  :colors="doughnutColors"
+                  label="hide"
+                />
+            <div class="flex_column justify-space-between"></div>
             </div>
           </v-card-text>
         </v-card>
       </v-col>
     </v-row>
-    <!-- FOOTER-->
-    <Footer  />
-
+    <v-row><v-spacer class="my-9 py-9"></v-spacer></v-row>
   </v-row>
 </template>
 
 <script>
 import '@/assets/scss/_dashboard.scss'
 import '@/assets/scss/utils/Tables/_customersByOverDueAmount.scss'
-
 import RedBellIcon from '@/assets/images/Alerts/red-bell-icon.svg'
 import YellowBellIcon from '@/assets/images/Alerts/yellow-bell-icon.svg'
 import ReloadIcon from '@/assets/images/DashboardLayout/Reload-icon.svg'
 import SalesGoalIcon from '@/assets/images/Dashboard/SalesGoal.svg'
-
 import OverviewTotalsViewer from '@/components/Dashboard/OverviewTotalsViewer/index.vue'
 import LineGraph from '@/components/Graphs/LineGraph/index.vue'
 import Footer from '@/components/Footer/index.vue'
@@ -348,6 +550,7 @@ import WelcomeSvg from '@/assets/images/icons/welcome.svg'
 import CustomInputContainer from '@/components/utils/CustomInputContainer.vue'
 import CardWithIcon from '@/components/Cards/CardWithIcon/index.vue'
 import Filters from '@/components/Dashboard/Filters.vue'
+// import DoughnutChart from './doughnut-chart.js'
 
 export default {
   layout: 'dashboard',
@@ -366,6 +569,269 @@ export default {
    },
   data() {
     return {
+
+      // pie chart
+      // pieChartData: {
+      //   labels: ['A', 'B', 'C', 'D'],
+      //   datasets: [
+      //     {
+      //       data: [30, 40, 20, 10],
+      //       backgroundColor: [
+      //         '#F7464A',
+      //         '#46BFBD',
+      //         '#FDB45C',
+      //         '#949FB1',
+      //       ],
+      //       hoverBackgroundColor: [
+      //         '#FF5A5E',
+      //         '#5AD3D1',
+      //         '#FFC870',
+      //         '#A8B3C5',
+      //       ],
+      //     },
+      //   ],
+      // },
+      // pieChartOptions: {
+      //   responsive: true,
+      // },
+      // pieColors: {
+      //   start: '#F7464A',
+      //   middle: '#46BFBD',
+      //   end: '#FDB45C',
+      // },
+
+      // doughnut chart data
+      doughnutChartData: {
+        labels: ['Bayt', 'LinkedIn', 'Indeed', 'Naukrigulf', 'Internal Database'],
+        datasets: [
+          {
+            backgroundColor: ['#56E2CF', '#E25668', '#CF56E2', '#56AEE2', '#BCE0FD'],
+            data: [40, 20, 80, 10],
+            hole: 0.9,
+          }
+        ]
+      },
+      doughnutChartOptions: {
+        responsive: true,
+        maintainAspectRatio: false
+      },
+      doughnutColors: {
+        start: "#F7464A",
+        middle: "#46BFBD",
+        end: "#FDB45C"
+      },
+
+      // line chart data
+      lineChartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: "Total Invoices",
+          fontSize: 24,
+          fontColor: "#6b7280"
+        },
+        tooltips: {
+          backgroundColor: "#f95050"
+        },
+        scales: {
+          xAxes: [
+            {
+              gridLines: {
+                display: false
+              }
+            }
+          ],
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              },
+              gridLines: {
+                display: true
+              }
+            }
+          ]
+        }
+      },
+      lineChartData: {
+        labels: ['Jan', 'Feb', 'Mar', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        datasets: [
+          {
+            label: "Monthly-invoice",
+            data: [50, 100, 30, 60, 10, 30, 90, 20],
+            borderColor: "rgba(72,255,0,0.31)",
+            pointBackgroundColor: "white",
+            borderWidth: 2,
+            pointBorderColor: "gray",
+            backgroundColor: "#ABF9B5"
+          }
+        ]
+      },
+      lineChartColors: {
+        start: "rgba(255, 0, 0, 0.5)",
+        middle: "rgba(255, 0, 0, 0.25)",
+        end: "rgba(255, 0, 0, 0)"
+      },
+
+      // table data
+      month_year_menu: false,
+      month_year_date: null,
+      placement_report: [
+        { 
+          toggler: false,
+          name:'Sanjeed', 
+          country: ['UAE', 'EGY', 'SD'],
+
+          recruitment_no: 6,
+          recruitment_amount: '100.000',
+          all_recruitment_no: [4, 2, 0],
+          all_recruitment_amount: ['60.000', '40.000', '20.000'],
+          
+          contract_no: 4,
+          contract_amount: '50.000',
+          all_contract_no: [2, 1,0],
+          all_contract_amount: ['30.000', '20.000', '20.000'],
+
+          temp_no: 6,
+          temp_amount: '85.000',
+          all_temp_no: [4, 2, 0],
+          all_temp_amount: ['35.000', '50.000', '10.000'],
+
+          freelancer_no: 0,
+          freelancer_amount: '0.00',
+          all_freelancer_no: [0, 0, 0],
+          all_freelancer_amount: ['0.00', '0.00', '0.00'],
+
+          total_hc: 16,
+          total_billing: '235.000',
+          all_total_hc: [' ', ' ', ' '],
+          all_total_billing: [' ', ' ', ' '],
+        },
+        { 
+          toggler: false,
+          name:'Dineen', 
+          country: ['UAE', 'EGY', 'SD'],
+
+          recruitment_no: 6,
+          recruitment_amount: '78.000',
+          all_recruitment_no: [4, 2, 0],
+          all_recruitment_amount: ['60.000', '40.000', '20.000'],
+          
+          contract_no: 3,
+          contract_amount: '40.000',
+          all_contract_no: [2, 1,0],
+          all_contract_amount: ['30.000', '20.000', '20.000'],
+
+          temp_no: 5,
+          temp_amount: '87.000',
+          all_temp_no: [4, 2, 0],
+          all_temp_amount: ['35.000', '50.000', '10.000'],
+
+          freelancer_no: 0,
+          freelancer_amount: '0.00',
+          all_freelancer_no: [0, 0, 0],
+          all_freelancer_amount: ['0.00', '0.00', '0.00'],
+
+          total_hc: 14,
+          total_billing: '205.000',
+          all_total_hc: [' ', ' ', ' '],
+          all_total_billing: [' ', ' ', ' '],
+        },
+        { 
+          toggler: false,
+          name:'MJ', 
+          country: ['UAE', 'EGY', 'SD'],
+
+          recruitment_no: 4,
+          recruitment_amount: '72.000',
+          all_recruitment_no: [4, 2, 0],
+          all_recruitment_amount: ['60.000', '40.000', '20.000'],
+          
+          contract_no: 2,
+          contract_amount: '30.000',
+          all_contract_no: [2, 1,0],
+          all_contract_amount: ['30.000', '20.000', '20.000'],
+
+          temp_no: 3,
+          temp_amount: '55.000',
+          all_temp_no: [4, 2, 0],
+          all_temp_amount: ['35.000', '50.000', '10.000'],
+
+          freelancer_no: 0,
+          freelancer_amount: '0.00',
+          all_freelancer_no: [0, 0, 0],
+          all_freelancer_amount: ['0.00', '0.00', '0.00'],
+
+          total_hc: 9,
+          total_billing: '157.000',
+          all_total_hc: [' ', ' ', ' '],
+          all_total_billing: [' ', ' ', ' '],
+        },
+        { 
+          toggler: false,
+          name:'Maria', 
+          country: ['UAE', 'EGY', 'SD'],
+
+          recruitment_no: 8,
+          recruitment_amount: '65.000',
+          all_recruitment_no: [4, 2, 0],
+          all_recruitment_amount: ['60.000', '40.000', '20.000'],
+          
+          contract_no: 1,
+          contract_amount: '20.000',
+          all_contract_no: [2, 1,0],
+          all_contract_amount: ['30.000', '20.000', '20.000'],
+
+          temp_no: 4,
+          temp_amount: '60.000',
+          all_temp_no: [4, 2, 0],
+          all_temp_amount: ['35.000', '50.000', '10.000'],
+
+          freelancer_no: 0,
+          freelancer_amount: '0.00',
+          all_freelancer_no: [0, 0, 0],
+          all_freelancer_amount: ['0.00', '0.00', '0.00'],
+
+          total_hc: 13,
+          total_billing: '145.000',
+          all_total_hc: [' ', ' ', ' '],
+          all_total_billing: [' ', ' ', ' '],
+        },
+        { 
+          toggler: false,
+          name:'Nikita', 
+          country: ['UAE', 'EGY', 'SD'],
+
+          recruitment_no: 11,
+          recruitment_amount: '87.000',
+          all_recruitment_no: [4, 2, 0],
+          all_recruitment_amount: ['60.000', '40.000', '20.000'],
+          
+          contract_no: 1,
+          contract_amount: '10.000',
+          all_contract_no: [2, 1,0],
+          all_contract_amount: ['30.000', '20.000', '20.000'],
+
+          temp_no: 2,
+          temp_amount: '35.000',
+          all_temp_no: [4, 2, 0],
+          all_temp_amount: ['35.000', '50.000', '10.000'],
+
+          freelancer_no: 0,
+          freelancer_amount: '0.00',
+          all_freelancer_no: [0, 0, 0],
+          all_freelancer_amount: ['0.00', '0.00', '0.00'],
+
+          total_hc: 14,
+          total_billing: '132.000',
+          all_total_hc: [' ', ' ', ' '],
+          all_total_billing: [' ', ' ', ' '],
+        },
+      ],
       // Candidate Source
       candidate_source: [
         { name: 'Bayt',  color: 'accent2'},
@@ -437,8 +903,7 @@ export default {
           { label: 'Status', placeholder: 'All', items: 'All' },
           { label: 'Service Type', placeholder: 'All', items: 'All' },
           { label: 'Location', placeholder: 'All', items: 'All' },
-          { label: 'Date Type', placeholder: 'All', items: 'All' },
-          { label: 'Month & Year', placeholder: 'All', items: 'All' },
+          { label: 'Date Type', placeholder: 'Active Month', items: 'Active Month' },
       ],
 
       // TODAYS TASKS
@@ -490,7 +955,6 @@ export default {
       init_company: { name: '', reg_no: '', field: '', email: '', phone: '', website: '', location: '', street: '', office_no: '' },
       init_customer: { name: '', reg_no: '', field: '', email: '', phone: '', website: '', location: '', street: '', office_no: '', ac_no: '', lcc: '', ac_type: '' },
       firstVisit: true,
-      
 
       // welcome 
       welcomeDialog: false,
@@ -523,11 +987,11 @@ export default {
         { amount: '1000', name: 'EmiratesNBD', date: '2 July 2022' },
       ],
       customers_by_overdue: [
-        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
-        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
-        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
-        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
-        { name:'Sanjeed', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
+        { name:'Sanjeed', total_placements: '4',  total_billing: '170,550', average_billing: '65,000' },
+        { name:'Dineen', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
+        { name:'MJ', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
+        { name:'Maria', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
+        { name:'Nikita', total_placements: '4', total_billing: '170,550', average_billing: '65,000' },
       ],
       revenue_data: [
         { name: 'ERP', percentage: '50', color: 'accent2'},
@@ -563,6 +1027,9 @@ export default {
   methods: {
     mapGlobalStateToLocal() {
       this.firstVisit = this.getValues.firstVisit
+    },
+    togglerHandle (){
+      this.toggler = !this.toggler
     },
     handleAddNewCustomer() {
       this.customerAddSuccessfully = true
