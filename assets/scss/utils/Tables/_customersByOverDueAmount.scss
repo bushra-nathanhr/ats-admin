@@ -32,6 +32,9 @@
         margin: 0px !important;
     }
 
+
+    
+
     .pr_5 {
         padding-right: 20px !important;
     }
@@ -71,12 +74,13 @@
     }
 }
 
-//***PLAAACEMEN-REPORT-TABLE
+//***PLACEMENT-REPORT-TABLE**********************************
 
 .dashboard_table{
-    border-radius: 8px;
-        border: 1px solid #E3E4E6;
+        border-radius: 20% !important;
+        border: 3px solid #E3E4E6;
         border-collapse: collapse;
+      
     
         th,
         td {
@@ -92,8 +96,27 @@
     
         th {
             color: #2A2A2A;
+            text-align: center !important;
         }
         tr:hover{
             background-color: #E3E4E6;
         }
+
+        .table__sidebar {
+            position: relative;
+
+        }
+                .table__sidebar::before {
+                    position: absolute;
+                    content: " ";
+                    width: 2.5%;
+                    height: 44px;
+                    background: #0A94FF;
+                    border-radius: 8px;
+                
+                }
+                // ****HEADING SPACE
+                .space--heading{
+                    padding: 20px;
+                }
 }

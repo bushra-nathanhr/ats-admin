@@ -92,12 +92,12 @@
                 />
               </v-row> -->
               <!-- <v-row> -->
-                <doughnut-chart
+                <!-- <doughnut-chart
                   :chart-data="doughnutChartData"
                   :chart-options="doughnutChartOptions"
                   :colors="doughnutColors"
                   label="hide"
-                />
+                /> -->
               <!-- </v-row>
                 <v-row>
                 <pie-chart 
@@ -161,7 +161,7 @@
           <v-card-title id="card-title">
             <h4>Request Breakdown</h4>
           </v-card-title>
-          <v-card-text id="card-text">
+          <v-card-text id="card-text" class="">
             <v-row class="ma-0 pa-0 mb-3" justify="center" v-for="item in request_breakdown" :key="item">
               <v-col cols="3" class="ma-0 pa-0" align-self="center">
                 <h4 class="subtext--text font-weight-light ma-auto">{{ item.name  }}</h4>
@@ -188,11 +188,11 @@
           <v-card-text id="card-text">
             <div class="top_green_cards flex_row justify-space-around">
               <div class="rounded pa-3 flex_row justify-space-around" style="background: #C9FFF1;">
-                <span class="text-text mr-9">Dept. Placements</span>
-                <span class="success--text ml-9">15</span>
+                <span class="text-text mr-9" style="color: #2A2A2A;">Dept. Placements</span>
+                <span class="success--text ml-9">16</span>
               </div>
               <div class="rounded pa-3 flex_row justify-space-around" style="background: #C9FFF1;">
-                <span class="green-text mr-9">Dept. Value</span>
+                <span class="green-text mr-9" style="color: #2A2A2A;">Dept. Value</span>
                 <span class="green--text ml-9">AED 150,650</span>
               </div>
             </div>
@@ -220,8 +220,9 @@
                     <td class="customersByOverDueAmount__td text-left text--text h6">{{ item.name }}</td>
                     <td class="customersByOverDueAmount__td text-left text--text pr_5">{{ item.total_placements }}</td>
                     <td class="customersByOverDueAmount__td text-left text--text pr_5 balance_due__td">
-                      <div class="rounded flex_row justify-center" style="background: #1AD598;min-width: 90%;max-width: 90%;min-height: 55%;max-height: 55%;overflow: hidden;">
-                          <span class="caption white--text">AED{{ item.total_billing }}</span>
+                      <div class="rounded flex_row justify-center" style="background: #1AD598;min-width: 90%;max-width: 90%;min-height: 65%;max-height: 65%;overflow: hidden;">
+                        <!-- global class removed from span  "caption" -->
+                          <span class=" black--text">AED{{ item.total_billing }}</span>
                       </div>
                     </td>
                     <td class="customersByOverDueAmount__td text-right text--text pr_5">{{ item.average_billing }}</td>
@@ -242,7 +243,7 @@
             <div class="top_green_cards flex_row justify-space-around">
               <div class="rounded pa-3 flex_row justify-space-around" style="background: #E6F4FF;">
                 <span class="blue-text mr-9">Dept. Placements</span>
-                <span class="blue--text ml-9">15</span>
+                <span class="blue--text ml-9">16</span>
               </div>
               <div class="rounded pa-3 flex_row justify-space-around" style="background: #E6F4FF;">
                 <span class="blue-text mr-9">Dept. Value</span>
@@ -270,8 +271,9 @@
                     <td class="customersByOverDueAmount__td text-left text--text h6">{{ item.name }}</td>
                     <td class="customersByOverDueAmount__td text-left text--text">{{ item.total_placements }}</td>
                     <td class="customersByOverDueAmount__td text-left text--text  balance_due__td">
-                      <div class="rounded flex_row justify-center" style="background: #E6F4FF;min-width: 90%;max-width: 90%;min-height: 55%;max-height: 55%;overflow: hidden;">
-                          <span class="caption blue--text">AED{{ item.total_billing }}</span>
+                      <div class="rounded flex_row justify-center" style="background: #E6F4FF;min-width: 90%;max-width: 90%;min-height: 65%;max-height: 65%;overflow: hidden;">
+                        <!-- global class removed from span  "caption" -->
+                          <span class=" blue--text">AED{{ item.total_billing }}</span>
                       </div>
                     </td>
                   </tr>
@@ -291,32 +293,32 @@
           <v-card-text id="card-text">
             <table class="dashboard_table" style="width:100%">
               <tr class="customersByOverDueAmount__tr">
-                    <th class="customersByOverDueAmount__th text--text h6 " rowspan="2">Name</th>
-                    <th class="customersByOverDueAmount__th text-left text--text h6" colspan="2">Recruitment</th>
-                    <th class="customersByOverDueAmount__th text-left text--text h6" colspan="2">Contract </th>
-                    <th class="customersByOverDueAmount__th text-left text--text h6" colspan="2">Temp</th>
-                    <th class="customersByOverDueAmount__th text-left text--text h6" colspan="2">Freelancer</th>
-                    <th class="customersByOverDueAmount__th  text--text h6" colspan="2">Total</th>
+                    <th class="customersByOverDueAmount__th text-left text--text  h5 " rowspan="2">Name</th>
+                    <th class="customersByOverDueAmount__th text-left text--text space--heading h5" colspan="2">Recruitment</th>
+                    <th class="customersByOverDueAmount__th text-left text--text space--heading h5" colspan="2">Contract </th>
+                    <th class="customersByOverDueAmount__th text-left text--text space--heading h5" colspan="2">Temp</th>
+                    <th class="customersByOverDueAmount__th text-left text--text space--heading h5" colspan="2">Freelancer</th>
+                    <th class="customersByOverDueAmount__th  text--text space--heading h5"  colspan="2">Total</th>
                   </tr>
               <tr>
-                <td class="customersByOverDueAmount__td  text-left subtext--text h6" >Number</td>
-                <td class="customersByOverDueAmount__td text-left  subtext--text h6" > Amount</td>
-                <td class="customersByOverDueAmount__td text-left  subtext--text h6" >Number</td>
-                <td class="customersByOverDueAmount__td text-left  subtext--text h6" > Amount</td>
-                <td class="customersByOverDueAmount__td text-left  subtext--text h6" >Number</td>
-                <td class="customersByOverDueAmount__td text-left  subtext--text h6" > Amount</td>
-                <td class="customersByOverDueAmount__td text-left subtext--text h6" >Number</td>
-                <td class="customersByOverDueAmount__td text-left subtext--text h6" > Amount</td>
-                <td class="customersByOverDueAmount__td text-left subtext--text h6" >HC</td>
-                <td class="customersByOverDueAmount__td text-left subtext--text h6" > Billing</td>
+                <td class="customersByOverDueAmount__td  text-left subtext--text h5" >Number</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h5" > Amount</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h5" >Number</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h5" > Amount</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h5" >Number</td>
+                <td class="customersByOverDueAmount__td text-left  subtext--text h5" > Amount</td>
+                <td class="customersByOverDueAmount__td text-left subtext--text h5" >Number</td>
+                <td class="customersByOverDueAmount__td text-left subtext--text h5" > Amount</td>
+                <td class="customersByOverDueAmount__td text-left subtext--text h5" >HC</td>
+                <td class="customersByOverDueAmount__td text-left subtext--text h5" > Billing</td>
               </tr>
-              <tr  v-for="(item, index) in placement_report" :key="index" @click="togglerHandle">
-                <td class="customersByOverDueAmount__td name__dropdown text-left text--text">
+              <tr v-for="(item, index) in placement_report" :key="index" @click="togglerHandle">
+                <td class="customersByOverDueAmount__td table__sidebar   name__dropdown text-left text--text">
                   <v-list-group v-model="item.toggler">
                     <!-- <template v-slot:appendIcon><v-icon color="primary" small>fa-plus</v-icon></template> -->
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title>{{ item.name }}</v-list-item-title>
+                        <v-list-item-title style="font-size: 16px;">{{ item.name }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
                     <v-list-item v-for="item in item.country" :key="item">
@@ -330,10 +332,10 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title>{{ item.recruitment_no }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;">{{ item.recruitment_no }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
-                    <v-list-item v-for="item in item.all_recruitment_no" :key="item">
+                    <v-list-item style="text-align: center;" v-for="item in item.all_recruitment_no" :key="item">
                       <v-list-item-content>
                         <v-list-item-title v-text="item"></v-list-item-title>
                       </v-list-item-content>
@@ -344,10 +346,10 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title>{{ item.recruitment_amount }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;">{{ item.recruitment_amount }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
-                    <v-list-item v-for="item in item.all_recruitment_amount" :key="item">
+                    <v-list-item style="text-align: center;" v-for="item in item.all_recruitment_amount" :key="item">
                       <v-list-item-content>
                         <v-list-item-title v-text="item"></v-list-item-title>
                       </v-list-item-content>
@@ -358,10 +360,10 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title>{{ item.contract_no }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;">{{ item.contract_no }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
-                    <v-list-item v-for="item in item.all_contract_no" :key="item">
+                    <v-list-item style="text-align: center;" v-for="item in item.all_contract_no" :key="item">
                       <v-list-item-content>
                         <v-list-item-title v-text="item"></v-list-item-title>
                       </v-list-item-content>
@@ -372,10 +374,10 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title>{{ item.contract_amount }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;">{{ item.contract_amount }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
-                    <v-list-item v-for="item in item.all_contract_amount" :key="item">
+                    <v-list-item style="text-align: center;" v-for="item in item.all_contract_amount" :key="item">
                       <v-list-item-content>
                         <v-list-item-title v-text="item"></v-list-item-title>
                       </v-list-item-content>
@@ -386,10 +388,10 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title>{{ item.temp_no }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;">{{ item.temp_no }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
-                    <v-list-item v-for="item in item.all_temp_no" :key="item">
+                    <v-list-item style="text-align: center;" v-for="item in item.all_temp_no" :key="item">
                       <v-list-item-content>
                         <v-list-item-title v-text="item"></v-list-item-title>
                       </v-list-item-content>
@@ -400,10 +402,10 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title>{{ item.temp_amount }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;">{{ item.temp_amount }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
-                    <v-list-item v-for="item in item.all_temp_amount" :key="item">
+                    <v-list-item style="text-align: center;" v-for="item in item.all_temp_amount" :key="item">
                       <v-list-item-content>
                         <v-list-item-title v-text="item"></v-list-item-title>
                       </v-list-item-content>
@@ -414,10 +416,10 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title>{{ item.freelancer_no }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;">{{ item.freelancer_no }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
-                    <v-list-item v-for="item in item.all_freelancer_no" :key="item">
+                    <v-list-item style="text-align: center;" v-for="item in item.all_freelancer_no" :key="item">
                       <v-list-item-content>
                         <v-list-item-title v-text="item"></v-list-item-title>
                       </v-list-item-content>
@@ -428,10 +430,10 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title>{{ item.freelancer_amount }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;">{{ item.freelancer_amount }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
-                    <v-list-item v-for="item in item.all_freelancer_amount" :key="item">
+                    <v-list-item style="text-align: center;" v-for="item in item.all_freelancer_amount" :key="item">
                       <v-list-item-content>
                         <v-list-item-title v-text="item"></v-list-item-title>
                       </v-list-item-content>
@@ -442,10 +444,10 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title>{{ item.total_hc }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;">{{ item.total_hc }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
-                    <v-list-item v-for="item in item.all_total_hc" :key="item">
+                    <v-list-item style="text-align: center;" v-for="item in item.all_total_hc" :key="item">
                       <v-list-item-content>
                         <v-list-item-title v-text="item"></v-list-item-title>
                       </v-list-item-content>
@@ -456,10 +458,10 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title>{{ item.total_billing }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;">{{ item.total_billing }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
-                    <v-list-item v-for="item in item.all_total_billing" :key="item">
+                    <v-list-item style="text-align: center;" v-for="item in item.all_total_billing" :key="item">
                       <v-list-item-content>
                         <v-list-item-title v-text="item"></v-list-item-title>
                       </v-list-item-content>
