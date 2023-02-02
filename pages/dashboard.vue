@@ -63,7 +63,7 @@
           <label class="pl-2">Month & Year</label>
           <v-menu v-model="month_year_menu" :close-on-content-click="false" transition="scale-transition" offset-y min-width="auto">
             <template v-slot:activator="{ on, attrs }">
-            <v-text-field v-model="month_year_date" placeholder="All" solo flat hide-details dense v-bind="attrs" v-on="on" :rules="main_rule" />
+            <v-text-field v-model="month_year_date" placeholder="All" solo flat hide-details dense v-bind="attrs" v-on="on" />
             </template>
             <v-date-picker v-model="month_year_date" @input="month_year_menu = false" />
         </v-menu>
@@ -80,7 +80,33 @@
           <v-card-text id="card-text" :class="privacyMood ? 'privacyMood' : ''">
             <v-row class="ex_br__con flex_row align-center justify-space-around">
               <v-col cols="7">
-                <div class="recruiting_funnel_chart" style="min-width: 100px; min-height: 100px"></div>
+                <!-- <div class="recruiting_funnel_chart" style="min-width: 100px; min-height: 100px"></div> -->
+                <!-- <v-row>
+                <line-chart
+                class="text--text"
+                ref="lineChart"
+                :chart-data="lineChartData"
+                :colors="lineChartColors"
+                :chart-options="lineChartOptions"
+                :height="420"
+                />
+              </v-row> -->
+              <!-- <v-row> -->
+                <doughnut-chart
+                  :chart-data="doughnutChartData"
+                  :chart-options="doughnutChartOptions"
+                  :colors="doughnutColors"
+                  label="hide"
+                />
+              <!-- </v-row>
+                <v-row>
+                <pie-chart 
+                :chart-data="pieChartData" 
+                :chart-options="pieChartOptions" 
+                :colors="pieColors"
+                height="420"
+                />
+              </v-row> -->
               </v-col>
               <v-col cols="5">
                 <div class="flex_row align-start justify-space-between">
@@ -484,8 +510,22 @@
                   <div :class="item.color" class="dote mr-2" style="min-width: 15px;min-height: 6px;border-radius: 3px;"></div>
                   <span class="subtext--text">{{ item.name }} - {{ item.percentage }}% </span>
                 </div>
-                <div style="min-width: 100px; "></div>
-            </div>
+                <!-- <div style="min-width: 100px; "></div> -->
+              </div>
+              <!-- <line-chart
+              class="text--text"
+              ref="lineChart"
+              :chart-data="lineChartData"
+              :colors="lineChartColors"
+              :chart-options="lineChartOptions"
+              :height="420"
+              /> -->
+              <doughnut-chart
+                  :chart-data="doughnutChartData"
+                  :chart-options="doughnutChartOptions"
+                  :colors="doughnutColors"
+                  label="hide"
+                />
             <div class="flex_column justify-space-between"></div>
             </div>
           </v-card-text>
@@ -510,6 +550,7 @@ import WelcomeSvg from '@/assets/images/icons/welcome.svg'
 import CustomInputContainer from '@/components/utils/CustomInputContainer.vue'
 import CardWithIcon from '@/components/Cards/CardWithIcon/index.vue'
 import Filters from '@/components/Dashboard/Filters.vue'
+// import DoughnutChart from './doughnut-chart.js'
 
 export default {
   layout: 'dashboard',
@@ -528,6 +569,115 @@ export default {
    },
   data() {
     return {
+
+      // pie chart
+      // pieChartData: {
+      //   labels: ['A', 'B', 'C', 'D'],
+      //   datasets: [
+      //     {
+      //       data: [30, 40, 20, 10],
+      //       backgroundColor: [
+      //         '#F7464A',
+      //         '#46BFBD',
+      //         '#FDB45C',
+      //         '#949FB1',
+      //       ],
+      //       hoverBackgroundColor: [
+      //         '#FF5A5E',
+      //         '#5AD3D1',
+      //         '#FFC870',
+      //         '#A8B3C5',
+      //       ],
+      //     },
+      //   ],
+      // },
+      // pieChartOptions: {
+      //   responsive: true,
+      // },
+      // pieColors: {
+      //   start: '#F7464A',
+      //   middle: '#46BFBD',
+      //   end: '#FDB45C',
+      // },
+
+      // doughnut chart data
+      doughnutChartData: {
+        labels: ['Bayt', 'LinkedIn', 'Indeed', 'Naukrigulf', 'Internal Database'],
+        datasets: [
+          {
+            backgroundColor: ['#56E2CF', '#E25668', '#CF56E2', '#56AEE2', '#BCE0FD'],
+            data: [40, 20, 80, 10],
+            hole: 0.9,
+          }
+        ]
+      },
+      doughnutChartOptions: {
+        responsive: true,
+        maintainAspectRatio: false
+      },
+      doughnutColors: {
+        start: "#F7464A",
+        middle: "#46BFBD",
+        end: "#FDB45C"
+      },
+
+      // line chart data
+      lineChartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          display: false
+        },
+        title: {
+          display: true,
+          text: "Total Invoices",
+          fontSize: 24,
+          fontColor: "#6b7280"
+        },
+        tooltips: {
+          backgroundColor: "#f95050"
+        },
+        scales: {
+          xAxes: [
+            {
+              gridLines: {
+                display: false
+              }
+            }
+          ],
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              },
+              gridLines: {
+                display: true
+              }
+            }
+          ]
+        }
+      },
+      lineChartData: {
+        labels: ['Jan', 'Feb', 'Mar', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+        datasets: [
+          {
+            label: "Monthly-invoice",
+            data: [50, 100, 30, 60, 10, 30, 90, 20],
+            borderColor: "rgba(72,255,0,0.31)",
+            pointBackgroundColor: "white",
+            borderWidth: 2,
+            pointBorderColor: "gray",
+            backgroundColor: "#ABF9B5"
+          }
+        ]
+      },
+      lineChartColors: {
+        start: "rgba(255, 0, 0, 0.5)",
+        middle: "rgba(255, 0, 0, 0.25)",
+        end: "rgba(255, 0, 0, 0)"
+      },
+
+      // table data
       month_year_menu: false,
       month_year_date: null,
       placement_report: [
@@ -807,7 +957,7 @@ export default {
       firstVisit: true,
 
       // welcome 
-      welcomeDialog: true,
+      welcomeDialog: false,
       hi: true,
       addCompany: false,
       companyAddSuccessfully: false,

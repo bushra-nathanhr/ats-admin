@@ -30,7 +30,9 @@ export default {
   // ** PLUGINS 
   plugins: [
     '@/plugins/vuetify.js',
-    { src: '~/plugins/lineChart.js', mode: 'client' }
+    { src: '~/plugins/lineChart.js', mode: 'client' },
+    { src: '~/plugins/doughnut-chart.js', mode: 'client' },
+    { src: '~/plugins/pieChart.js', mode: 'client' },
   ],
 
   // ** AUTO IMPORT COMPONENTS
