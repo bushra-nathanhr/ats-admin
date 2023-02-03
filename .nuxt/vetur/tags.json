@@ -1,12 +1,15 @@
 {
-  "Footer": {
-    "description": "Auto imported from components/Footer/index.vue"
-  },
   "DashboardFilters": {
     "description": "Auto imported from components/Dashboard/Filters.vue"
   },
   "ReportsReportViewListCard": {
     "description": "Auto imported from components/Reports/ReportViewListCard.vue"
+  },
+  "Footer": {
+    "description": "Auto imported from components/Footer/index.vue"
+  },
+  "WIPTheme": {
+    "description": "Auto imported from components/WIP/theme.vue"
   },
   "UtilsCustomInputContainer": {
     "description": "Auto imported from components/utils/CustomInputContainer.vue"
@@ -23,14 +26,14 @@
   "UtilsSnackBar": {
     "description": "Auto imported from components/utils/SnackBar.vue"
   },
-  "WIPTheme": {
-    "description": "Auto imported from components/WIP/theme.vue"
-  },
   "CardsCardWithIcon": {
     "description": "Auto imported from components/Cards/CardWithIcon/index.vue"
   },
   "CardsTotalsCard": {
     "description": "Auto imported from components/Cards/TotalsCard/index.vue"
+  },
+  "DashboardFunnelChart": {
+    "description": "Auto imported from components/Dashboard/funnelChart/funnelChart.vue"
   },
   "DashboardOverviewTotalsViewer": {
     "description": "Auto imported from components/Dashboard/OverviewTotalsViewer/index.vue"
