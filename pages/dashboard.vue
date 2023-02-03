@@ -75,86 +75,60 @@
       <v-col sm="12" md="6" lg="6">
         <v-card color="card_bg" id="card">
           <v-card-title id="card-title">
-            <h4 class="text--text" style="font-size: 20px !important;font-weight: 600 !important;">Recruiting Funnel</h4>
+            <h4 class="text--text">Recruiting Funnel</h4>
           </v-card-title>
           <v-card-text id="card-text" :class="privacyMood ? 'privacyMood' : ''">
             <v-row class="ex_br__con flex_row align-center justify-space-around">
               <v-col class="d-flex align-center justify-center" cols="7">
-                <!-- <div class="recruiting_funnel_chart" style="min-width: 100px; min-height: 100px"></div> -->
-                <!-- <v-row>
-                <line-chart
-                class="text--text"
-                ref="lineChart"
-                :chart-data="lineChartData"
-                :colors="lineChartColors"
-                :chart-options="lineChartOptions"
-                :height="420"
-                />
-              </v-row> -->
-              <!-- <v-row> -->
-                <!-- <doughnut-chart
-                  :chart-data="doughnutChartData"
-                  :chart-options="doughnutChartOptions"
-                  :colors="doughnutColors"
-                  label="hide"
-                /> -->
-              <!-- </v-row>
-                <v-row>
-                <pie-chart 
-                :chart-data="pieChartData" 
-                :chart-options="pieChartOptions" 
-                :colors="pieColors"
-                height="420"
-                />
-              </v-row> -->
               <!-- FUNNEL CUSTOM CHART  -->
                 <FunnelChart/>
               </v-col>
-              <v-col cols="4">
-                <div class="flex_row align-center justify-space-between">
+              <v-col cols="5">
+                <div class="flex_row align-start justify-space-between">
                   <div class="1">
                     <div class="flex_column">
-                    <h6 class="subtext--text font-weight-light" style="font-size: 16px !important;font-weight: 500;">Applications</h6>
+                    <h6 class="subtext--text" style="font-weight: 500 !important;">Applications</h6>
                     <div class="flex_row mt-3">
                       <div class="accent2 lines_color mr-2 flex_column" style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
-                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 600 !important;" class="text--text pl-3">480</span>
+                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 700 !important;" class="text--text pl-3">480</span>
                     </div>
                   </div>
-                  <div class="flex_column mt-5">
-                    <h6 class="subtext--text font-weight-light" style="font-size: 16px !important">Qualified</h6>
+                  <div class="flex_column mt-9">
+                    <h6 class="subtext--text" style="font-weight: 500 !important;">Qualified</h6>
                     <div class="flex_row mt-3">
                       <div class="primary lines_color mr-2 flex_column" style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
-                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 600 !important;" class="text--text pl-3">480</span>
+                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 700 !important;" class="text--text pl-3">50%</span>
                     </div>
                   </div>
-                  <div class="flex_column mt-5">
-                    <h6 class="subtext--text font-weight-light" style="font-size: 16px !important">Submitted</h6>
+                  <div class="flex_column mt-9">
+                    <h6 class="subtext--text" style="font-weight: 500 !important;">Submitted</h6>
                     <div class="flex_row mt-3">
                       <div class="accent4 lines_color mr-2 flex_column" style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
-                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 600 !important;" class="text--text pl-3">480</span>
+                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 700 !important;" class="text--text pl-3">50%</span>
                     </div>
                   </div>
                   </div>
-                  <div class="2">
+                  
+                  <div class="flex_column justify-lg-space-between" style="min-height: 100%">
                     <div class="flex_column">
-                    <h6 class="subtext--text font-weight-light" style="font-size: 16px !important">Interviews</h6>
+                    <h6 class="subtext--text" style="font-weight: 500 !important;">Interviews</h6>
                     <div class="flex_row mt-3">
                       <div class="accent2 lines_color mr-2 flex_column" style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
-                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 600 !important;" class="text--text pl-3">480</span>
+                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 600 !important;" class="text--text pl-3">50%</span>
                     </div>
                   </div>
-                  <div class="flex_column">
-                    <h6 class="subtext--text font-weight-light" style="font-size: 16px !important">Selections</h6>
+                  <div class="flex_column mt-9">
+                    <h6 class="subtext--text" style="font-weight: 500 !important;">Selections</h6>
                     <div class="flex_row mt-3">
                       <div class="accent2 lines_color mr-2 flex_column" style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
-                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 600 !important;"  class="text--text pl-3">480</span>
+                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 700 !important;"  class="text--text pl-3">50%</span>
                     </div>
                   </div>
-                  <div class="flex_column mt-5">
-                    <h6 class="subtext--text font-weight-light" style="font-size: 16px !important">Placements</h6>
+                  <div class="flex_column mt-9">
+                    <h6 class="subtext--text" style="font-weight: 500 !important;">Placements</h6>
                     <div class="flex_row mt-3">
                       <div class="primary lines_color mr-2 flex_column" style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
-                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 600 !important;" class="text--text pl-3">480</span>
+                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 700 !important;" class="text--text pl-3">50%</span>
                     </div>
                   </div>
                   </div>
@@ -168,13 +142,15 @@
       <v-col sm="12" md="6" lg="6">
         <v-card color="card_bg" id="card">
           <v-card-title id="card-title">
-            <h4 style="font-size: 20px !important;font-weight: 600 !important;">Request Breakdown</h4>
+            <h4 >Request Breakdown</h4>
           </v-card-title>
           <v-card-text id="card-text" class="">
-            <v-row class="ma-0 pa-0 mb-3" justify="center" v-for="item in request_breakdown" :key="item">
-              <v-col cols="2" class="ma-0 pa-0" align-self="center">
-                <span class="subtext--text ma-auto"  style="font-size: 16px !important">{{ item.name  }}</span>
+            <div class="pt-9">
+            <v-row class="ma-0 pa-0 mb-3 mt-6" justify="center" v-for="item in request_breakdown" :key="item">
+              <v-col cols="3" class="ma-0 pa-0" align-self="center">
+                <span class="Request Breakdown ma-auto" style="font-size: 14px;">{{ item.name  }}</span>
               </v-col>
+              <v-spacer></v-spacer>
               <v-col cols="9" class="ma-0 pa-0" align-self="center">
                 <div class="flex_row ">
                   <div class="" style="background: #E3E4E6;width: 100%;height: 30px;border-radius: 6px;">
@@ -184,6 +160,7 @@
                 </div>
               </v-col>
             </v-row>
+          </div>
           </v-card-text>
         </v-card>
       </v-col>
@@ -197,7 +174,7 @@
             <div class="top_green_cards flex_row justify-space-around mt-3">
               <div class="rounded pa-3 flex_row justify-space-around" style="min-height: 70px;background:#C9FFF1;min-width: 350px;border-radius: 10px !important;">
                 <span class="text-text font-weight-bold" style="font-size: 16px !important">Dept. Placements</span>
-                <h5 class="green--text" style="font-size: 18px !important">16</h5>
+                <h5 class="green--text" style="font-size: 18px !important">15</h5>
               </div>
               <div class="rounded pa-3 flex_row justify-space-around" style="min-height: 70px;background: #C9FFF1;min-width: 350px;border-radius: 10px !important;">
                 <span class="text-text font-weight-bold" style="font-size: 16px !important">Dept. Value</span>
@@ -281,7 +258,7 @@
                     <td class=" text-left text--text h6" style="font-size: 16px !important">{{ item.name }}</td>
                     <td class=" text-left text--text" style="font-size: 16px !important">{{ item.total_placements }}</td>
                     <td class=" pa-0 text-center text--text " style="width: 250px">
-                      <div class="flex_row justify-center py-2 my-3 mx-auto" style="background: #E6F4FF;border-radius: 12px;width: 50%;">
+                      <div class="chio__aed flex_row justify-center py-2 my-3 mx-auto" style="background: #E6F4FF;border-radius: 12px;width: 50%;">
                         <!-- global class removed from span  "caption" -->
                           <span class="black--text font-weight-bold" style="font-size: 16px !important">AED {{ item.total_billing }}</span>
                       </div>
@@ -518,8 +495,8 @@
             </div>
           </v-card-title>
           <v-card-text id="card-text">
-            <!-- <v-row class="ma-0 pa-0 mb-3" justify="center" v-for="item in request_breakdown" :key="item">
-              <v-col cols="8" class="ma-0 pa-0" align-self="center"> -->
+            <v-row class="ma-0 pa-0 mb-3" justify="center" >
+              <v-col cols="8" class="ma-0 pa-0" align-self="center" style="margin-top: 21px !important;">
                 <div class="flex_row">
                 <div class="flex_column align-center mx-auto" v-for="item in categories_roles" :key="item">
                   <div class="flex_column justify-end " style="background: #E3E4E6;width: 30px;height: 200px;border-radius: 6px;">
@@ -528,8 +505,8 @@
                   <span class="subtext--text caption d-inline pt-2 text-center">{{ item.title }}<br/>& Admin</span>
                 </div>
               </div>
-              <!-- </v-col>
-            </v-row> -->
+              </v-col>
+            </v-row>
           </v-card-text>
         </v-card>
       </v-col>
@@ -540,27 +517,21 @@
             <h4 class="text--text" style="font-size: 20px !important;font-weight: 600 !important;">Candidate Source</h4>
           </v-card-title>
           <v-card-text id="card-text">
-            <div class="ex_br__con flex_row align-center justify-space-between">
+            <div class="ex_br__con flex_row align-center justify-space-between" style="max-height: 300px ">
               <div class="flex_column justify-space-between">
-                <div class="flex_row align-center pa-2 mt-2" v-for="item in candidate_source" :key="item.id">
+                <div class="flex_row align-center pa-2 mt-2 mb-3" v-for="item in candidate_source" :key="item.id">
                   <div :class="item.color" class="dote mr-2" style="min-width: 15px;min-height: 6px;border-radius: 3px;"></div>
-                  <span class="subtext--text">{{ item.name }} - {{ item.percentage }}% </span>
+                  <span class="black--text" style="font-size: 15px !important;font-weight: 600 !important;">{{ item.name }} - {{ item.percentage }}% </span>
                 </div>
-                <!-- <div style="min-width: 100px; "></div> -->
               </div>
-              <!-- <line-chart
-              class="text--text"
-              ref="lineChart"
-              :chart-data="lineChartData"
-              :colors="lineChartColors"
-              :chart-options="lineChartOptions"
-              :height="420"
-              /> -->
-              <doughnut-chart
+              <div class="doughnut_con" style="margin-bottom: 50px !important;" >
+                <doughnut-chart
                   :chart-data="doughnutChartData"
                   :chart-options="doughnutChartOptions"
                   :colors="doughnutColors"
+                  :width="300"
                 />
+              </div>
             <div class="flex_column justify-space-between"></div>
             </div>
           </v-card-text>
@@ -644,8 +615,7 @@ export default {
           {
             backgroundColor: ['#56e2cf', '#e25668', '#56aee2', '#cf56e2', '#bce0fd'],
             data: [40, 20, 80, 10],
-            hole: 0.9,
-            cutout:"70%"
+            cutout:"65%",
           }
         ]
       },

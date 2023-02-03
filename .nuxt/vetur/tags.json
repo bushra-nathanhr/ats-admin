@@ -26,20 +26,20 @@
   "WIPTheme": {
     "description": "Auto imported from components/WIP/theme.vue"
   },
-  "DashboardOverviewTotalsViewer": {
-    "description": "Auto imported from components/Dashboard/OverviewTotalsViewer/index.vue"
-  },
-  "DashboardFunnelChart": {
-    "description": "Auto imported from components/Dashboard/funnelChart/funnelChart.vue"
-  },
   "CardsCardWithIcon": {
     "description": "Auto imported from components/Cards/CardWithIcon/index.vue"
+  },
+  "GraphsLineGraph": {
+    "description": "Auto imported from components/Graphs/LineGraph/index.vue"
   },
   "CardsTotalsCard": {
     "description": "Auto imported from components/Cards/TotalsCard/index.vue"
   },
-  "GraphsLineGraph": {
-    "description": "Auto imported from components/Graphs/LineGraph/index.vue"
+  "DashboardFunnelChart": {
+    "description": "Auto imported from components/Dashboard/funnelChart/funnelChart.vue"
+  },
+  "DashboardOverviewTotalsViewer": {
+    "description": "Auto imported from components/Dashboard/OverviewTotalsViewer/index.vue"
   },
   "LayoutAccountsDropDownMenu": {
     "description": "Auto imported from components/Layout/AccountsDropDownMenu/index.vue"

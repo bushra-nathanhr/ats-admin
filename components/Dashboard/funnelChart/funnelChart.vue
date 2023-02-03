@@ -36,7 +36,7 @@ export default {
 
 <style>
 .funnel_outer {
-    width: 90%;
+    width: 250px !important;
     float: left;
     position: relative;
 }
