@@ -60,7 +60,7 @@
       <Filters :data="filters" />
       <v-card  color="card_bg" class="flat ma-0 pa-0 mx-2 px-3 py-2" elevation="0" style="max-width: 200px !important; height: 77px !important; max-height: 100% !important; border-radius: 10px !important; border: 0px solid #fff!important;" :style=" darkMood == true ? '' : 'border: 0.5px solid #E2E7F1 !important;'">
         <div class="" style="max-width: 200px !important; ">
-          <label class="pl-2">Month & Year</label>
+          <label style="color:#7692AA !important; font-size: 12px !important; font-weight: 600 !important;" class="pl-2">Month & Year</label>
           <v-menu v-model="month_year_menu" :close-on-content-click="false" transition="scale-transition" offset-y min-width="auto">
             <template v-slot:activator="{ on, attrs }">
             <v-text-field v-model="month_year_date" placeholder="All" solo flat hide-details dense v-bind="attrs" v-on="on" />
@@ -79,7 +79,7 @@
           </v-card-title>
           <v-card-text id="card-text" :class="privacyMood ? 'privacyMood' : ''">
             <v-row class="ex_br__con flex_row align-center justify-space-around">
-              <v-col cols="7">
+              <v-col class="d-flex align-center justify-center" cols="7">
                 <!-- <div class="recruiting_funnel_chart" style="min-width: 100px; min-height: 100px"></div> -->
                 <!-- <v-row>
                 <line-chart
@@ -107,6 +107,8 @@
                 height="420"
                 />
               </v-row> -->
+              <!-- FUNNEL CUSTOM CHART  -->
+                <FunnelChart/>
               </v-col>
               <v-col cols="5">
                 <div class="flex_row align-start justify-space-between">
@@ -115,21 +117,21 @@
                     <h6 class="subtext--text font-weight-light">Applications</h6>
                     <div class="flex_row mt-3">
                       <div class="accent2 lines_color mr-2 flex_column" style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
-                      <span class="text--text pl-3">480</span>
+                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 600 !important;" class="text--text pl-3">480</span>
                     </div>
                   </div>
                   <div class="flex_column mt-5">
                     <h6 class="subtext--text font-weight-light">Qualified</h6>
                     <div class="flex_row mt-3">
                       <div class="primary lines_color mr-2 flex_column" style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
-                      <span class="text--text pl-3">480</span>
+                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 600 !important;" class="text--text pl-3">480</span>
                     </div>
                   </div>
                   <div class="flex_column mt-5">
                     <h6 class="subtext--text font-weight-light">Submitted</h6>
                     <div class="flex_row mt-3">
                       <div class="accent4 lines_color mr-2 flex_column" style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
-                      <span class="text--text pl-3">480</span>
+                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 600 !important;" class="text--text pl-3">480</span>
                     </div>
                   </div>
                   </div>
@@ -138,14 +140,21 @@
                     <h6 class="subtext--text font-weight-light">Interviews</h6>
                     <div class="flex_row mt-3">
                       <div class="accent2 lines_color mr-2 flex_column" style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
-                      <span class="text--text pl-3">480</span>
+                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 600 !important;" class="text--text pl-3">480</span>
+                    </div>
+                  </div>
+                  <div class="flex_column">
+                    <h6 class="subtext--text font-weight-light">Selections</h6>
+                    <div class="flex_row mt-3">
+                      <div class="accent2 lines_color mr-2 flex_column" style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
+                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 600 !important;"  class="text--text pl-3">480</span>
                     </div>
                   </div>
                   <div class="flex_column mt-5">
                     <h6 class="subtext--text font-weight-light">Placements</h6>
                     <div class="flex_row mt-3">
                       <div class="primary lines_color mr-2 flex_column" style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
-                      <span class="text--text pl-3">480</span>
+                      <span style="color: #000027 !important; font-size: 16px !important; font-weight: 600 !important;" class="text--text pl-3">480</span>
                     </div>
                   </div>
                   </div>
@@ -159,7 +168,7 @@
       <v-col sm="12" md="6" lg="6">
         <v-card color="card_bg" id="card">
           <v-card-title id="card-title">
-            <h4>Request Breakdown</h4>
+            <h4 >Request Breakdown</h4>
           </v-card-title>
           <v-card-text id="card-text" class="">
             <v-row class="ma-0 pa-0 mb-3" justify="center" v-for="item in request_breakdown" :key="item">
@@ -552,6 +561,7 @@ import WelcomeSvg from '@/assets/images/icons/welcome.svg'
 import CustomInputContainer from '@/components/utils/CustomInputContainer.vue'
 import CardWithIcon from '@/components/Cards/CardWithIcon/index.vue'
 import Filters from '@/components/Dashboard/Filters.vue'
+import FunnelChart from '@/components/Dashboard/funnelChart/funnelChart.vue'
 // import DoughnutChart from './doughnut-chart.js'
 
 export default {
@@ -568,6 +578,7 @@ export default {
     CardWithIcon,
     SalesGoalIcon,
     Filters,
+    FunnelChart,
    },
   data() {
     return {
@@ -607,9 +618,10 @@ export default {
         labels: ['Bayt', 'LinkedIn', 'Indeed', 'Naukrigulf', 'Internal Database'],
         datasets: [
           {
-            backgroundColor: ['#56E2CF', '#E25668', '#CF56E2', '#56AEE2', '#BCE0FD'],
+            backgroundColor: ['#56e2cf', '#e25668', '#56aee2', '#cf56e2', '#bce0fd'],
             data: [40, 20, 80, 10],
             hole: 0.9,
+            cutout:"70%"
           }
         ]
       },
@@ -866,12 +878,12 @@ export default {
 
       // REQUEST BREAKDOWN
       request_breakdown: [
-        { name: 'New Requests', num: '21', per: '50%', color:'accent3' },
-        { name: 'Recruitment', num: '07', per: '40%', color:'accent1' },
-        { name: 'Cancelled', num: '03', per: '20%', color:'accent4' },
-        { name: 'On Hold', num: '01', per: '10%', color:'primary' },
-        { name: 'Unsuccessful', num: '05', per: '30%', color:'error' },
-        { name: 'Selections', num: '04', per: '20%', color:'info' },
+        { name: 'New Requests', num: '21', per: '50%', color:'secondary'  },
+        { name: 'Recruitment', num: '07', per: '40%', color:'primary' },
+        { name: 'Cancelled', num: '03', per: '30%', color:'accent4' },
+        { name: 'On Hold', num: '01', per: '10%', color:' accent5' },
+        { name: 'Unsuccessful', num: '05', per: '30%', color:'accent1' },
+        { name: 'Selections', num: '04', per: '20%', color:'accent6' },
       ],
 
       // RECUTTING FUNNEL

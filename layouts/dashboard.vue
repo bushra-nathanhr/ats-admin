@@ -167,7 +167,7 @@
                         <!-- DIV-1 -->
                             <!-- DATE + PAGE NAME -->
                             <div class="dn__header flex_column">
-                                <p v-if="$nuxt.$route.name == 'dashboard'" class="subtext--text ma-0 pa-0">Sunday, August 16</p>
+                                <p v-if="$nuxt.$route.name == 'dashboard'" style="font-size:18px !important; font-weight: 600 !important;"  class="subtext--text ma-0 pa-0">Sunday, August 16</p>
                                 <h2 v-if="$nuxt.$route.name != 'dashboard'" class="text--text ma-0 pa-0" style="text-transform: capitalize;">{{ $nuxt.$route.name }}</h2>
                             </div>
                             <!-- / DATE + PAGE NAME -->
