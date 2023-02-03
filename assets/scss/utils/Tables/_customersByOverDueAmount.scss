@@ -77,46 +77,56 @@
 //***PLACEMENT-REPORT-TABLE**********************************
 
 .dashboard_table{
-        border-radius: 20% !important;
-        border: 3px solid #E3E4E6;
+    border: 0.5px solid #e3e4e6;
+    border-radius: 20px !important;
+    border-collapse: collapse;
+    th,
+    td {
+        border: 1px solid #e3e4e6;
         border-collapse: collapse;
-      
-    
-        th,
-        td {
-            border: 1px solid #E3E4E6;
-            border-collapse: collapse;
-        }
-    
-        th,
-        td,
-        tr {
-            padding: 10px;
-        }
-    
-        th {
-            color: #2A2A2A;
-            text-align: center !important;
-        }
-        tr:hover{
-            background-color: #E3E4E6;
-        }
+    }
+    th,
+    td,
+    tr {
+        padding: 20px;
+    }
+    th {
+        color: #2A2A2A;
+        text-align: center !important;
+    }
+    tr:hover{
+        background-color: #f4f4f46e;
+    }
+    .table__sidebar {
+        position: relative;
 
-        .table__sidebar {
-            position: relative;
-
-        }
-                .table__sidebar::before {
-                    position: absolute;
-                    content: " ";
-                    width: 2.5%;
-                    height: 44px;
-                    background: #0A94FF;
-                    border-radius: 8px;
-                
-                }
-                // ****HEADING SPACE
-                .space--heading{
-                    padding: 20px;
-                }
+    }
+    .table__sidebar::before {
+        position: absolute;
+        content: " ";
+        width: 2.5%;
+        height: 44px;
+        background: #0A94FF;
+        border-radius: 8px;
+    
+    }
+    // ****HEADING SPACE
+    .space--heading{
+        padding: 20px;
+    }
+}
+.hederOnly:hover{
+    background: transparent !important;
+}
+.a {
+    background: transparent !important;
+    &:hover {
+        background: transparent !important;
+    }
+    &:active {
+        background: transparent !important;
+    }
+}
+.aa:hover {
+    background: transparent !important;
 }

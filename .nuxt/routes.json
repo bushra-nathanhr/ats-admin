@@ -3,24 +3,28 @@
     "name": "alerts",
     "path": "/alerts",
     "component": "C:\\\\GitHub\\\\ats-admin\\\\pages\\\\alerts.vue",
-    "chunkName": "pages/alerts"
+    "chunkName": "pages/alerts",
+    "_name": "_1df91701"
   },
   {
     "name": "dashboard",
     "path": "/dashboard",
     "component": "C:\\\\GitHub\\\\ats-admin\\\\pages\\\\dashboard.vue",
-    "chunkName": "pages/dashboard"
+    "chunkName": "pages/dashboard",
+    "_name": "_f7d516cc"
   },
   {
     "name": "reports",
     "path": "/reports",
     "component": "C:\\\\GitHub\\\\ats-admin\\\\pages\\\\reports.vue",
-    "chunkName": "pages/reports"
+    "chunkName": "pages/reports",
+    "_name": "_cd8e5c76"
   },
   {
     "name": "index",
     "path": "/",
     "component": "C:\\\\GitHub\\\\ats-admin\\\\pages\\\\index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_38664ad8"
   }
 ]

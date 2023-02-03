@@ -1,15 +1,12 @@
 {
+  "Footer": {
+    "description": "Auto imported from components/Footer/index.vue"
+  },
   "DashboardFilters": {
     "description": "Auto imported from components/Dashboard/Filters.vue"
   },
   "ReportsReportViewListCard": {
     "description": "Auto imported from components/Reports/ReportViewListCard.vue"
-  },
-  "Footer": {
-    "description": "Auto imported from components/Footer/index.vue"
-  },
-  "WIPTheme": {
-    "description": "Auto imported from components/WIP/theme.vue"
   },
   "UtilsCustomInputContainer": {
     "description": "Auto imported from components/utils/CustomInputContainer.vue"
@@ -26,14 +23,11 @@
   "UtilsSnackBar": {
     "description": "Auto imported from components/utils/SnackBar.vue"
   },
+  "WIPTheme": {
+    "description": "Auto imported from components/WIP/theme.vue"
+  },
   "CardsCardWithIcon": {
     "description": "Auto imported from components/Cards/CardWithIcon/index.vue"
-  },
-  "LayoutHeaderTabs": {
-    "description": "Auto imported from components/Layout/HeaderTabs/index.vue"
-  },
-  "LayoutAccountsDropDownMenu": {
-    "description": "Auto imported from components/Layout/AccountsDropDownMenu/index.vue"
   },
   "CardsTotalsCard": {
     "description": "Auto imported from components/Cards/TotalsCard/index.vue"
@@ -43,5 +37,11 @@
   },
   "GraphsLineGraph": {
     "description": "Auto imported from components/Graphs/LineGraph/index.vue"
+  },
+  "LayoutAccountsDropDownMenu": {
+    "description": "Auto imported from components/Layout/AccountsDropDownMenu/index.vue"
+  },
+  "LayoutHeaderTabs": {
+    "description": "Auto imported from components/Layout/HeaderTabs/index.vue"
   }
 }
