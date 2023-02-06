@@ -36,7 +36,7 @@ export default {
 
 <style>
 .funnel_outer {
-    width: 250px !important;
+    width: 220px !important;
     float: left;
     position: relative;
 }
@@ -56,7 +56,7 @@ export default {
 
 .funnel_outer ul li {
     position: relative;
-    margin: 2px 0;
+    margin: 1px 0;
     text-align: center;
     width: 100%;
     list-style: none;

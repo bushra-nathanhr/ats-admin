@@ -28,7 +28,7 @@
 
     // tbody
     .customersByOverDueAmount__td {
-        padding: 0px !important;
+        padding: 10px !important;
         margin: 0px !important;
     }
 
@@ -74,6 +74,22 @@
     }
 }
 
+//***REQUEST-BREAKDOWN-REPORT**********************************
+.request-progress{
+    position: relative;
+
+    .percentage-number{
+        position: absolute;
+        width: auto;
+        height: auto;
+        top: 15%;
+        right: 5%;
+
+
+    }
+}
+
+
 //***PLACEMENT-REPORT-TABLE**********************************
 
 .dashboard_table{
@@ -85,14 +101,12 @@
         border: 1px solid #e3e4e6;
         border-collapse: collapse;
     }
-    th,
-    td,
-    tr {
-        padding: 20px;
-    }
-    th {
-        color: #2A2A2A;
+    th{
         text-align: center !important;
+        padding: 15px !important;
+    }
+    td {
+        padding: 6px !important;
     }
     tr:hover{
         background-color: #f4f4f46e;

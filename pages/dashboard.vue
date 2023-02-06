@@ -75,15 +75,15 @@
       <v-col sm="12" md="6" lg="6">
         <v-card color="card_bg" id="card">
           <v-card-title id="card-title">
-            <h4 class="text--text">Recruiting Funnel</h4>
+            <h4 class="text--text" style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;">Recruiting Funnel</h4>
           </v-card-title>
-          <v-card-text id="card-text" :class="privacyMood ? 'privacyMood' : ''">
+          <v-card-text id="card-margin" :class="privacyMood ? 'privacyMood' : ''">
             <v-row class="ex_br__con flex_row align-center justify-space-around">
-              <v-col class="d-flex align-center justify-center" cols="7">
+              <v-col class="d-flex align-center justify-center pt-0" cols="7">
               <!-- FUNNEL CUSTOM CHART  -->
                 <FunnelChart/>
               </v-col>
-              <v-col cols="5">
+              <v-col cols="5 pt-0">
                 <div class="flex_row align-start justify-space-between">
                   <div class="1">
                     <div class="flex_column">
@@ -142,19 +142,23 @@
       <v-col sm="12" md="6" lg="6">
         <v-card color="card_bg" id="card">
           <v-card-title id="card-title">
-            <h4 >Request Breakdown</h4>
+            <h4  class="text--text" style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;" >Request Breakdown</h4>
           </v-card-title>
-          <v-card-text id="card-text" class="">
-            <div class="pt-9">
+          <v-card-text id="card-margin" class="">
+            <div class="">
             <v-row class="ma-0 pa-0 mb-3 mt-6" justify="center" v-for="item in request_breakdown" :key="item">
               <v-col cols="3" class="ma-0 pa-0" align-self="center">
-                <span class="Request Breakdown ma-auto" style="font-size: 14px;">{{ item.name  }}</span>
+                <span class="Request-Breakdown ma-auto" style="font-size: 14px;">{{ item.name  }}</span>
               </v-col>
               <v-spacer></v-spacer>
               <v-col cols="9" class="ma-0 pa-0" align-self="center">
                 <div class="flex_row ">
                   <div class="" style="background: #E3E4E6;width: 100%;height: 30px;border-radius: 6px;">
-                    <div :class="item.color" :style="{ width: item.per }" style="height: 30px;border-radius: 6px;"></div>
+                    <div class="request-progress" :class="item.color" :style="{ width: item.per }" style="height: 30px;border-radius: 6px;">
+                      <div class="percentage-number">
+                        <span style="color: #E6F4FF !important;">{{ item.per }}</span>
+                      </div>
+                    </div>
                   </div>
                   <h6 class="text--text d-inline pl-2">{{ item.num }}</h6>
                 </div>
@@ -168,34 +172,34 @@
       <v-col sm="12" md="6" lg="6">
         <v-card color="card_bg" id="card">
           <v-card-title id="card-title">
-            <h4 style="font-size: 20px !important;font-weight: 600 !important;">Placements Overview Summary</h4>
+            <h4  class="text--text" style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;">Placements Overview Summary</h4>
           </v-card-title>
-          <v-card-text id="card-text">
+          <v-card-text id="card-marginTop">
             <div class="top_green_cards flex_row justify-space-around mt-3">
-              <div class="rounded pa-3 flex_row justify-space-around" style="min-height: 70px;background:#C9FFF1;min-width: 350px;border-radius: 10px !important;">
-                <span class="text-text font-weight-bold" style="font-size: 16px !important">Dept. Placements</span>
-                <h5 class="green--text" style="font-size: 18px !important">15</h5>
+              <div class="rounded pa-3 flex_row justify-space-around" style="min-height: 50px;background:#C9FFF1;min-width: 45%; border-radius: 10px !important;">
+                <span class="text-text font-weight-bold" style=" color: #2A2A2A !important; font-size: 14px!important">Dept. Placements</span>
+                <h5 class="green--text" style="font-size: 14px !important">15</h5>
               </div>
-              <div class="rounded pa-3 flex_row justify-space-around" style="min-height: 70px;background: #C9FFF1;min-width: 350px;border-radius: 10px !important;">
-                <span class="text-text font-weight-bold" style="font-size: 16px !important">Dept. Value</span>
-                <h5 class="green--text" style="font-size: 18px !important">AED 150,650</h5>
+              <div class="rounded pa-3 flex_row justify-space-around" style="min-height: 50px;background: #C9FFF1;min-width: 45%; border-radius: 10px !important;">
+                <span class="text-text font-weight-bold" style=" color: #2A2A2A !important; font-size: 14px!important">Dept. Value</span>
+                <h5 class="green--text" style="font-size: 14px !important">AED 150,650</h5>
               </div>
             </div>
-            <v-spacer class="" style="padding: 30px 0"></v-spacer>
-            <v-simple-table class="customersByOverDueAmount__table table_bg" >
+            <v-spacer class="" style="padding: 10px 0"></v-spacer>
+            <v-simple-table class="customersByOverDueAmount__table table_bg" dense>
               <template v-slot:default>
                 <thead class="customersByOverDueAmount__thead">
                   <tr class="customersByOverDueAmount__tr" >
-                    <th class=" text-left subtext--text h6 pr_5">
+                    <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5">
                       Recruiter<br/>Name
                     </th>
-                    <th class=" text-left subtext--text h6 pr_5" >
+                    <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5" >
                       Total<br/>Placements
                     </th>
-                    <th class=" text-left subtext--text h6 pr_5" >
+                    <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5" >
                       Billing VS<br/>Targets
                     </th>
-                    <th class=" text-center subtext--text h6 pr_5" >
+                    <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5" >
                       Average<br/>Billing
                     </th>
                   </tr>
@@ -203,15 +207,15 @@
                 </thead>
                 <tbody>
                   <tr v-for="(item, index) in customers_by_overdue" :key="index" class="ma-0 pa-0">
-                    <td class=" text-left text--text h6" style="font-size: 16px !important">{{ item.name }}</td>
-                    <td class=" text-left text--text" style="font-size: 16px !important">{{ item.total_placements }}</td>
-                    <td class=" pa-0 text-left text--text">
-                      <div class="flex_row justify-center py-2 my-3 px-2" style="background: #1AD598;border-radius: 12px;width: 60%;">
+                    <td class=" text-left text--text h6" style="font-size: 14px !important">{{ item.name }}</td>
+                    <td class=" text-left text--text" style="font-size: 14px !important">{{ item.total_placements }}</td>
+                    <td class=" text-left text--text" style="width: 250px">
+                      <div class="flex_row justify-center my-3" style="padding-top: 6px!important; padding-bottom: 6px !important; background: #1AD598;border-radius: 5px;width: 50%;">
                         <!-- global class removed from span  "caption" -->
-                          <span class="black--text font-weight-bold" style="font-size: 16px !important">AED {{ item.total_billing }}</span>
+                          <span class="black--text font-weight-bold" style="font-size: 12px !important">AED {{ item.total_billing }}</span>
                       </div>
                     </td>
-                    <td class="text-right text--text" style="font-size: 16px !important;width: 140px;">AED {{ item.average_billing }}</td>
+                    <td class="text-left text--text" style="font-size: 14px !important; font-weight: 600 !important; width: 140px;">AED {{ item.average_billing }}</td>
                   </tr>
                 </tbody>
               </template>
@@ -223,31 +227,31 @@
       <v-col sm="12" md="6" lg="6">
         <v-card color="card_bg" id="card">
           <v-card-title id="card-title">
-            <h4 style="font-size: 20px !important;font-weight: 600 !important;">Pipeline Overview</h4>
+            <h4 class="text--text" style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;">Pipeline Overview</h4>
           </v-card-title>
-          <v-card-text id="card-text">
+          <v-card-text id="card-marginTop">
             <div class="top_green_cards flex_row justify-space-around mt-3">
-              <div class="rounded pa-3 flex_row justify-space-around" style="min-height: 70px;background:rgb(230, 244, 255);min-width: 350px;border-radius: 10px !important;">
-                <span class="text-text font-weight-bold" style="font-size: 16px !important">Dept. Placements</span>
-                <h5 class="blue--text" style="font-size: 18px !important">16</h5>
+              <div class="rounded pa-3 flex_row justify-space-around" style="min-height: 50px;background:rgb(230, 244, 255);min-width: 45%; border-radius: 10px !important;">
+                <span class="text-text font-weight-bold" style="font-size: 14px !important; color: #2A2A2A;">Dept. Placements</span>
+                <h5 class="blue--text" style="font-size: 14px !important">16</h5>
               </div>
-              <div class="rounded pa-3 flex_row justify-space-around" style="min-height: 70px;background: rgb(230, 244, 255);min-width: 350px;border-radius: 10px !important;">
-                <span class="text-text font-weight-bold" style="font-size: 16px !important">Dept. Value</span>
-                <h5 class="blue--text" style="font-size: 18px !important">AED 150,650</h5>
+              <div class="rounded pa-3 flex_row justify-space-around" style="min-height: 50px;background: rgb(230, 244, 255);min-width: 45%; border-radius: 10px !important;">
+                <span class="text-text font-weight-bold" style="font-size: 14px !important; color: #2A2A2A;">Dept. Value</span>
+                <h5 class="blue--text" style="font-size: 14px !important">AED 150,650</h5>
               </div>
             </div>
-            <v-spacer class="" style="padding: 30px 0"></v-spacer>
+            <v-spacer class="" style="padding: 10px 0"></v-spacer>
             <v-simple-table class="customersByOverDueAmount__table table_bg" >
               <template v-slot:default>
                 <thead class="customersByOverDueAmount__thead">
                   <tr class="customersByOverDueAmount__tr" >
-                    <th class=" text-left subtext--text h6 pr_5">
+                    <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5">
                       Recruiter<br/>Name
                     </th>
-                    <th class=" text-left subtext--text h6 pr_5" >
+                    <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5" >
                       Total<br/>Placements
                     </th>
-                    <th class=" text-center subtext--text h6 pr_5" >
+                    <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5" >
                       Total<br/>Billing
                     </th>
                   </tr>
@@ -255,12 +259,12 @@
                 </thead>
                 <tbody>
                   <tr v-for="(item, index) in customers_by_overdue" :key="index" class="ma-0 pa-0">
-                    <td class=" text-left text--text h6" style="font-size: 16px !important">{{ item.name }}</td>
-                    <td class=" text-left text--text" style="font-size: 16px !important">{{ item.total_placements }}</td>
-                    <td class=" pa-0 text-center text--text " style="width: 250px">
-                      <div class="chio__aed flex_row justify-center py-2 my-3 mx-auto" style="background: #E6F4FF;border-radius: 12px;width: 50%;">
+                    <td class=" text-left text--text h6" style="font-size: 14px !important">{{ item.name }}</td>
+                    <td class=" text-left text--text" style="font-size: 14px !important">{{ item.total_placements }}</td>
+                    <td class=" text-center  text--text" style="width: 250px">
+                      <div class="chio__aed flex_row justify-center py-2 my-3 " style="background: #E6F4FF;border-radius: 5px;width: 60%;">
                         <!-- global class removed from span  "caption" -->
-                          <span class="black--text font-weight-bold" style="font-size: 16px !important">AED {{ item.total_billing }}</span>
+                          <span class=" blue--text font-weight-bold" style="font-size: 12px !important;" >AED {{ item.total_billing }}</span>
                       </div>
                     </td>
                   </tr>
@@ -274,46 +278,46 @@
       <v-col sm="12" md="12" lg="12">
         <v-card id="card">
           <v-card-title id="card-title">
-            <h4 style="font-size: 20px !important;font-weight: 600 !important;">Placement Report</h4>
-            <span>Currency: 0 AED</span>
+            <h4 class="text--text" style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;">Placement Report</h4>
+            <span style="font-size: 12px !important; font-weight: 600 !important; color: #2A2A2A !important; ">Currency: 0 AED</span>
           </v-card-title>
           <v-card-text id="card-text">
             <table class="dashboard_table" style="width:100%">
               <tr class="customersByOverDueAmount__tr hederOnly">
-                    <th class="customersByOverDueAmount__th text-left text--text " rowspan="2" style="font-size: 16px;font-weight: 700;">Name</th>
-                    <th class="customersByOverDueAmount__th text-left text--text space--heading" colspan="2" style="font-size: 16px;font-weight: 700;">Recruitment</th>
-                    <th class="customersByOverDueAmount__th text-left text--text space--heading" colspan="2" style="font-size: 16px;font-weight: 700;">Contract </th>
-                    <th class="customersByOverDueAmount__th text-left text--text space--heading" colspan="2" style="font-size: 16px;font-weight: 700;">Temp</th>
-                    <th class="customersByOverDueAmount__th text-left text--text space--heading" colspan="2" style="font-size: 16px;font-weight: 700;">Freelancer</th>
-                    <th class="customersByOverDueAmount__th text-left text--text space--heading" colspan="2" style="font-size: 16px;font-weight: 700;">Total</th>
+                    <th class="customersByOverDueAmount__th text-left text--text " rowspan="2" style="font-size: 12px !important;font-weight: bold !important; color: #2A2A2A !important;">Name</th>
+                    <th class="customersByOverDueAmount__th text-left text--text space--heading" colspan="2"  style="font-size: 12px !important;font-weight: bold !important; color: #2A2A2A !important;">Recruitment</th>
+                    <th class="customersByOverDueAmount__th text-left text--text space--heading" colspan="2"  style="font-size: 12px !important;font-weight: bold !important; color: #2A2A2A !important;">Contract </th>
+                    <th class="customersByOverDueAmount__th text-left text--text space--heading" colspan="2"  style="font-size: 12px !important;font-weight: bold !important; color: #2A2A2A !important;">Temp</th>
+                    <th class="customersByOverDueAmount__th text-left text--text space--heading" colspan="2"  style="font-size: 12px !important;font-weight: bold !important; color: #2A2A2A !important;">Freelancer</th>
+                    <th class="customersByOverDueAmount__th text-left text--text space--heading" colspan="2"  style="font-size: 12px !important;font-weight: bold !important; color: #2A2A2A !important;">Total</th>
                   </tr>
               <tr class="hederOnly">
-                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 16px !important;font-weight: 500;color: #7692AA !important" >Number</td>
-                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 16px !important;font-weight: 500;color: #7692AA !important" > Amount</td>
-                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 16px !important;font-weight: 500;color: #7692AA !important" >Number</td>
-                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 16px !important;font-weight: 500;color: #7692AA !important" > Amount</td>
-                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 16px !important;font-weight: 500;color: #7692AA !important" >Number</td>
-                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 16px !important;font-weight: 500;color: #7692AA !important" > Amount</td>
-                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 16px !important;font-weight: 500;color: #7692AA !important">Number</td>
-                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 16px !important;font-weight: 500;color: #7692AA !important"> Amount</td>
-                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 16px !important;font-weight: 500;color: #7692AA !important">HC</td>
-                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 16px !important;font-weight: 500;color: #7692AA !important"> Billing</td>
+                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 12px !important;font-weight: 600;color: #7692AA !important" >Number</td>
+                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 12px !important;font-weight: 600;color: #7692AA !important" > Amount</td>
+                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 12px !important;font-weight: 600;color: #7692AA !important" >Number</td>
+                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 12px !important;font-weight: 600;color: #7692AA !important" > Amount</td>
+                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 12px !important;font-weight: 600;color: #7692AA !important" >Number</td>
+                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 12px !important;font-weight: 600;color: #7692AA !important" > Amount</td>
+                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 12px !important;font-weight: 600;color: #7692AA !important">Number</td>
+                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 12px !important;font-weight: 600;color: #7692AA !important"> Amount</td>
+                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 12px !important;font-weight: 600;color: #7692AA !important">HC</td>
+                <td class="customersByOverDueAmount__td text-center subtext--text " style="font-size: 12px !important;font-weight: 600;color: #7692AA !important"> Billing</td>
               </tr>
               <tr v-for="(item, index) in placement_report" :key="index" @click="togglerHandle">
                 <td class="customersByOverDueAmount__td table__sidebar   name__dropdown text-left text--text">
-                  <v-list-group class="aa" v-model="item.toggler" eager active-class="a">
-                    <!-- <template v-slot:appendIcon><v-icon color="primary" small>fa-plus</v-icon></template> -->
+                  <v-list-group class="aa" v-model="item.toggler" eager active-class="a" >
+                    <!-- <template v-slot:appendIcon><v-icon color="primary" x-small>fa-arrow fa-down</v-icon></template> -->
                     <template v-slot:activator>
                       <v-list-item-content class="aa">
                         <v-list-item-title>
-                          <span class="black--text" style="font-size: 16px !important;font-weight: 600 !important;">{{ item.name }}</span>
+                          <span class="black--text" style="font-size: 14px !important;font-weight: 600 !important;">{{ item.name }}</span>
                           </v-list-item-title>
                       </v-list-item-content>
                     </template>
                     <v-list-item v-for="item in item.country" :key="item">
                       <v-list-item-content>
                         <v-list-item-title>
-                          <span class="" style="font-size: 16px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
+                          <span class="" style="font-size: 14px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
                         </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
@@ -323,13 +327,13 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title style="text-align: center;font-size: 16px !important;font-weight: 600 !important;">{{ item.recruitment_no }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;font-size: 13px !important;font-weight: 600 !important;">{{ item.recruitment_no }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
                     <v-list-item style="text-align: center;" v-for="item in item.all_recruitment_no" :key="item">
                       <v-list-item-content>
                         <v-list-item-title>
-                          <span style="font-size: 16px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
+                          <span style="font-size: 13px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
                         </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
@@ -339,13 +343,13 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title style="text-align: center;font-size: 16px !important;font-weight: 600 !important;">{{ item.recruitment_amount }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;font-size: 13px !important;font-weight: 600 !important;">{{ item.recruitment_amount }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
                     <v-list-item style="text-align: center;" v-for="item in item.all_recruitment_amount" :key="item">
                       <v-list-item-content>
                         <v-list-item-title>
-                          <span style="font-size: 16px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
+                          <span style="font-size: 13px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
                         </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
@@ -355,13 +359,13 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title style="text-align: center;font-size: 16px !important;font-weight: 600 !important;">{{ item.contract_no }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;font-size: 13px !important;font-weight: 600 !important;">{{ item.contract_no }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
                     <v-list-item style="text-align: center;" v-for="item in item.all_contract_no" :key="item">
                       <v-list-item-content>
                         <v-list-item-title>
-                          <span style="font-size: 16px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
+                          <span style="font-size: 13px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
                         </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
@@ -371,13 +375,13 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title style="text-align: center;font-size: 16px !important;font-weight: 600 !important;">{{ item.contract_amount }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;font-size: 13px !important;font-weight: 600 !important;">{{ item.contract_amount }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
                     <v-list-item style="text-align: center;" v-for="item in item.all_contract_amount" :key="item">
                       <v-list-item-content>
                         <v-list-item-title>
-                          <span style="font-size: 16px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
+                          <span style="font-size: 13px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
                         </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
@@ -387,13 +391,13 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title style="text-align: center;font-size: 16px !important;font-weight: 600 !important;">{{ item.temp_no }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;font-size: 13px !important;font-weight: 600 !important;">{{ item.temp_no }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
                     <v-list-item style="text-align: center;" v-for="item in item.all_temp_no" :key="item">
                       <v-list-item-content>
                         <v-list-item-title>
-                          <span style="font-size: 16px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
+                          <span style="font-size: 13px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
                         </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
@@ -403,13 +407,13 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title style="text-align: center;font-size: 16px !important;font-weight: 600 !important;">{{ item.temp_amount }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;font-size: 13px !important;font-weight: 600 !important;">{{ item.temp_amount }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
                     <v-list-item style="text-align: center;" v-for="item in item.all_temp_amount" :key="item">
                       <v-list-item-content>
                         <v-list-item-title>
-                          <span style="font-size: 16px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
+                          <span style="font-size: 13px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
                         </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
@@ -419,13 +423,13 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title style="text-align: center;font-size: 16px !important;font-weight: 600 !important;">{{ item.freelancer_no }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;font-size: 13px !important;font-weight: 600 !important;">{{ item.freelancer_no }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
                     <v-list-item style="text-align: center;" v-for="item in item.all_freelancer_no" :key="item">
                       <v-list-item-content>
                         <v-list-item-title>
-                          <span style="font-size: 16px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
+                          <span style="font-size: 13px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
                         </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
@@ -435,13 +439,13 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title style="text-align: center;font-size: 16px !important;font-weight: 600 !important;">{{ item.freelancer_amount }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;font-size: 13px !important;font-weight: 600 !important;">{{ item.freelancer_amount }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
                     <v-list-item style="text-align: center;" v-for="item in item.all_freelancer_amount" :key="item">
                       <v-list-item-content>
                         <v-list-item-title>
-                          <span style="font-size: 16px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
+                          <span style="font-size: 13px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
                         </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
@@ -451,13 +455,13 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title style="text-align: center;font-size: 16px !important;font-weight: 600 !important;">{{ item.total_hc }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;font-size: 13px !important;font-weight: 600 !important;">{{ item.total_hc }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
                     <v-list-item style="text-align: center;" v-for="item in item.all_total_hc" :key="item">
                       <v-list-item-content>
                         <v-list-item-title>
-                          <span style="font-size: 16px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
+                          <span style="font-size: 13px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
                         </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
@@ -467,13 +471,13 @@
                   <v-list-group v-model="item.toggler" append-icon="">
                     <template v-slot:activator>
                       <v-list-item-content>
-                        <v-list-item-title style="text-align: center;font-size: 16px !important;font-weight: 600 !important;">{{ item.total_billing }}</v-list-item-title>
+                        <v-list-item-title style="text-align: center;font-size: 13px !important;font-weight: 600 !important;">{{ item.total_billing }}</v-list-item-title>
                       </v-list-item-content>
                     </template>
                     <v-list-item style="text-align: center;" v-for="item in item.all_total_billing" :key="item">
                       <v-list-item-content>
                         <v-list-item-title>
-                          <span style="font-size: 16px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
+                          <span style="font-size: 13px !important;font-weight: 400 !important;color: #7692AA !important;">{{ item }}</span>
                         </v-list-item-title>
                       </v-list-item-content>
                     </v-list-item>
@@ -488,7 +492,7 @@
       <v-col sm="12" md="6" lg="6">
         <v-card color="card_bg" id="card">
           <v-card-title id="card-title">
-            <h4 style="font-size: 20px !important;font-weight: 600 !important;">Categories of Roles</h4>
+            <h4 class="text--text" style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;">Categories of Roles</h4>
             <div class="flex_row">
               <v-icon color="#004880" x-small>fa-circle</v-icon>
               <span class="pl-2">Closed</span>
@@ -496,13 +500,13 @@
           </v-card-title>
           <v-card-text id="card-text">
             <v-row class="ma-0 pa-0 mb-3" justify="center" >
-              <v-col cols="8" class="ma-0 pa-0" align-self="center" style="margin-top: 21px !important;">
+              <v-col cols="8" class="ma-0 pa-0" align-self="center" style="margin-top: 21px !important;min-width: 95% !important;">
                 <div class="flex_row">
                 <div class="flex_column align-center mx-auto" v-for="item in categories_roles" :key="item">
                   <div class="flex_column justify-end " style="background: #E3E4E6;width: 30px;height: 200px;border-radius: 6px;">
                     <div :style="{ height: item.per }" style="background: #004880;width: 30px;border-radius: 6px;"></div>
                   </div>
-                  <span class="subtext--text caption d-inline pt-2 text-center">{{ item.title }}<br/>& Admin</span>
+                  <span class="subtext--text d-inline pt-2 text-center" style="font-size: 12px !important">{{ item.title }}<br/>& Admin</span>
                 </div>
               </div>
               </v-col>
@@ -514,7 +518,7 @@
       <v-col sm="12" md="6" lg="6">
         <v-card color="card_bg"  id="card">
           <v-card-title id="card-title">
-            <h4 class="text--text" style="font-size: 20px !important;font-weight: 600 !important;">Candidate Source</h4>
+            <h4 class="text--text" style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;">Candidate Source</h4>
           </v-card-title>
           <v-card-text id="card-text">
             <div class="ex_br__con flex_row align-center justify-space-between" style="max-height: 300px ">
@@ -872,12 +876,12 @@ export default {
 
       // REQUEST BREAKDOWN
       request_breakdown: [
-        { name: 'New Requests', num: '21', per: '50%', color:'secondary'  },
-        { name: 'Recruitment', num: '07', per: '40%', color:'primary' },
-        { name: 'Cancelled', num: '03', per: '30%', color:'accent4' },
-        { name: 'On Hold', num: '01', per: '10%', color:' accent5' },
-        { name: 'Unsuccessful', num: '05', per: '30%', color:'accent1' },
-        { name: 'Selections', num: '04', per: '20%', color:'accent6' },
+        { name: 'New Requests', num: '21', per: '50%', color:'secondary' , perColor: 'text-light', },
+        { name: 'Recruitment', num: '07', per: '40%', color:'primary' , perColor: 'text-light' },
+        { name: 'Cancelled', num: '03', per: '30%', color:'accent4' , perColor: 'text-light'},
+        { name: 'On Hold', num: '01', per: '10%', color:' accent5' , perColor: 'text-light'},
+        { name: 'Unsuccessful', num: '05', per: '30%', color:'accent1' , perColor: 'text-light'},
+        { name: 'Selections', num: '04', per: '20%', color:'accent6' , perColor: 'text-light'},
       ],
 
       // RECUTTING FUNNEL
@@ -898,7 +902,17 @@ export default {
           color: 'accent2',
         },
         {
+          name: 'Selections',
+          amount: '480',
+          color: 'accent2',
+        },
+        {
           name: 'Submitted',
+          amount: '480',
+          color: 'accent2',
+        },
+        {
+          name: 'Placements',
           amount: '480',
           color: 'accent2',
         },
