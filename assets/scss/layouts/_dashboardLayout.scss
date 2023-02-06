@@ -193,11 +193,13 @@
 a.dl__list_item.v-list-item--active.v-list-item.v-list-item {
     // color: #0A94FF !important;
 }
+// hover and side menu selected bg (***)
 a.theme--light.v-list-item--active:hover::before, .theme--light.v-list-item--active::before {
     opacity: 0.12;
     color: #0A94FF !important;
     height: 85%;
-    width: 80%;
+    // width: 80%;
+    width:  max-content;
     margin: auto;
     margin-top: 5px !important;
     margin-left: 19px !important;
