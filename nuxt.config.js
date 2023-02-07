@@ -30,6 +30,7 @@ export default {
   // ** PLUGINS 
   plugins: [
     '@/plugins/vuetify.js',
+    '@/plugins/vue-dragscroll.js',
     { src: '~/plugins/lineChart.js', mode: 'client' },
     { src: '~/plugins/doughnut-chart.js', mode: 'client' },
     { src: '~/plugins/pieChart.js', mode: 'client' },
@@ -80,7 +81,7 @@ export default {
   // ** SERVER
   server: {
     port: 5000, // default: 3000
-    host: 'localhost', // default: localhost,
+    host: '192.168.63.17', // default: localhost,
     timing: false
   },
 

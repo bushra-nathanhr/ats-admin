@@ -75,6 +75,17 @@
 }
 
 //***REQUEST-BREAKDOWN-REPORT**********************************
+.mainRequestBar-scroll{
+    overflow-y: auto !important;
+    max-height: 250px;
+
+  
+}
+.mainRequestBar-scroll::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+
+
 .request-progress{
     position: relative;
 
@@ -87,6 +98,26 @@
 
 
     }
+}
+
+//FUNNELCHART DATA ********************
+.funnel-chart{
+    position: relative;
+}
+.funnel-chartData{
+    position: absolute;
+    top: 6px;
+    /* left: 100px; */
+    z-index: 33;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 95%;
+}
+.funnel-chartData span {
+    color: #fff;
+   
 }
 
 
@@ -103,10 +134,10 @@
     }
     th{
         text-align: center !important;
-        padding: 15px !important;
+        // padding: 0px !important;
     }
     td {
-        padding: 6px !important;
+        // padding: 6px !important;
     }
     tr:hover{
         background-color: #f4f4f46e;
@@ -126,9 +157,21 @@
     }
     // ****HEADING SPACE
     .space--heading{
-        padding: 20px;
+        padding: 10px;
     }
 }
+//*************CATEGORIES OF ROLES *****************/////
+// ********** CATEGORIES SCROLLBAR  *************////
+.categories-scrollbar{
+    overflow-x: auto !important;
+    max-width: 715px;
+    cursor: grab;
+
+}
+
+// .categories-scrollbar::-webkit-scrollbar {
+//     display: none; /* for Chrome, Safari, and Opera */
+//   }
 .hederOnly:hover{
     background: transparent !important;
 }

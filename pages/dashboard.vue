@@ -60,7 +60,7 @@
       <Filters :data="filters" />
       <v-card  color="card_bg" class="flat ma-0 pa-0 mx-2 px-3 py-2" elevation="0" style="max-width: 200px !important; height: 77px !important; max-height: 100% !important; border-radius: 10px !important; border: 0px solid #fff!important;" :style=" darkMood == true ? '' : 'border: 0.5px solid #E2E7F1 !important;'">
         <div class="" style="max-width: 200px !important; ">
-          <label style="color:#7692AA !important; font-size: 12px !important; font-weight: 600 !important;" class="pl-2">Month & Year</label>
+          <label style="color:#7692AA !important; font-size: 14px !important; font-weight: 400 !important;" class="pl-2">Month & Year</label>
           <v-menu v-model="month_year_menu" :close-on-content-click="false" transition="scale-transition" offset-y min-width="auto">
             <template v-slot:activator="{ on, attrs }">
             <v-text-field v-model="month_year_date" placeholder="All" solo flat hide-details dense v-bind="attrs" v-on="on" />
@@ -79,9 +79,23 @@
           </v-card-title>
           <v-card-text id="card-margin" :class="privacyMood ? 'privacyMood' : ''">
             <v-row class="ex_br__con flex_row align-center justify-space-around">
-              <v-col class="d-flex align-center justify-center pt-0" cols="7">
+              <v-col class="d-flex align-center justify-center pt-0 funnel-chart " style="width: fit-content;" cols="7">
               <!-- FUNNEL CUSTOM CHART  -->
-                <FunnelChart/>
+                <!-- <FunnelChart/> -->
+                
+                <FunnelSvg
+                :width="200"
+                class=""
+                />
+                <div class="funnel-chartData" >
+                  <span>480</span>
+                  <span>267</span>
+                  <span>220</span>
+                  <span>170</span>
+                  <span>7</span>
+                  <span>13</span>
+                </div>
+
               </v-col>
               <v-col cols="5 pt-0">
                 <div class="flex_row align-start justify-space-between">
@@ -145,8 +159,8 @@
             <h4  class="text--text" style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;" >Request Breakdown</h4>
           </v-card-title>
           <v-card-text id="card-margin" class="">
-            <div class="">
-            <v-row class="ma-0 pa-0 mb-3 mt-6" justify="center" v-for="item in request_breakdown" :key="item">
+            <div class="mainRequestBar-scroll ">
+            <v-row class="ma-0 pa-0 mb-3 mt-1 " justify="center" v-for="item in request_breakdown" :key="item">
               <v-col cols="3" class="ma-0 pa-0" align-self="center">
                 <span class="Request-Breakdown ma-auto" style="font-size: 14px;">{{ item.name  }}</span>
               </v-col>
@@ -174,7 +188,7 @@
           <v-card-title id="card-title">
             <h4  class="text--text" style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;">Placements Overview Summary</h4>
           </v-card-title>
-          <v-card-text id="card-marginTop">
+          <v-card-text id="card-margin">
             <div class="top_green_cards flex_row justify-space-around mt-3">
               <div class="rounded pa-3 flex_row justify-space-around" style="min-height: 50px;background:#C9FFF1;min-width: 45%; border-radius: 10px !important;">
                 <span class="text-text font-weight-bold" style=" color: #2A2A2A !important; font-size: 14px!important">Dept. Placements</span>
@@ -186,11 +200,12 @@
               </div>
             </div>
             <v-spacer class="" style="padding: 10px 0"></v-spacer>
-            <v-simple-table class="customersByOverDueAmount__table table_bg" dense>
+          </v-card-text>
+          <v-simple-table class="customersByOverDueAmount__table table_bg" dense>
               <template v-slot:default>
                 <thead class="customersByOverDueAmount__thead">
                   <tr class="customersByOverDueAmount__tr" >
-                    <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5">
+                    <th style=" padding-left: 0px !important; font-size: 12px !important;" class=" text-left subtext--text h6 pr_5">
                       Recruiter<br/>Name
                     </th>
                     <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5" >
@@ -207,10 +222,10 @@
                 </thead>
                 <tbody>
                   <tr v-for="(item, index) in customers_by_overdue" :key="index" class="ma-0 pa-0">
-                    <td class=" text-left text--text h6" style="font-size: 14px !important">{{ item.name }}</td>
-                    <td class=" text-left text--text" style="font-size: 14px !important">{{ item.total_placements }}</td>
+                    <td class=" text-left text--text h6" style="  padding-left: 0px !important; font-size: 14px !important">{{ item.name }}</td>
+                    <td class=" text-left text--text" style=" width: 140px; font-size: 14px !important">{{ item.total_placements }}</td>
                     <td class=" text-left text--text" style="width: 250px">
-                      <div class="flex_row justify-center my-3" style="padding-top: 6px!important; padding-bottom: 6px !important; background: #1AD598;border-radius: 5px;width: 50%;">
+                      <div class="flex_row justify-center my-2" style="padding-top: 4px!important; padding-bottom: 4px !important; background: #1AD598;border-radius: 5px; width: 90px;">
                         <!-- global class removed from span  "caption" -->
                           <span class="black--text font-weight-bold" style="font-size: 12px !important">AED {{ item.total_billing }}</span>
                       </div>
@@ -220,7 +235,6 @@
                 </tbody>
               </template>
             </v-simple-table>
-          </v-card-text>
         </v-card>
       </v-col>
       <!-- Pipeline Overview -->
@@ -229,7 +243,7 @@
           <v-card-title id="card-title">
             <h4 class="text--text" style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;">Pipeline Overview</h4>
           </v-card-title>
-          <v-card-text id="card-marginTop">
+          <v-card-text id="card-margin">
             <div class="top_green_cards flex_row justify-space-around mt-3">
               <div class="rounded pa-3 flex_row justify-space-around" style="min-height: 50px;background:rgb(230, 244, 255);min-width: 45%; border-radius: 10px !important;">
                 <span class="text-text font-weight-bold" style="font-size: 14px !important; color: #2A2A2A;">Dept. Placements</span>
@@ -241,37 +255,41 @@
               </div>
             </div>
             <v-spacer class="" style="padding: 10px 0"></v-spacer>
-            <v-simple-table class="customersByOverDueAmount__table table_bg" >
+           
+          </v-card-text>
+          <v-simple-table class="customersByOverDueAmount__table table_bg" dense >
               <template v-slot:default>
                 <thead class="customersByOverDueAmount__thead">
                   <tr class="customersByOverDueAmount__tr" >
-                    <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5">
+                    <th style=" padding-left: 0px !important; font-size: 12px !important;" class=" text-left subtext--text h6 pr_5">
                       Recruiter<br/>Name
                     </th>
                     <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5" >
                       Total<br/>Placements
                     </th>
-                    <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5" >
+                    <th style="font-size: 12px !important;" class=" text-right subtext--text h6 pr_5" >
                       Total<br/>Billing
                     </th>
                   </tr>
-                  <div class="my-4"></div>
+                  <div class="my-2"></div>
                 </thead>
                 <tbody>
                   <tr v-for="(item, index) in customers_by_overdue" :key="index" class="ma-0 pa-0">
-                    <td class=" text-left text--text h6" style="font-size: 14px !important">{{ item.name }}</td>
-                    <td class=" text-left text--text" style="font-size: 14px !important">{{ item.total_placements }}</td>
-                    <td class=" text-center  text--text" style="width: 250px">
-                      <div class="chio__aed flex_row justify-center py-2 my-3 " style="background: #E6F4FF;border-radius: 5px;width: 60%;">
+                    <td class=" text-left text--text h6" style=" padding-left: 0px !important; width: 33%; font-size: 14px !important">{{ item.name }}</td>
+                    <td class=" text-left text--text" style=" width: 33%; font-size: 14px !important">{{ item.total_placements }}</td>
+                    <td class="text--text text-center" style=" padding: 0 !important; width: 33%">
+                      <div class=" d-flex align-center justify-end " >
+                        <div class="chio__aed  my-2 " style="  padding-top: 4px!important; padding-bottom: 4px !important; background: #E6F4FF;border-radius: 5px;width: 110px;">
                         <!-- global class removed from span  "caption" -->
                           <span class=" blue--text font-weight-bold" style="font-size: 12px !important;" >AED {{ item.total_billing }}</span>
                       </div>
+                      </div>
+                      
                     </td>
                   </tr>
                 </tbody>
               </template>
             </v-simple-table>
-          </v-card-text>
         </v-card>
       </v-col>
       <!-- Placement Report -->
@@ -283,8 +301,8 @@
           </v-card-title>
           <v-card-text id="card-text">
             <table class="dashboard_table" style="width:100%">
-              <tr class="customersByOverDueAmount__tr hederOnly">
-                    <th class="customersByOverDueAmount__th text-left text--text " rowspan="2" style="font-size: 12px !important;font-weight: bold !important; color: #2A2A2A !important;">Name</th>
+              <tr class="customersByOverDueAmount__tr hederOnly pa-2">
+                    <th class="customersByOverDueAmount__th text-left text--text space--heading " rowspan="2" style="font-size: 12px !important;font-weight: bold !important; color: #2A2A2A !important;">Name</th>
                     <th class="customersByOverDueAmount__th text-left text--text space--heading" colspan="2"  style="font-size: 12px !important;font-weight: bold !important; color: #2A2A2A !important;">Recruitment</th>
                     <th class="customersByOverDueAmount__th text-left text--text space--heading" colspan="2"  style="font-size: 12px !important;font-weight: bold !important; color: #2A2A2A !important;">Contract </th>
                     <th class="customersByOverDueAmount__th text-left text--text space--heading" colspan="2"  style="font-size: 12px !important;font-weight: bold !important; color: #2A2A2A !important;">Temp</th>
@@ -498,19 +516,19 @@
               <span class="pl-2">Closed</span>
             </div>
           </v-card-title>
-          <v-card-text id="card-text">
-            <v-row class="ma-0 pa-0 mb-3" justify="center" >
-              <v-col cols="8" class="ma-0 pa-0" align-self="center" style="margin-top: 21px !important;min-width: 95% !important;">
-                <div class="flex_row">
-                <div class="flex_column align-center mx-auto" v-for="item in categories_roles" :key="item">
-                  <div class="flex_column justify-end " style="background: #E3E4E6;width: 30px;height: 200px;border-radius: 6px;">
-                    <div :style="{ height: item.per }" style="background: #004880;width: 30px;border-radius: 6px;"></div>
+          <v-card-text   id="card-margin">
+              <v-row class="ma-0 pa-0 mb-3 d-flex align-center justify-center  " >
+                <v-col cols="8" class="ma-0 pa-0" style="margin-top: 21px !important;min-width: 90% !important;">
+                  <div   style="display: flex !important; align-items: center !important; justify-content: space-between !important;">
+                    <div style="min-width: 66px !important;" class="flex_column align-center" v-for="item in categories_roles" :key="item">
+                     <div class="flex_column justify-end " style="background: #E3E4E6;width: 30px;height: 200px;border-radius: 6px;">
+                       <div :style="{ height: item.per }" style="background: #004880;width: 30px;border-radius: 6px;"></div>
+                      </div>
+                      <span class="subtext--text d-inline pt-2 text-center" style="font-size: 10px !important">{{ item.title }}<br/>& Admin</span>
                   </div>
-                  <span class="subtext--text d-inline pt-2 text-center" style="font-size: 12px !important">{{ item.title }}<br/>& Admin</span>
                 </div>
-              </div>
-              </v-col>
-            </v-row>
+               </v-col>
+              </v-row>
           </v-card-text>
         </v-card>
       </v-col>
@@ -520,7 +538,7 @@
           <v-card-title id="card-title">
             <h4 class="text--text" style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;">Candidate Source</h4>
           </v-card-title>
-          <v-card-text id="card-text">
+          <v-card-text id="card-margin">
             <div class="ex_br__con flex_row align-center justify-space-between" style="max-height: 300px ">
               <div class="flex_column justify-space-between">
                 <div class="flex_row align-center pa-2 mt-2 mb-3" v-for="item in candidate_source" :key="item.id">
@@ -528,12 +546,12 @@
                   <span class="black--text" style="font-size: 15px !important;font-weight: 600 !important;">{{ item.name }} - {{ item.percentage }}% </span>
                 </div>
               </div>
-              <div class="doughnut_con" style="margin-bottom: 50px !important;" >
+              <div class="doughnut_con" style="padding-bottom: 50px;" >
                 <doughnut-chart
                   :chart-data="doughnutChartData"
                   :chart-options="doughnutChartOptions"
                   :colors="doughnutColors"
-                  :width="300"
+                  :width="265"
                 />
               </div>
             <div class="flex_column justify-space-between"></div>
@@ -553,6 +571,7 @@ import RedBellIcon from '@/assets/images/Alerts/red-bell-icon.svg'
 import YellowBellIcon from '@/assets/images/Alerts/yellow-bell-icon.svg'
 import ReloadIcon from '@/assets/images/DashboardLayout/Reload-icon.svg'
 import SalesGoalIcon from '@/assets/images/Dashboard/SalesGoal.svg'
+import FunnelSvg from '@/assets/images/DashboardLayout/funnelChart.svg'
 import OverviewTotalsViewer from '@/components/Dashboard/OverviewTotalsViewer/index.vue'
 import LineGraph from '@/components/Graphs/LineGraph/index.vue'
 import Footer from '@/components/Footer/index.vue'
@@ -561,6 +580,10 @@ import CustomInputContainer from '@/components/utils/CustomInputContainer.vue'
 import CardWithIcon from '@/components/Cards/CardWithIcon/index.vue'
 import Filters from '@/components/Dashboard/Filters.vue'
 import FunnelChart from '@/components/Dashboard/funnelChart/funnelChart.vue'
+
+
+
+
 // import DoughnutChart from './doughnut-chart.js'
 
 export default {
@@ -578,6 +601,8 @@ export default {
     SalesGoalIcon,
     Filters,
     FunnelChart,
+    FunnelSvg,
+   
    },
   data() {
     return {
@@ -614,11 +639,14 @@ export default {
 
       // doughnut chart data
       // labels: ['Bayt', 'LinkedIn', 'Indeed', 'Naukrigulf', 'Internal Database'],
+
+
+      //DOUGHNUT CHART****************************
       doughnutChartData: {
         datasets: [
           {
             backgroundColor: ['#56e2cf', '#e25668', '#56aee2', '#cf56e2', '#bce0fd'],
-            data: [40, 20, 80, 10],
+            data: ['20', '20', '20', '10', '20',],
             cutout:"65%",
           }
         ]
@@ -627,11 +655,11 @@ export default {
         responsive: true,
         maintainAspectRatio: false,
       },
-      doughnutColors: {
-        start: "#F7464A",
-        middle: "#46BFBD",
-        end: "#FDB45C"
-      },
+      // doughnutColors: {
+      //   start: "#F7464A",
+      //   middle: "#46BFBD",
+      //   end: "#FDB45C"
+      // },
 
       // line chart data
       lineChartOptions: {
@@ -858,11 +886,10 @@ export default {
         { title: 'Office Supp.', per: '60%' },
         { title: 'BFSI.', per: '90%' },
         { title: 'Office Supp.', per: '70%' },
-        { title: 'BFSI.', per: '40%' },
-        { title: 'Office Supp.', per: '10%' },
+        { title: 'BFSI.', per: '75%' },
+        { title: 'Office Supp.', per: '80%' },
         { title: 'Office Supp.', per: '90%' },
-        { title: 'Office Supp.', per: '30%' },
-        { title: 'Office Supp.', per: '50%' },
+        { title: 'Office Supp.', per: '55%' },
       ],
 
       // Placements Overview Summary
@@ -881,6 +908,11 @@ export default {
         { name: 'Cancelled', num: '03', per: '30%', color:'accent4' , perColor: 'text-light'},
         { name: 'On Hold', num: '01', per: '10%', color:' accent5' , perColor: 'text-light'},
         { name: 'Unsuccessful', num: '05', per: '30%', color:'accent1' , perColor: 'text-light'},
+        { name: 'Selections', num: '04', per: '20%', color:'accent6' , perColor: 'text-light'},
+        { name: 'Selections', num: '04', per: '20%', color:'accent6' , perColor: 'text-light'},
+        { name: 'Selections', num: '04', per: '20%', color:'accent6' , perColor: 'text-light'},
+        { name: 'Selections', num: '04', per: '20%', color:'accent6' , perColor: 'text-light'},
+        { name: 'Selections', num: '04', per: '20%', color:'accent6' , perColor: 'text-light'},
         { name: 'Selections', num: '04', per: '20%', color:'accent6' , perColor: 'text-light'},
       ],
 

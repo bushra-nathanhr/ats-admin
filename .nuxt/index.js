@@ -19,6 +19,7 @@ import nuxt_plugin_plugin_28d1a630 from 'nuxt_plugin_plugin_28d1a630' // Source:
 import nuxt_plugin_axios_506bd310 from 'nuxt_plugin_axios_506bd310' // Source: .\\axios.js (mode: 'all')
 import nuxt_plugin_moment_688bbef0 from 'nuxt_plugin_moment_688bbef0' // Source: .\\moment.js (mode: 'all')
 import nuxt_plugin_vuetify_7b76339d from 'nuxt_plugin_vuetify_7b76339d' // Source: ..\\plugins\\vuetify.js (mode: 'all')
+import nuxt_plugin_vuedragscroll_25318c4a from 'nuxt_plugin_vuedragscroll_25318c4a' // Source: ..\\plugins\\vue-dragscroll.js (mode: 'all')
 import nuxt_plugin_lineChart_f99c303a from 'nuxt_plugin_lineChart_f99c303a' // Source: ..\\plugins\\lineChart.js (mode: 'client')
 import nuxt_plugin_doughnutchart_d57e9be4 from 'nuxt_plugin_doughnutchart_d57e9be4' // Source: ..\\plugins\\doughnut-chart.js (mode: 'client')
 import nuxt_plugin_pieChart_207b1462 from 'nuxt_plugin_pieChart_207b1462' // Source: ..\\plugins\\pieChart.js (mode: 'client')
@@ -242,6 +243,10 @@ async function createApp(ssrContext, config = {}) {
 
   if (typeof nuxt_plugin_vuetify_7b76339d === 'function') {
     await nuxt_plugin_vuetify_7b76339d(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_vuedragscroll_25318c4a === 'function') {
+    await nuxt_plugin_vuedragscroll_25318c4a(app.context, inject)
   }
 
   if (process.client && typeof nuxt_plugin_lineChart_f99c303a === 'function') {
