@@ -32,6 +32,7 @@ export default {
     '@/plugins/vuetify.js',
     '@/plugins/vue-dragscroll.js',
     { src: '~/plugins/lineChart.js', mode: 'client' },
+    { src: '~/plugins/barChart.js', mode: 'client' },
     { src: '~/plugins/doughnut-chart.js', mode: 'client' },
     { src: '~/plugins/pieChart.js', mode: 'client' },
   ],

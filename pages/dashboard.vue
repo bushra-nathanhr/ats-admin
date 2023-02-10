@@ -60,6 +60,41 @@
         </v-row>
       </v-card>
     </v-dialog>
+
+
+     <!-- getRequestBreakdown -->
+     <!-- <div class="flex_row pa-3">
+        <v-btn @click="getRequestBreakdown()" class="mr-5" > fetch getRequestBreakdown</v-btn>
+        <div>{{ request_breakdown }}</div>
+      </div>
+      <v-divider></v-divider> -->
+       <!-- getRecruitingFunnel -->
+      <!-- <div class="flex_row pa-3">
+        <v-btn @click="$getRecruitingFunnel" class="mr-5" >fetch getRecruitingFunnel</v-btn>
+        <div>{{ recruiting_funnel }}</div>
+      </div>  
+      <v-divider></v-divider> -->
+      <!-- getPlacementsOverviewSummary -->
+      <!-- <div class="flex_row pa-3">
+        <v-btn @click="getPlacementsOverviewSummary" class="mr-5" >fetch getPlacementsOverviewSummary</v-btn>
+        <div>{{ placements_overview_summary }}</div>
+      </div>
+      <v-divider></v-divider> -->
+      <!-- getPipelineOverview -->
+      <!-- <div class="flex_row pa-3">
+        <v-btn @click="getPipelineOverview" class="mr-5" >fetch getPipelineOverview</v-btn>
+        <div>{{ pipeline_overview_summary }}</div>
+      </div>
+      <v-divider></v-divider> -->
+      <!-- getPlacementReport -->
+      <!-- <div class="flex_row pa-3">
+        <v-btn @click="getPlacementReport" class="mr-5" >fetch getPlacementReport</v-btn>
+        <div>{{ placement_report }}</div>
+      </div>
+      <v-divider></v-divider> -->
+
+
+
     <!-- TOP FILTER CARDS -->
     <div class="topSmallCards flex_row justify-space-between">
       <Filters :data="filters" />
@@ -95,28 +130,24 @@
                 <!-- FUNNEL CUSTOM CHART  -->
                 <FunnelSvg :width="200" class="" />
                       <div class="funnel-chartData">
-                        <span>480</span>
-                        <span>267</span>
-                        <span>220</span>
-                        <span>170</span>
-                        <span>7</span>
-                        <span>13</span>
+                        <span v-for=" item in  recruiting_funnel" :key="item" >{{ item.amount }}</span>
                       </div>
               </v-col>
               <v-col cols="5 pt-0">
-                <div class="flex_row align-start justify-space-between">
-                  <div class="1">
-                    <div class="flex_column">
-                      <h6 class="subtext--text" style="font-weight: 500 !important;">Applications</h6>
+                <!-- <div class="flex_row align-start justify-space-between"> -->
+                  <div class="" style=" display: flex !important;flex-wrap: wrap !important; gap: 38px !important; justify-content: space-around !important; min-height: 100% !important"
+                  >
+                    <div class="flex_column "  v-for="item in  recruiting_funnel" :key="item">
+                      <h6 class="subtext--text" style="font-weight: 500 !important;">{{ item.name }}</h6>
                       <div class="flex_row mt-3">
                         <div class="accent2 lines_color mr-2 flex_column"
                           style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
                         <span
                           style="color: #000027 !important; font-size: 16px !important; font-weight: 700 !important;"
-                          class="text--text pl-3">480</span>
+                          class="text--text pl-3">{{ item.amount }}</span>
                       </div>
                     </div>
-                    <div class="flex_column mt-9">
+                    <!-- <div class="flex_column ">
                       <h6 class="subtext--text" style="font-weight: 500 !important;">Qualified</h6>
                       <div class="flex_row mt-3">
                         <div class="primary lines_color mr-2 flex_column"
@@ -126,7 +157,7 @@
                           class="text--text pl-3">50%</span>
                       </div>
                     </div>
-                    <div class="flex_column mt-9">
+                    <div class="flex_column">
                       <h6 class="subtext--text" style="font-weight: 500 !important;">Submitted</h6>
                       <div class="flex_row mt-3">
                         <div class="accent4 lines_color mr-2 flex_column"
@@ -136,9 +167,7 @@
                           class="text--text pl-3">50%</span>
                       </div>
                     </div>
-                  </div>
-
-                  <div class="flex_column justify-lg-space-between" style="min-height: 100%">
+                  
                     <div class="flex_column">
                       <h6 class="subtext--text" style="font-weight: 500 !important;">Interviews</h6>
                       <div class="flex_row mt-3">
@@ -149,7 +178,7 @@
                           class="text--text pl-3">50%</span>
                       </div>
                     </div>
-                    <div class="flex_column mt-9">
+                    <div class="flex_column">
                       <h6 class="subtext--text" style="font-weight: 500 !important;">Selections</h6>
                       <div class="flex_row mt-3">
                         <div class="accent2 lines_color mr-2 flex_column"
@@ -159,7 +188,7 @@
                           class="text--text pl-3">50%</span>
                       </div>
                     </div>
-                    <div class="flex_column mt-9">
+                    <div class="flex_column">
                       <h6 class="subtext--text" style="font-weight: 500 !important;">Placements</h6>
                       <div class="flex_row mt-3">
                         <div class="primary lines_color mr-2 flex_column"
@@ -168,9 +197,9 @@
                           style="color: #000027 !important; font-size: 16px !important; font-weight: 700 !important;"
                           class="text--text pl-3">50%</span>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
-                </div>
+                <!-- </div> -->
               </v-col>
             </v-row>
           </v-card-text>
@@ -356,7 +385,7 @@
               style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;">Placement
               Report</h4>
             <span style="font-size: 12px !important; font-weight: 600 !important; color: #2A2A2A !important; ">Currency:
-              0 AED</span>
+              AED</span>
           </v-card-title>
           <v-card-text id="card-text">
             <table class="dashboard_table" style="width:100%">
@@ -654,15 +683,25 @@
         <v-card color="card_bg" id="card">
           <v-card-title id="card-title">
             <h4 class="text--text"
-              style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;">Categories of
-              Roles</h4>
+              style="color: #0A2C4F !important; font-weight: bold !important; font-size: 16px !important;"> Role Catagories </h4>
             <div class="flex_row">
-              <v-icon color="#004880" x-small>fa-circle</v-icon>
-              <span class="pl-2">Closed</span>
+              <v-icon color="#004880" style="font-size: 10px;" >fa-circle</v-icon>
+              <span class="pl-3">Closed</span>
             </div>
           </v-card-title>
           <v-card-text id="card-margin">
-            <v-row class="ma-0 pa-0 mb-3 d-flex align-center justify-center  ">
+            <!-- BAR CHART  -->
+                  <bar-chart 
+                  :chart-options="chartOptions" 
+                  :chart-data="chartData" 
+                  :chart-id="chartId" 
+                  :dataset-id-key="datasetIdKey"
+                  :plugins="plugins" 
+                  :css-classes="cssClasses" 
+                  :styles="styles" 
+                  :width="width" 
+                  :height="height" />
+            <!-- <v-row class="ma-0 pa-0 mb-3 d-flex align-center justify-center  ">
               <v-col cols="8" class="ma-0 pa-0" style="margin-top: 21px !important;min-width: 90% !important;">
                 <div
                   style="display: flex !important; align-items: center !important; justify-content: space-between !important;">
@@ -679,7 +718,7 @@
                   </div>
                 </div>
               </v-col>
-            </v-row>
+            </v-row> -->
           </v-card-text>
         </v-card>
       </v-col>
@@ -692,7 +731,11 @@
               Source</h4>
           </v-card-title>
           <v-card-text id="card-margin">
-            <div class="ex_br__con flex_row align-center justify-space-between" style="max-height: 300px ">
+            <div class="ex_br__con flex_row align-center justify-space-around" style="max-height: 270px ">
+              <div class="doughnut_con" style="padding-bottom: 0px;">
+                <doughnut-chart :chart-data="doughnutChartData" :chart-options="doughnutChartOptions"
+                  :width="265" />
+              </div>
               <div class="flex_column justify-space-between">
                 <div class="flex_row align-center pa-2 mt-2 mb-3" v-for="item in candidate_source" :key="item.id">
                   <div :class="item.color" class="dote mr-2"
@@ -702,17 +745,17 @@
                   }} - {{ item.percentage }}% </span>
                 </div>
               </div>
-              <div class="doughnut_con" style="padding-bottom: 50px;">
+              <!-- <div class="doughnut_con" style="padding-bottom: 50px;">
                 <doughnut-chart :chart-data="doughnutChartData" :chart-options="doughnutChartOptions"
                   :colors="doughnutColors" :width="265" />
-              </div>
-              <div class="flex_column justify-space-between"></div>
+              </div> -->
+              <!-- <div class="flex_column justify-space-between"></div> -->
             </div>
           </v-card-text>
         </v-card>
       </v-col>
     </v-row>
-    <v-row><v-spacer class="my-9 py-9"></v-spacer></v-row>
+    <v-row><v-spacer class="my-2 py-2"></v-spacer></v-row>
   </v-row>
 </template>
 
@@ -732,6 +775,7 @@ import CustomInputContainer from '@/components/utils/CustomInputContainer.vue'
 import CardWithIcon from '@/components/Cards/CardWithIcon/index.vue'
 import Filters from '@/components/Dashboard/Filters.vue'
 import FunnelChart from '@/components/Dashboard/funnelChart/funnelChart.vue'
+
 
 export default {
   layout: 'dashboard',
@@ -753,6 +797,54 @@ export default {
   },
   data() {
     return {
+    //BAR chart ********************************
+    chartData: {
+        labels: [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          
+        ],
+        datasets: [
+          {
+            label: 'Data One',
+            backgroundColor: '#004880',
+            data: [80, 60, 70, 70, 90, 90, 70, 120],
+            borderRadius: 8,
+            barThickness: 30,
+          }
+        ]
+      },
+      chartOptions: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            grid: {
+              display: false,
+            }
+          },
+          y: {
+            grid: {
+              borderWidth: 0.1,
+            }
+          },
+        }
+      },
+      
+     
+ 
+
+      // APIs Data
+      // request_breakdown: {},
+      // recruiting_funnel: {},
+      // placements_overview_summary: {},
+      // pipeline_overview_summary: {},
+      // placement_report: {},
 
       //DOUGHNUT CHART****************************
       doughnutChartData: {
@@ -760,7 +852,7 @@ export default {
           {
             backgroundColor: ['#56e2cf', '#e25668', '#56aee2', '#cf56e2', '#bce0fd'],
             data: ['20', '20', '20', '10', '20',],
-            cutout: "65%",
+            cutout: "56%",
           }
         ]
       },
@@ -1186,7 +1278,58 @@ export default {
       ],
     }
   },
+  //METHODS 
   methods: {
+    //  // Placement Report
+    //  async getPlacementReport() {
+    //     let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/placements_report/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
+    //     .then(res => {
+    //       this.placement_report = res
+    //       console.log('placement_report fetching =>', this.placement_report)
+    //     })
+    //   .catch(err => console.log(err))
+    // },
+
+    // // Pipeline Overview
+    // async getPipelineOverview() {
+    //     let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/pipeline_overview/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
+    //     .then(res => {
+    //       this.pipeline_overview_summary = res
+    //       console.log('pipeline_overview_summary fetching =>', this.pipeline_overview_summary)
+    //     })
+    //   .catch(err => console.log(err))
+    // },
+
+    // // Placements Overview Summary
+    // async getPlacementsOverviewSummary() {
+    //     let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/placements_overview/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
+    //     .then(res => {
+    //       this.placements_overview_summary = res.json()
+    //       console.log('placements_overview_summary fetching =>', res)
+    //     })
+    //   .catch(err => console.log(err))
+    // },
+
+    // // Request Breakdown
+    // async getRequestBreakdown() {
+    //   let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/request_breakdown/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
+    //   .then(res => {
+    //     this.request_breakdown = res.request
+    //     console.log('request_breakdown fetching =>', this.request_breakdown)
+    //   })
+    //   .catch(err => console.log(err))
+    // },
+    
+    // // Recruiting Funnel
+    // async getRecruitingFunnel() {
+    //   let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/recruiting_funnel/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
+    //   .then(res => {
+    //     this.recruiting_funnel = res.request
+    //     console.log('recruiting_funnel fetching =>', this.recruiting_funnel)
+    //   })
+    //   .catch(err => console.log(err))
+    // },
+
     mapGlobalStateToLocal() {
       this.firstVisit = this.getValues.firstVisit
     },

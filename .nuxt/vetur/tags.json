@@ -1,15 +1,9 @@
 {
-  "DashboardFilters": {
-    "description": "Auto imported from components/Dashboard/Filters.vue"
-  },
-  "Footer": {
-    "description": "Auto imported from components/Footer/index.vue"
-  },
   "ReportsReportViewListCard": {
     "description": "Auto imported from components/Reports/ReportViewListCard.vue"
   },
-  "WIPTheme": {
-    "description": "Auto imported from components/WIP/theme.vue"
+  "Footer": {
+    "description": "Auto imported from components/Footer/index.vue"
   },
   "UtilsCustomInputContainer": {
     "description": "Auto imported from components/utils/CustomInputContainer.vue"
@@ -26,25 +20,31 @@
   "UtilsSnackBar": {
     "description": "Auto imported from components/utils/SnackBar.vue"
   },
+  "DashboardFilters": {
+    "description": "Auto imported from components/Dashboard/Filters.vue"
+  },
+  "WIPTheme": {
+    "description": "Auto imported from components/WIP/theme.vue"
+  },
   "CardsCardWithIcon": {
     "description": "Auto imported from components/Cards/CardWithIcon/index.vue"
   },
   "CardsTotalsCard": {
     "description": "Auto imported from components/Cards/TotalsCard/index.vue"
   },
-  "DashboardFunnelChart": {
-    "description": "Auto imported from components/Dashboard/funnelChart/funnelChart.vue"
-  },
-  "DashboardOverviewTotalsViewer": {
-    "description": "Auto imported from components/Dashboard/OverviewTotalsViewer/index.vue"
-  },
-  "GraphsLineGraph": {
-    "description": "Auto imported from components/Graphs/LineGraph/index.vue"
-  },
   "LayoutAccountsDropDownMenu": {
     "description": "Auto imported from components/Layout/AccountsDropDownMenu/index.vue"
   },
   "LayoutHeaderTabs": {
     "description": "Auto imported from components/Layout/HeaderTabs/index.vue"
+  },
+  "GraphsLineGraph": {
+    "description": "Auto imported from components/Graphs/LineGraph/index.vue"
+  },
+  "DashboardFunnelChart": {
+    "description": "Auto imported from components/Dashboard/funnelChart/funnelChart.vue"
+  },
+  "DashboardOverviewTotalsViewer": {
+    "description": "Auto imported from components/Dashboard/OverviewTotalsViewer/index.vue"
   }
 }
