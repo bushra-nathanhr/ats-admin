@@ -78,10 +78,23 @@
 .mainRequestBar-scroll{
     overflow-y: auto !important;
     max-height: 250px;
-
-  
 }
 .mainRequestBar-scroll::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
+
+//   PLACMENT OVERVIEW SCROLBAR ************
+
+.placement_table_scrollbar{
+    overflow-y: auto; /* make the table scrollable if height is more than 200 px  */
+    height: 270px;
+}
+.placement_table_scrollbar   thead tr th {
+    position: sticky !important;
+    position: -webkit-sticky; 
+    top: 0px; 
+  }
+.placement_table_scrollbar::-webkit-scrollbar {
     display: none; /* for Chrome, Safari, and Opera */
   }
 
@@ -127,6 +140,8 @@
     border: 0.5px solid #e3e4e6;
     border-radius: 20px !important;
     border-collapse: collapse;
+    
+    
     th,
     td {
         border: 1px solid #e3e4e6;
@@ -160,18 +175,7 @@
         padding: 10px;
     }
 }
-//*************CATEGORIES OF ROLES *****************/////
-// ********** CATEGORIES SCROLLBAR  *************////
-.categories-scrollbar{
-    overflow-x: auto !important;
-    max-width: 715px;
-    cursor: grab;
 
-}
-
-// .categories-scrollbar::-webkit-scrollbar {
-//     display: none; /* for Chrome, Safari, and Opera */
-//   }
 .hederOnly:hover{
     background: transparent !important;
 }

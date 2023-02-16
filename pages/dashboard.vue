@@ -1,5 +1,5 @@
 <template>
-  <v-row class="dashboard_wrapper mb-9">
+  <v-row class=" mb-9">
     <!-- WELCOME DIALOG -->
     <v-dialog v-model="welcomeDialog" persistent max-width="70vw">
       <v-card id="card">
@@ -61,19 +61,19 @@
       </v-card>
     </v-dialog>
 
-
+       <!-- getRecruitingFunnel -->
+       <!-- <div class="flex_row pa-3">
+        <v-btn @click="getRecruitingFunnel()" class="mr-5" >fetch getRecruitingFunnel</v-btn>
+        <div>{{ recruiting_funnel }}</div>
+      </div>  
+      <v-divider></v-divider> -->
      <!-- getRequestBreakdown -->
      <!-- <div class="flex_row pa-3">
         <v-btn @click="getRequestBreakdown()" class="mr-5" > fetch getRequestBreakdown</v-btn>
         <div>{{ request_breakdown }}</div>
       </div>
       <v-divider></v-divider> -->
-       <!-- getRecruitingFunnel -->
-      <!-- <div class="flex_row pa-3">
-        <v-btn @click="$getRecruitingFunnel" class="mr-5" >fetch getRecruitingFunnel</v-btn>
-        <div>{{ recruiting_funnel }}</div>
-      </div>  
-      <v-divider></v-divider> -->
+      
       <!-- getPlacementsOverviewSummary -->
       <!-- <div class="flex_row pa-3">
         <v-btn @click="getPlacementsOverviewSummary" class="mr-5" >fetch getPlacementsOverviewSummary</v-btn>
@@ -96,26 +96,77 @@
 
 
     <!-- TOP FILTER CARDS -->
-    <div class="topSmallCards flex_row justify-space-between">
-      <Filters :data="filters" />
-      <v-card color="card_bg" class="flat ma-0 pa-0 mx-2 px-3 py-2" elevation="0"
+    <div class="topSmallCards row1 flex_row justify-space-between" style=" width: 100% !important;">
+       <!-- Recutier-Card  -->
+       <v-card color="card_bg" class="flat ma-0 pa-0 mx-2 px-3 py-1" elevation="0"
         style="max-width: 200px !important; height: 77px !important; max-height: 100% !important; border-radius: 10px !important; border: 0px solid #fff!important;"
         :style="darkMood == true ? '' : 'border: 0.5px solid #E2E7F1 !important;'">
         <div class="" style="max-width: 200px !important; ">
-          <label style="color:#7692AA !important; font-size: 14px !important; font-weight: 400 !important;"
-            class="pl-2">Month & Year</label>
-          <v-menu v-model="month_year_menu" :close-on-content-click="false" transition="scale-transition" offset-y
-            min-width="auto">
-            <template v-slot:activator="{ on, attrs }">
-              <v-text-field v-model="month_year_date" placeholder="All" solo flat hide-details dense v-bind="attrs"
-                v-on="on" />
-            </template>
-            <v-date-picker v-model="month_year_date" @input="month_year_menu = false" />
-          </v-menu>
+          <label class="pl-2" style="color:#7692AA !important; font-size: 14px !important; font-weight: 400 !important;">Recruiter</label>
+          <v-select :items="recruiters_list" v-model="filterRecruiter" @change="getRequestsByRecruiter" item-text="name" item-value="id"  placeholder="All" flat solo multiple hide-details/>
         </div>
       </v-card>
+      <!-- Account-manager card -->
+      <v-card color="card_bg" class="flat ma-0 pa-0 mx-2 px-3 py-1" elevation="0"
+        style="max-width: 200px !important; height: 77px !important; max-height: 100% !important; border-radius: 10px !important; border: 0px solid #fff!important;"
+        :style="darkMood == true ? '' : 'border: 0.5px solid #E2E7F1 !important;'">
+        <div class="" style="max-width: 200px !important; ">
+          <label class="pl-2" style="color:#7692AA !important; font-size: 14px !important; font-weight: 400 !important;">Accnt. Manager</label>
+          <v-select :items="accountmngrs_list" v-model="filterAccountManager" @change="getRequestsByRecruiter" item-text="name" item-value="_id" placeholder="All"   flat solo multiple hide-details/>
+        </div>
+      </v-card>
+
+      <!-- <Filters :data="filters" /> -->
+
+       <!-- Service Type  -->
+       <v-card color="card_bg" class="flat ma-0 pa-0 mx-2 px-3 py-1" elevation="0"
+        style="max-width: 200px !important; height: 77px !important; max-height: 100% !important; border-radius: 10px !important; border: 0px solid #fff!important;"
+        :style="darkMood == true ? '' : 'border: 0.5px solid #E2E7F1 !important;'">
+        <div class="" style="max-width: 200px !important; ">
+          <label class="pl-2" style="color:#7692AA !important; font-size: 14px !important; font-weight: 400 !important;">Service Type</label>
+          <v-select  :items="service_types_list" @change="getRequestsByRecruiter" item-text="name" item-value="name" v-model="selectedServiceType" placeholder="All"  flat solo multiple hide-details/>
+        </div>
+      </v-card>
+       <!-- Countries List  -->
+       <v-card color="card_bg" class="flat ma-0 pa-0 mx-2 px-3 py-1" elevation="0"
+        style="max-width: 200px !important; height: 77px !important; max-height: 100% !important; border-radius: 10px !important; border: 0px solid #fff!important;"
+        :style="darkMood == true ? '' : 'border: 0.5px solid #E2E7F1 !important;'">
+        <div class="" style="max-width: 200px !important; ">
+          <label class="pl-2" style="color:#7692AA !important; font-size: 14px !important; font-weight: 400 !important;">Role Location</label>
+          <v-select  :items="roleLocationFilters" @change="getRequestsByRecruiter" item-text="name" item-value="name" v-model="selectedRoleLocation" placeholder="All" flat solo hide-details/>
+        </div>
+      </v-card>
+      <!-- Date Type  -->
+      <v-card color="card_bg" class="flat ma-0 pa-0 mx-2 px-3 py-1" elevation="0"
+        style="max-width: 200px !important; height: 77px !important; max-height: 100% !important; border-radius: 10px !important; border: 0px solid #fff!important;"
+        :style="darkMood == true ? '' : 'border: 0.5px solid #E2E7F1 !important;'">
+        <div class="" style="max-width: 200px !important; ">
+          <label class="pl-2" style="color:#7692AA !important; font-size: 14px !important; font-weight: 400 !important;">Date Type</label>
+          <v-select  :items="date_types" @change="getRequestsByRecruiter" item-text="name" item-value="value" v-model="selectedDateType" placeholder="Select"   flat solo   hide-details/>
+        </div>
+      </v-card>
+       <!-- month-card  -->
+       <v-card color="card_bg" class="flat ma-0 pa-0 mx-2 px-3 py-1" elevation="0"
+        style="max-width: 200px !important; height: 77px !important; max-height: 100% !important; border-radius: 10px !important; border: 0px solid #fff!important;"
+        :style="darkMood == true ? '' : 'border: 0.5px solid #E2E7F1 !important;'">
+        <div class="" style="max-width: 200px !important; ">
+          <label class="pl-2" style="color:#7692AA !important; font-size: 14px !important; font-weight: 400 !important;">Month</label>
+          <v-select :items="month_list" v-model="selectedMonth" @change="getRequestsByRecruiter($event, true, 'month')" item-text="name" item-value="value" placeholder="All"  flat solo  multiple  hide-details/>
+        </div>
+      </v-card>
+
+      <!-- Year-card  -->
+      <v-card color="card_bg" class="flat ma-0 pa-0 mx-2 px-3 py-1" elevation="0"
+        style="max-width: 200px !important; height: 77px !important; max-height: 100% !important; border-radius: 10px !important; border: 0px solid #fff!important;"
+        :style="darkMood == true ? '' : 'border: 0.5px solid #E2E7F1 !important;'">
+        <div class="" style="max-width: 200px !important; ">
+          <label class="pl-2" style="color:#7692AA !important; font-size: 14px !important; font-weight: 400 !important;">Year</label>
+          <v-select :items="year_list" v-model="filterYear" @change="getRequestsByRecruiter" item-text="value" item-value="value" placeholder="Select"  flat solo   hide-details/>
+        </div>
+      </v-card>
+     
     </div>
-    <v-row class="row1">
+    <v-row class="row1 " >
       <!-- RECUTTING FUNNEL -->
       <v-col sm="12" md="6" lg="6">
         <v-card color="card_bg" id="card">
@@ -130,21 +181,24 @@
                 <!-- FUNNEL CUSTOM CHART  -->
                 <FunnelSvg :width="200" class="" />
                       <div class="funnel-chartData">
-                        <span v-for=" item in  recruiting_funnel" :key="item" >{{ item.amount }}</span>
+                        <span  >.</span>
+                        <span  v-for="(item, key) in recruiting_funnel[0]" :key="key" >{{ item[0].count }}</span>
                       </div>
               </v-col>
               <v-col cols="5 pt-0">
                 <!-- <div class="flex_row align-start justify-space-between"> -->
-                  <div class="" style=" display: flex !important;flex-wrap: wrap !important; gap: 38px !important; justify-content: space-around !important; min-height: 100% !important"
-                  >
-                    <div class="flex_column "  v-for="item in  recruiting_funnel" :key="item">
-                      <h6 class="subtext--text" style="font-weight: 500 !important;">{{ item.name }}</h6>
-                      <div class="flex_row mt-3">
-                        <div class="accent2 lines_color mr-2 flex_column"
+                  <div class="" style=" display: flex !important;flex-wrap: wrap !important; gap: 38px !important; justify-content: flex-start !important; min-height: 100% !important">
+                    <div class="flex_column " style="min-width: 40%;"   v-for="(item, key) in recruiting_funnel[0]" :key="key">
+                      <h6 class="subtext--text" style="font-weight: 500 !important;">{{ key }}</h6>
+                      <div class="flex_row mt-3" >
+                        <div   >
+                          <div class="accent2 lines_color mr-2 flex_column"   
                           style="min-width: 3px; min-height: 20px; border-radius: 3px"></div>
+                        </div>
+                     
                         <span
                           style="color: #000027 !important; font-size: 16px !important; font-weight: 700 !important;"
-                          class="text--text pl-3">{{ item.amount }}</span>
+                          class="text--text pl-3">{{ item[0].percentagedata }}</span>
                       </div>
                     </div>
                     <!-- <div class="flex_column ">
@@ -263,50 +317,53 @@
             </div>
             <v-spacer class="" style="padding: 10px 0"></v-spacer>
           </v-card-text>
-          <v-simple-table class="customersByOverDueAmount__table table_bg" dense>
-            <template v-slot:default>
-              <thead class="customersByOverDueAmount__thead">
-                <tr class="customersByOverDueAmount__tr">
-                  <th style=" padding-left: 0px !important; font-size: 12px !important;"
-                    class=" text-left subtext--text h6 pr_5">
-                    Recruiter<br />Name
-                  </th>
-                  <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5">
-                    Total<br />Placements
-                  </th>
-                  <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5">
-                    Billing VS<br />Targets
-                  </th>
-                  <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5">
-                    Average<br />Billing
-                  </th>
-                </tr>
-                <div class="my-4"></div>
-              </thead>
-              <tbody>
-                <tr v-for="(item, index) in customers_by_overdue" :key="index" class="ma-0 pa-0">
-                  <td class=" text-left text--text h6"
-                    style="  padding-left: 0px !important; font-size: 14px !important">{{ item.name }}</td>
-                  <td class=" text-left text--text" style=" width: 140px; font-size: 14px !important">{{
-                    item.total_placements
-                  }}</td>
-                  <td class=" text-left text--text" style="width: 250px">
-                    <div class="flex_row justify-center my-2"
-                      style="padding-top: 4px!important; padding-bottom: 4px !important; background: #1AD598;border-radius: 5px; width: 90px;">
-                      <!-- global class removed from span  "caption" -->
-                      <span class="black--text font-weight-bold" style="font-size: 12px !important">AED {{
-                        item.total_billing
-                      }}</span>
-                    </div>
-                  </td>
-                  <td class="text-left text--text"
-                    style="font-size: 14px !important; font-weight: 600 !important; width: 140px;">AED {{
+          <div class="placement_table_scrollbar ">
+            <v-simple-table  fixed-header class="customersByOverDueAmount__table table_bg" dense>
+              <template v-slot:default>
+                <thead class="customersByOverDueAmount__thead">
+                  <tr class="customersByOverDueAmount__tr">
+                    <th style=" padding-left: 0px !important; font-size: 12px !important;" class=" text-left subtext--text h6 pr_5">
+                      Recruiter<br />Name
+                    </th>
+                    <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5">
+                      Total<br />Placements
+                    </th>
+                    <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5">
+                      Billing VS<br />Targets
+                    </th>
+                    <th style="font-size: 12px !important;" class=" text-left subtext--text h6 pr_5">
+                      Average<br />Billing
+                    </th>
+                  </tr>
+                  <div class="my-4"></div>
+                </thead>
+                <tbody class="">
+            
+                  <tr v-for="(item, index) in customers_by_overdue" :key="index" class="ma-0 pa-0 ">
+                    <td class=" text-left text--text h6" style="  padding-left: 0px !important; font-size: 14px !important">{{
+                      item.name }}</td>
+                    <td class=" text-left text--text" style=" width: 140px; font-size: 14px !important">{{
+                      item.total_placements
+                      }}</td>
+                    <td class=" text-left text--text" style="width: 250px">
+                      <div class="flex_row justify-center my-2"
+                        style="padding-top: 4px!important; padding-bottom: 4px !important; background: #1AD598;border-radius: 5px; width: 90px;">
+                        <!-- global class removed from span  "caption" -->
+                        <span class="black--text font-weight-bold" style="font-size: 12px !important">AED {{
+                          item.total_billing
+                          }}</span>
+                      </div>
+                    </td>
+                    <td class="text-left text--text" style="font-size: 14px !important; font-weight: 600 !important; width: 140px;">
+                      AED {{
                       item.average_billing
-                    }}</td>
-                </tr>
-              </tbody>
-            </template>
-          </v-simple-table>
+                      }}</td>
+                  </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
+          </div>
+          
         </v-card>
       </v-col>
       <!-- Pipeline Overview -->
@@ -335,7 +392,8 @@
             <v-spacer class="" style="padding: 10px 0"></v-spacer>
 
           </v-card-text>
-          <v-simple-table class="customersByOverDueAmount__table table_bg" dense>
+          <div class="placement_table_scrollbar ">
+            <v-simple-table class="customersByOverDueAmount__table table_bg" dense>
             <template v-slot:default>
               <thead class="customersByOverDueAmount__thead">
                 <tr class="customersByOverDueAmount__tr">
@@ -375,8 +433,11 @@
               </tbody>
             </template>
           </v-simple-table>
+          </div>
+         
         </v-card>
       </v-col>
+      
       <!-- Placement Report -->
       <v-col sm="12" md="12" lg="12">
         <v-card id="card">
@@ -428,7 +489,9 @@
                 <td class="customersByOverDueAmount__td text-center subtext--text "
                   style="font-size: 12px !important;font-weight: 600;color: #7692AA !important"> Billing</td>
               </tr>
-              <tr v-for="(item, index) in placement_report" :key="index" @click="togglerHandle">
+              <tbody>
+
+                <tr v-for="(item, index) in placement_report" :key="index" @click="togglerHandle">
                 <td class="customersByOverDueAmount__td table__sidebar   name__dropdown text-left text--text">
                   <v-list-group class="aa" v-model="item.toggler" eager active-class="a">
                     <!-- <template v-slot:appendIcon><v-icon color="primary" x-small>fa-arrow fa-down</v-icon></template> -->
@@ -674,6 +737,8 @@
                   </v-list-group>
                 </td>
               </tr>
+              </tbody>
+              
             </table>
           </v-card-text>
         </v-card>
@@ -760,7 +825,7 @@
 </template>
 
 <script>
-import '@/assets/scss/_dashboard.scss'
+// import '@/assets/scss/_dashboard.scss'
 import '@/assets/scss/utils/Tables/_customersByOverDueAmount.scss'
 import RedBellIcon from '@/assets/images/Alerts/red-bell-icon.svg'
 import YellowBellIcon from '@/assets/images/Alerts/yellow-bell-icon.svg'
@@ -793,10 +858,59 @@ export default {
     Filters,
     FunnelChart,
     FunnelSvg,
-
   },
+  async asyncData({app, store}){
+        //const client_id = '5f8569f4403c982823b945e3'
+        // let requests = await app.$axios.$get(process.env.computedAPIURL+'/requests/all/')
+        // let clients = await app.$axios.$get(process.env.centralAPIURL+'/clients/all')
+        let recruiters = await app.$axios.$get('https://stquery.nathanhr.com/recruiters/all' )
+        // let active_recruiters = await app.$axios.$get(process.env.computedAPIURL+'/recruiters/active', {headers: { Authorization: AuthStr }})
+        // // let nationalities = await app.$axios.$get(process.env.computedAPIURL+'/nationalities/all')
+        // let industries = await app.$axios.$get('/industries/all', {headers: { Authorization: AuthStr }})
+        let account_managers = await app.$axios.$get('https://stquery.nathanhr.com/users/account_managers')
+        let countries = await app.$axios.$get('https://stquery.nathanhr.com/countries/all')
+
+        return {
+            // requests,
+            // clients,
+            recruiters: recruiters[0],
+            // active_recruiters: active_recruiters[0],
+            // // nationalities,
+            // industries,
+            account_managers,
+            // AuthStr,
+            countries
+        }
+    },
   data() {
     return {
+      //Service Type List 
+      service_types_list: [{name: 'All'}, {name: 'Contract Staffing'}, {name: 'Temporary Staffing'}, {name: 'Permanent Recruitment'}, {name: 'RFI/Tender'}, {name: 'RPO'}],
+      //top-cards Recutier data ******************
+      filterRecruiter: 'all',
+      //date-type ******************
+      date_types: [{name: 'Active Month', value: "active_month"}, {name: 'Created Month', value: 'created_month'}],
+      //years data ****************
+      year_list: [],
+      
+      filterYear: new Date().getFullYear(),
+      //months data*******
+      selectedMonth: [new Date().getMonth() + 1],
+        month_list: [
+                { name: 'All', value: 'all' },
+                { name: 'January', value: 1 },
+                { name: 'February', value: 2 },
+                { name: 'March', value: 3 },
+                { name: 'April', value: 4 },
+                { name: 'May', value: 5 },
+                { name: 'June', value: 6 },
+                { name: 'July', value: 7 },
+                { name: 'August', value: 8 },
+                { name: 'September', value: 9 },
+                { name: 'October', value: 10 },
+                { name: 'November', value: 11 },
+                { name: 'December', value: 12 },
+            ],
     //BAR chart ********************************
     chartData: {
         labels: [
@@ -833,18 +947,23 @@ export default {
               borderWidth: 0.1,
             }
           },
-        }
+        },
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
       },
       
      
  
 
       // APIs Data
-      // request_breakdown: {},
-      // recruiting_funnel: {},
-      // placements_overview_summary: {},
-      // pipeline_overview_summary: {},
-      // placement_report: {},
+      request_breakdown: {},
+      recruiting_funnel: {},
+      placements_overview_summary: {},
+      pipeline_overview_summary: {},
+      placement_report: {},
 
       //DOUGHNUT CHART****************************
       doughnutChartData: {
@@ -925,27 +1044,22 @@ export default {
           toggler: false,
           name: 'Sanjeed',
           country: ['UAE', 'EGY', 'SD'],
-
           recruitment_no: 6,
           recruitment_amount: '100.000',
           all_recruitment_no: [4, 2, 0],
           all_recruitment_amount: ['60.000', '40.000', '20.000'],
-
           contract_no: 4,
           contract_amount: '50.000',
           all_contract_no: [2, 1, 0],
           all_contract_amount: ['30.000', '20.000', '20.000'],
-
           temp_no: 6,
           temp_amount: '85.000',
           all_temp_no: [4, 2, 0],
           all_temp_amount: ['35.000', '50.000', '10.000'],
-
           freelancer_no: 0,
           freelancer_amount: '0.00',
           all_freelancer_no: [0, 0, 0],
           all_freelancer_amount: ['0.00', '0.00', '0.00'],
-
           total_hc: 16,
           total_billing: '235.000',
           all_total_hc: [' ', ' ', ' '],
@@ -955,7 +1069,6 @@ export default {
           toggler: false,
           name: 'Dineen',
           country: ['UAE', 'EGY', 'SD'],
-
           recruitment_no: 6,
           recruitment_amount: '78.000',
           all_recruitment_no: [4, 2, 0],
@@ -1041,6 +1154,7 @@ export default {
           all_total_hc: [' ', ' ', ' '],
           all_total_billing: [' ', ' ', ' '],
         },
+       
         {
           toggler: false,
           name: 'Nikita',
@@ -1071,7 +1185,11 @@ export default {
           all_total_hc: [' ', ' ', ' '],
           all_total_billing: [' ', ' ', ' '],
         },
+        
+       
       ],
+
+
       // Candidate Source
       candidate_source: [
         { name: 'Bayt', color: 'accent2' },
@@ -1093,13 +1211,13 @@ export default {
       ],
 
       // Placements Overview Summary
-      placements_overview_summary: [
-        { c_name: 'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
-        { c_name: 'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
-        { c_name: 'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
-        { c_name: 'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
-        { c_name: 'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
-      ],
+      // placements_overview_summary: [
+      //   { c_name: 'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
+      //   { c_name: 'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
+      //   { c_name: 'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
+      //   { c_name: 'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
+      //   { c_name: 'Massive Dynamic', balance_due: '23,785', within_due: '1/2/2023', over_due: '1,25,489', due_invoice: '13', above_credit_limit: 'Yes' },
+      // ],
 
       // REQUEST BREAKDOWN
       request_breakdown: [
@@ -1116,49 +1234,49 @@ export default {
         { name: 'Selections', num: '04', per: '20%', color: 'accent6', perColor: 'text-light' },
       ],
 
-      // RECUTTING FUNNEL
-      recruiting_funnel: [
-        {
-          name: 'Applicants',
-          amount: '480',
-          color: 'accent2',
-        },
-        {
-          name: 'Interviews',
-          amount: '170',
-          color: 'accent2',
-        },
-        {
-          name: 'Qualified',
-          amount: '480',
-          color: 'accent2',
-        },
-        {
-          name: 'Selections',
-          amount: '480',
-          color: 'accent2',
-        },
-        {
-          name: 'Submitted',
-          amount: '480',
-          color: 'accent2',
-        },
-        {
-          name: 'Placements',
-          amount: '480',
-          color: 'accent2',
-        },
-      ],
+      // // RECUTTING FUNNEL
+      // recruiting_funnel: [
+      //   {
+      //     // name: 'Applicants',
+      //     amount: '480',
+      //     color: 'accent2',
+      //   },
+      //   {
+      //     // name: 'Interviews',
+      //     // amount: '170',
+      //     color: 'accent1',
+      //   },
+      //   {
+      //     // name: 'Qualified',
+      //     // amount: '480',
+      //     color: 'accent6',
+      //   },
+      //   {
+      //     // name: 'Selections',
+      //     // amount: '480',
+      //     color: 'accent2',
+      //   },
+      //   {
+      //     // name: 'Submitted',
+      //     // amount: '480',
+      //     color: 'accent2',
+      //   },
+      //   {
+      //     // name: 'Placements',
+      //     // amount: '480',
+      //     color: 'accent2',
+      //   },
+      // ],
 
       // FILTERS DATA
-      filters: [
-        { label: 'Recruiter', placeholder: 'All', items: 'All' },
-        { label: 'Acct. Manager', placeholder: 'All', items: 'All' },
-        { label: 'Status', placeholder: 'All', items: 'All' },
-        { label: 'Service Type', placeholder: 'All', items: 'All' },
-        { label: 'Location', placeholder: 'All', items: 'All' },
-        { label: 'Date Type', placeholder: 'Active Month', items: 'Active Month' },
-      ],
+      // filters: [
+      //   // { label: 'Recruiter', placeholder: 'All', items: 'All' },
+      //   { label: 'Acct. Manager', placeholder: 'All', items: 'All' },
+      //   // { label: 'Status', placeholder: 'All', items: 'All' },
+      //   // { label: 'Service Type', placeholder: 'All', items: 'All' },
+      //   // { label: 'Location', placeholder: 'All', items: 'All' },
+      //   // { label: 'Date Type', placeholder: 'Active Month', items: 'Active Month' },
+      // ],
 
       // TODAYS TASKS
       today_tasks_only: false,
@@ -1263,6 +1381,14 @@ export default {
         { name: 'DEWA', amount: '10k', percentage: '2', color: 'accent1' },
         { name: 'Office Rent', amount: '10k', percentage: '5', color: 'accent3' },
       ],
+      //funnel colors 
+      // funnel_colors: [
+      //   {
+         
+      //     hexs: ['#297afb','#2898fb','#01d8fd','#2898fb','#01d8fd'],
+         
+      //   },
+      // ],
       alerts_data: [
         { title: 'Receivable Alerts !', subtitle: 'Receivable exceeds 3 months', priority: 'High Priority' },
         { title: 'Overdue Alert', subtitle: 'You have 100k overdue.', priority: 'High Priority' },
@@ -1280,55 +1406,55 @@ export default {
   },
   //METHODS 
   methods: {
-    //  // Placement Report
-    //  async getPlacementReport() {
-    //     let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/placements_report/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
-    //     .then(res => {
-    //       this.placement_report = res
-    //       console.log('placement_report fetching =>', this.placement_report)
-    //     })
-    //   .catch(err => console.log(err))
-    // },
+     // Placement Report
+     async getPlacementReport() {
+        let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/placements_report/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
+        .then(res => {
+          this.placement_report = res
+          console.log('placement_report fetching =>', this.placement_report)
+        })
+      .catch(err => console.log(err))
+    },
 
-    // // Pipeline Overview
-    // async getPipelineOverview() {
-    //     let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/pipeline_overview/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
-    //     .then(res => {
-    //       this.pipeline_overview_summary = res
-    //       console.log('pipeline_overview_summary fetching =>', this.pipeline_overview_summary)
-    //     })
-    //   .catch(err => console.log(err))
-    // },
+    // Pipeline Overview
+    async getPipelineOverview() {
+        let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/pipeline_overview/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
+        .then(res => {
+          this.pipeline_overview_summary = res
+          console.log('pipeline_overview_summary fetching =>', this.pipeline_overview_summary)
+        })
+      .catch(err => console.log(err))
+    },
 
-    // // Placements Overview Summary
-    // async getPlacementsOverviewSummary() {
-    //     let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/placements_overview/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
-    //     .then(res => {
-    //       this.placements_overview_summary = res.json()
-    //       console.log('placements_overview_summary fetching =>', res)
-    //     })
-    //   .catch(err => console.log(err))
-    // },
+    // Placements Overview Summary
+    async getPlacementsOverviewSummary() {
+        let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/placements_overview/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
+        .then(res => {
+          this.placements_overview_summary = res.json()
+          console.log('placements_overview_summary fetching =>', res)
+        })
+      .catch(err => console.log(err))
+    },
 
-    // // Request Breakdown
-    // async getRequestBreakdown() {
-    //   let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/request_breakdown/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
-    //   .then(res => {
-    //     this.request_breakdown = res.request
-    //     console.log('request_breakdown fetching =>', this.request_breakdown)
-    //   })
-    //   .catch(err => console.log(err))
-    // },
+    // Request Breakdown
+    async getRequestBreakdown() {
+      let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/request_breakdown/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
+      .then(res => {
+        this.request_breakdown = res.request
+        console.log('request_breakdown fetching =>', this.request_breakdown)
+      })
+      .catch(err => console.log(err))
+    },
     
-    // // Recruiting Funnel
-    // async getRecruitingFunnel() {
-    //   let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/recruiting_funnel/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
-    //   .then(res => {
-    //     this.recruiting_funnel = res.request
-    //     console.log('recruiting_funnel fetching =>', this.recruiting_funnel)
-    //   })
-    //   .catch(err => console.log(err))
-    // },
+    // Recruiting Funnel
+    async getRecruitingFunnel() {
+      let data = await this.$axios.$get('https://stquery.nathanhr.com/requests/recruiting_funnel/all?admin=true&account_manager_id=all&active_recruiter[]=all&date_type=active_month&month[]=1&year=2023&service_type=All&status=All&role_location=All')
+      .then(res => {
+        this.recruiting_funnel = res.request
+        console.log('recruiting_funnel fetching =>', this.recruiting_funnel)
+      })
+      .catch(err => console.log(err))
+    },
 
     mapGlobalStateToLocal() {
       this.firstVisit = this.getValues.firstVisit
@@ -1382,6 +1508,43 @@ export default {
     },
   },
   computed: {
+    //Recutier list 
+    recruiters_list() {
+            // this.recruiters.recruiters = this.sortRecruiters()
+            this.recruiters.recruiters.unshift({id: 'all', name: 'All'})
+            // this.recruiters.recruiters.push({id: 'none', name: 'None'})
+            return this.recruiters.recruiters
+        },
+
+    //location countries list
+    roleLocationFilters() {
+            var countries = this.countries
+
+            countries.unshift({type: 'prepend', name: 'Saudi Arabia'})
+            countries.unshift({type: 'prepend', name: 'United Arab Emirates'})
+            countries.unshift({type: 'prepend', name: 'All'})
+
+            return countries
+        },
+        //Acount-managers_list
+        accountmngrs_list() {
+            this.account_managers.unshift({_id: 'all', name: 'All'})
+            // this.account_managers.push({_id: 'none', name: 'None'})
+            return this.account_managers
+        },
+    //filter year list method: 
+    listYears() {
+            let years = [];
+            let current_year = new Date().getFullYear();
+
+            // alert(current_year)
+            for(var i=2019; i <= 2023; i++) {
+                years.push({value: i})
+            }
+            
+            this.year_list = years
+            return this.year_list
+        },
     getValues() {
       return this.$store.getters['userData/getFirstVisit'];
     },
@@ -1390,7 +1553,8 @@ export default {
     },
   },
   mounted() {
-    // console.log('map state',mapGlobalStateToLocal(['userData/firstVisit']))
+    this.listYears
+    this.getRecruitingFunnel()
     this.mapGlobalStateToLocal()
   },
   watch: {

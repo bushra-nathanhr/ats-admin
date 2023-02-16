@@ -41,6 +41,7 @@ Vue.component("bar-chart", {
         
       }
     },
+
     plugins: {
       type: Array,
       default: () => []
